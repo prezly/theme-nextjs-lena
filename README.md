@@ -1,6 +1,6 @@
-# Prezly Bea Theme
+# Prezly Lena Theme
 
-Bea Prezly Theme is based on [Next.js] 12+ framework.
+Lena Prezly Theme is based on [Next.js] 12+ framework.
 - Made with [TypeScript], [Prezly SDK] and [Prezly Content React Renderer].
 - Data-fetching is handled by [Prezly Theme Kit] and [Prezly SDK].
 - Multi-language is powered by [React Intl] and [Prezly Themes Translations].
@@ -19,8 +19,8 @@ Bea Prezly Theme is based on [Next.js] 12+ framework.
 Run the following command on your local environment
 
 ```Shell
-git clone https://github.com/prezly/theme-nextjs-bea
-cd theme-nextjs-bea
+git clone https://github.com/prezly/theme-nextjs-lena
+cd theme-nextjs-lena
 npm i
 ```
 
@@ -48,7 +48,7 @@ Deploy the example using [Vercel](https://vercel.com) or [Netlify](https://www.n
 
 | Vercel  | Netlify |
 | ------------- | ------------- |
-| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/prezly/theme-nextjs-bea)  | [![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/prezly/theme-nextjs-bea)  |
+| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/prezly/theme-nextjs-lena)  | [![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/prezly/theme-nextjs-lena)  |
 
 ### Scripts in package.json
 
@@ -72,9 +72,9 @@ Logic for content display is based heavily on [Prezly Theme Starter]. Check it o
 
 To ease with development we have created a few sample newsrooms in different categories:
 
-* **The Good Newsroom** [(preview on vercel)](https://theme-nextjs-bea-the-good-newsroom.vercel.app/): A newsroom filled with good news
-* **Cookbook** [(preview on vercel)](https://theme-nextjs-bea-cookbook.vercel.app/): Recipes shared by the Prezly team
-* **Anonymous Photographer** [(preview on vercel)](https://theme-nextjs-bea-photography.vercel.app/):  Pictures from a photographer. Combination of albums and imagery
+* **The Good Newsroom** [(preview on vercel)](https://theme-nextjs-lena-the-good-newsroom.vercel.app/): A newsroom filled with good news
+* **Cookbook** [(preview on vercel)](https://theme-nextjs-lena-cookbook.vercel.app/): Recipes shared by the Prezly team
+* **Anonymous Photographer** [(preview on vercel)](https://theme-nextjs-lena-photography.vercel.app/):  Pictures from a photographer. Combination of albums and imagery
 
 A list of tokens/newsroom uuids that can be used to kickstart the theme.
 
@@ -87,10 +87,6 @@ A list of tokens/newsroom uuids that can be used to kickstart the theme.
 ### Contributions
 
 Everyone is welcome to contribute to this project. Feel free to open an issue if you have question or found a bug.
-
-### License
-
-Prezly Bea Theme is [MIT licensed](LICENSE).
 
 ---
 
