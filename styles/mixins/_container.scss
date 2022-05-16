@@ -1,0 +1,36 @@
+@mixin container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: $grid-spacing-mobile;
+    padding-left: $grid-spacing-mobile;
+
+    @include tablet-up {
+        padding-left: $grid-spacing-tablet;
+        padding-right: $grid-spacing-tablet;
+    }
+
+    @include desktop-up {
+        padding-left: $grid-spacing-desktop;
+        padding-right: $grid-spacing-desktop;
+        max-width: $grid-container-max-width;
+    }
+
+    @include desktop-large-up {
+        padding-left: $grid-spacing-desktop-large;
+        padding-right: $grid-spacing-desktop-large;
+    }
+}
+
+/*
+** Use this mixin inside a container to create a block that breaks outside of fixed width
+** and stretches to the entire screen width
+*/
+@mixin full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}

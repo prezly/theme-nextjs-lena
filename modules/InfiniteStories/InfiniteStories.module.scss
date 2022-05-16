@@ -1,0 +1,14 @@
+.container {
+    padding: $spacing-9 0;
+
+    &:not(.categoryContainer) {
+        @include not-desktop {
+            padding-top: $spacing-5;
+        }
+    }
+}
+
+.loadMore {
+    display: flex;
+    margin: $spacing-8 auto 0;
+}

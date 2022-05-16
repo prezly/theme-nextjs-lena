@@ -1,0 +1,91 @@
+.avatar {
+    width: 4rem;
+    height: 4rem;
+    margin-right: $spacing-3;
+    border-radius: 50%;
+}
+
+.content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.name {
+    @include paragraph;
+
+    margin: 0 auto $spacing-half;
+}
+
+.position {
+    @include text-small;
+
+    margin: 0 auto $spacing-3;
+    color: $color-base-500;
+    font-weight: $font-weight-regular;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    margin: $spacing-2 auto (-$spacing-2);
+}
+
+.link {
+    @include text-small;
+    @include link-primary;
+
+    display: flex;
+    align-items: center;
+    margin-right: $spacing-4;
+    margin-bottom: $spacing-2;
+    overflow: hidden;
+}
+
+.linkText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    margin-right: $spacing-1;
+}
+
+.container {
+    @include border-radius-m;
+
+    display: flex;
+    padding: $spacing-4;
+    background: $color-base-50;
+    border: 1px solid $color-borders;
+    overflow: hidden;
+
+    /* stylelint-disable max-nesting-depth */
+    // This class applies mobile styling but can also be forced through props.
+    // The component will apply this class automatically when on mobile screen.
+    &.compact {
+        display: block;
+
+        .avatar {
+            margin-bottom: $spacing-3;
+        }
+
+        .links {
+            display: block;
+            margin-bottom: 0;
+        }
+
+        .link {
+            margin-right: 0;
+            margin-bottom: $spacing-2;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+    /* stylelint-enable max-nesting-depth */
+}

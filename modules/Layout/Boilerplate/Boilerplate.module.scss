@@ -1,0 +1,62 @@
+.container {
+    padding: $spacing-9 0;
+    color: $color-base-white;
+    background: $color-base-800;
+}
+
+.columns {
+    display: block;
+
+    @include desktop-up {
+        display: flex;
+    }
+}
+
+.heading {
+    @include heading-3;
+
+    margin: $spacing-3 0;
+    color: $color-base-white;
+}
+
+.aboutUs {
+    flex-grow: 2;
+    margin-bottom: $spacing-6;
+
+    @include desktop-up {
+        margin-bottom: 0;
+
+        + .contacts {
+            margin-left: $spacing-6;
+        }
+    }
+}
+
+.contacts {
+    @include tablet-up {
+        min-width: 350px;
+    }
+}
+
+.about {
+    margin-bottom: $spacing-5;
+
+    * {
+        color: inherit;
+    }
+}
+
+.socialMedia {
+    margin-bottom: $spacing-3;
+}
+
+.link,
+.about a {
+    @include link-white;
+}
+
+.separator {
+    width: 1.5rem;
+    height: 0.125rem;
+    background: $color-base-white;
+}

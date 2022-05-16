@@ -1,0 +1,105 @@
+@import "../variables/typography";
+
+@mixin heading-1 {
+    font-size: $font-size-xl;
+    line-height: $line-height-xl;
+    font-weight: $font-weight-bold;
+}
+@mixin heading-1-xxl {
+    font-size: $font-size-xxl;
+    line-height: $line-height-xl;
+    font-weight: $font-weight-bold;
+}
+
+@mixin heading-2 {
+    font-size: $font-size-l;
+    line-height: $line-height-l;
+    font-weight: $font-weight-bold;
+}
+
+@mixin heading-3 {
+    font-size: $font-size-m;
+    line-height: $line-height-m;
+    font-weight: $font-weight-bold;
+}
+
+@mixin paragraph {
+    font-size: $font-size-s;
+    line-height: $line-height-s;
+}
+
+@mixin text-small {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+}
+
+@mixin text-tiny {
+    font-size: $font-size-xxs;
+    line-height: $line-height-xxs;
+}
+
+@mixin text-label {
+    font-size: $font-size-labels;
+    line-height: $line-height-labels;
+}
+
+@mixin link-white {
+    color: $color-base-white;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+        color: $color-base-300;
+        text-decoration: underline;
+    }
+
+    &:active {
+        color: $color-base-white;
+    }
+}
+
+@mixin link-primary {
+    color: var(--prezly-accent-color);
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: var(--prezly-accent-color-tint);
+        text-decoration: underline;
+    }
+
+    &:active {
+        color: var(--prezly-accent-color);
+    }
+}
+
+@mixin search-result-title {
+    padding-left: 2px;
+    margin-left: -2px;
+
+    mark {
+        position: relative;
+        background-color: transparent;
+        color: inherit;
+        z-index: 0;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -1px;
+            right: 0;
+            background-color: var(--prezly-accent-color);
+            border-radius: 2px;
+            z-index: -1;
+            opacity: 0.25;
+        }
+
+        &:first-child::before {
+            left: -2px;
+        }
+    }
+}

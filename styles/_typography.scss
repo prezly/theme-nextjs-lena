@@ -1,0 +1,63 @@
+body {
+    font-size: 16px;
+    font-family: var(--prezly-font-family);
+    color: $color-text;
+}
+
+h1,
+.h1 {
+    @include heading-1;
+
+    color: $color-headings;
+}
+
+h2,
+.h2 {
+    @include heading-2;
+
+    color: $color-headings;
+}
+
+h3,
+.h3 {
+    @include heading-3;
+
+    color: $color-headings;
+}
+
+h4,
+.h4 {
+    color: $color-headings;
+}
+
+h5,
+.h5 {
+    color: $color-headings;
+}
+
+h6,
+.h6 {
+    color: $color-headings;
+}
+
+p,
+.paragraph {
+    @include paragraph;
+}
+
+a {
+    color: var(--prezly-accent-color);
+}
+
+.textSmall {
+    @include text-small;
+}
+
+.textTiny {
+    @include text-tiny;
+}
+
+label,
+.label {
+    @include text-label;
+}

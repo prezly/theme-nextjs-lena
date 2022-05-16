@@ -1,0 +1,27 @@
+.category,
+.categoryLink {
+    @include text-label;
+
+    color: var(--prezly-accent-color);
+    font-weight: $font-weight-bold;
+}
+
+.categoryLink {
+    @include link-primary;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        span {
+            text-decoration: underline;
+        }
+    }
+
+    &:not(:last-child) {
+        &::after {
+            content: ",";
+            margin-right: $spacing-half;
+        }
+    }
+}

@@ -1,0 +1,95 @@
+.contactCard {
+    margin: $spacing-6 auto;
+}
+
+// This class is attached to SlateRenderer so that we can
+// modify some global styles for components that are coming
+// from @prezly/content-renderer-react-js
+.renderer {
+    :global {
+        /* stylelint-disable selector-class-pattern, max-nesting-depth, selector-max-compound-selectors */
+        .prezly-slate-document {
+            color: inherit;
+        }
+
+        .prezly-slate-image,
+        .prezly-slate-gallery,
+        .prezly-slate-embed {
+            margin-top: $spacing-6;
+            margin-bottom: $spacing-6;
+        }
+
+        .prezly-slate-image-rollover {
+            width: 100%;
+            z-index: 0;
+        }
+
+        .prezly-slate-image-rollover__dim,
+        .prezly-slate-image-rollover__caption-text {
+            display: none;
+        }
+
+        .prezly-slate-image-rollover__caption-icon-container {
+            @include border-radius-m;
+
+            background: rgba($color-base-900, 0.3);
+        }
+
+        .prezly-slate-image-rollover__caption {
+            &:not(.prezly-slate-image-rollover__caption--empty) {
+                .prezly-slate-image-rollover__caption-icon-container {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .prezly-slate-iframely-embed {
+            iframe {
+                border-color: $color-borders !important;
+            }
+        }
+
+        .prezly-slate-image__caption {
+            font-size: $font-size-labels;
+        }
+        /* stylelint-enable selector-class-pattern, max-nesting-depth, selector-max-compound-selectors */
+    }
+}
+
+// This class is attached to <body> when SlateRenderer is mounted
+// because Lightbox component is mounted outside of this component
+.body {
+    :global {
+        /* stylelint-disable selector-class-pattern, max-nesting-depth */
+        .ReactModal__Overlay {
+            z-index: 999;
+        }
+
+        .prezly-slate-lightbox__close {
+            @include link-primary;
+        }
+
+        .prezly-slate-lightbox__download {
+            background-color: var(--prezly-accent-color);
+            border-color: var(--prezly-accent-color);
+            color: $color-base-white;
+
+            &:hover,
+            &:focus {
+                background-color: var(--prezly-accent-color-tint);
+                border-color: var(--prezly-accent-color-tint);
+            }
+
+            &:active {
+                background-color: var(--prezly-accent-color-shade);
+                border-color: var(--prezly-accent-color-shade);
+            }
+        }
+
+        .prezly-slate-lightbox__pinterest {
+            display: none;
+        }
+
+        /* stylelint-enable selector-class-pattern, max-nesting-depth */
+    }
+}
