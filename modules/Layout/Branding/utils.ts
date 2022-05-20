@@ -58,6 +58,6 @@ export function getGoogleFontName(font: Font): string {
         case Font.SOURCE_CODE_PRO:
             return 'Source+Code+Pro';
         default:
-            return 'Inter';
+            return 'Mulish';
     }
 }

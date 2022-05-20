@@ -16,7 +16,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button } from '@/components';
 import { useDevice } from '@/hooks';
-import { IconClose, IconMenu, IconSearch } from '@/icons';
+import { IconClose, IconImage, IconMenu, IconSearch } from '@/icons';
 
 import CategoriesDropdown from './CategoriesDropdown';
 import LanguagesDropdown from './LanguagesDropdown';
@@ -131,7 +131,9 @@ function Header({ hasError }: Props) {
                                 aria-controls="search-widget"
                                 title={formatMessage(translations.search.title)}
                                 aria-label={formatMessage(translations.search.title)}
-                            />
+                            >
+                                Search
+                            </Button.Link>
                         )}
 
                         <Button
@@ -159,6 +161,7 @@ function Header({ hasError }: Props) {
                                             localeCode={getLinkLocaleSlug()}
                                             variation="navigation"
                                             className={styles.navigationButton}
+                                            icon={IconImage}
                                         >
                                             <FormattedMessage
                                                 {...translations.mediaGallery.title}
@@ -166,12 +169,14 @@ function Header({ hasError }: Props) {
                                         </Button.Link>
                                     </li>
                                 )}
-                                <CategoriesDropdown
-                                    categories={categories}
-                                    buttonClassName={styles.navigationButton}
-                                    navigationItemClassName={styles.navigationItem}
-                                    navigationButtonClassName={styles.navigationButton}
-                                />
+                                {isMobile && (
+                                    <CategoriesDropdown
+                                        categories={categories}
+                                        buttonClassName={styles.navigationButton}
+                                        navigationItemClassName={styles.navigationItem}
+                                        navigationButtonClassName={styles.navigationButton}
+                                    />
+                                )}
                                 <LanguagesDropdown
                                     buttonClassName={styles.navigationButton}
                                     navigationItemClassName={styles.navigationItem}
