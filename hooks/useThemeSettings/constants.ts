@@ -5,7 +5,7 @@ export const STORAGE_KEY = 'themePreview';
 
 export const DEFAULT_THEME_SETTINGS: ThemeSettingsApiResponse = {
     accent_color: '#3b82f6',
-    font: Font.INTER,
+    font: Font.MULISH,
     header_background_color: '#ffffff',
     header_link_color: '#374151',
     show_date: true,
