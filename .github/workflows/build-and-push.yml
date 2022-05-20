@@ -1,4 +1,4 @@
-name: Build image and push Bea image to ECR
+name: Build image and push Lena image to ECR
 
 on:
   push:
