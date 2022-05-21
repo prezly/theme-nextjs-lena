@@ -116,6 +116,19 @@ function Header({ hasError }: Props) {
                     </Link>
 
                     <div className={styles.navigationWrapper}>
+                        <Button
+                            variation="navigation"
+                            icon={isMenuOpen ? IconClose : IconMenu}
+                            className={classNames(styles.navigationToggle, {
+                                [styles.hidden]: isSearchWidgetShown,
+                            })}
+                            onClick={toggleMenu}
+                            aria-expanded={isMenuOpen}
+                            aria-controls="menu"
+                            title={formatMessage(translations.misc.toggleMobileNavigation)}
+                            aria-label={formatMessage(translations.misc.toggleMobileNavigation)}
+                        />
+
                         {IS_SEARCH_ENABLED && (
                             <Button.Link
                                 href="/search"
@@ -135,19 +148,6 @@ function Header({ hasError }: Props) {
                                 Search
                             </Button.Link>
                         )}
-
-                        <Button
-                            variation="navigation"
-                            icon={isMenuOpen ? IconClose : IconMenu}
-                            className={classNames(styles.navigationToggle, {
-                                [styles.hidden]: isSearchWidgetShown,
-                            })}
-                            onClick={toggleMenu}
-                            aria-expanded={isMenuOpen}
-                            aria-controls="menu"
-                            title={formatMessage(translations.misc.toggleMobileNavigation)}
-                            aria-label={formatMessage(translations.misc.toggleMobileNavigation)}
-                        />
 
                         <div
                             className={classNames(styles.navigation, { [styles.open]: isMenuOpen })}

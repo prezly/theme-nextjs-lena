@@ -2,7 +2,7 @@ $header-height: 64px;
 
 .container {
     display: flex;
-    background: var(--prezly-header-background-color);
+    background: $color-base-white;
     border-bottom: 1px solid $color-borders;
     height: $header-height;
     z-index: 2;
@@ -53,6 +53,11 @@ $header-height: 64px;
             font-size: $font-size-m;
             line-height: 1;
             padding: $spacing-2;
+
+            /* stylelint-disable-next-line max-nesting-depth */
+            span {
+                display: none;
+            }
         }
 
         @include tablet-up {
@@ -63,10 +68,6 @@ $header-height: 64px;
             background-color: var(--prezly-accent-color);
             color: $color-base-white;
             margin-left: $spacing-1;
-        }
-
-        span {
-            display: none;
         }
     }
 

@@ -5,7 +5,7 @@ import { Router } from 'next/router';
 import type { PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 
-import { LoadingBar, ScrollToTopButton } from '@/components';
+import { CategoriesBar, LoadingBar, ScrollToTopButton } from '@/components';
 
 import Boilerplate from './Boilerplate';
 import Branding from './Branding';
@@ -56,6 +56,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             <CookieConsentBar />
             <div className={styles.layout}>
                 <Header hasError={hasError} />
+                <CategoriesBar />
                 <main className={styles.content}>
                     {children}
                     <LoadingBar isLoading={isLoadingPage} />
