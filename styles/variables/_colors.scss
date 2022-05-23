@@ -1,14 +1,14 @@
 $color-base-white: #fff;
-$color-base-50: #f9fafb;
-$color-base-100: #f3f4f6;
-$color-base-200: #e5e7eb;
-$color-base-300: #d1d5db;
-$color-base-400: #9ca3af;
-$color-base-500: #6b7280;
-$color-base-600: #4b5563;
-$color-base-700: #374151;
-$color-base-800: #1f2937;
-$color-base-900: #111827;
+$color-base-50: #f8fafc;
+$color-base-100: #f1f5f9;
+$color-base-200: #e2e8f0;
+$color-base-300: #cbd5e1;
+$color-base-400: #94a3b8;
+$color-base-500: #64748b;
+$color-base-600: #475569;
+$color-base-700: #334155;
+$color-base-800: #1e293b;
+$color-base-900: #0f172a;
 
 $color-red-100: #fee2e2;
 $color-red-400: #f87171;
@@ -52,6 +52,7 @@ $color-pink-500: #ec4899;
 $color-pink-600: #db2777;
 $color-pink-800: #9d174d;
 
-$color-text: $color-base-700;
+$color-text: #1e293b;
 $color-headings: $color-base-700;
-$color-borders: $color-base-200;
+$color-borders: #e2e8f0;
+$color-placeholder-bg: #e2e8f0;

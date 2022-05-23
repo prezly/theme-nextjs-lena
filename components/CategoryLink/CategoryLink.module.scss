@@ -1,7 +1,10 @@
 .link {
-    @include text-label;
-    @include link-primary;
+    @include text-small;
+    @include link-dark;
 
+    padding: $spacing-small $spacing-1;
+    background-color: #f1f5f9;
+    border-radius: $border-radius-m;
     font-weight: $font-weight-bold;
     text-decoration: none;
     cursor: pointer;
@@ -14,9 +17,6 @@
     }
 
     &:not(:last-child) {
-        &::after {
-            content: ",";
-            margin-right: $spacing-half;
-        }
+        margin-right: $spacing-half;
     }
 }

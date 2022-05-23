@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import Link from 'next/link';
 
 import { useThemeSettings } from '@/hooks';
@@ -12,23 +11,14 @@ import styles from './StoryCard.module.scss';
 
 type Props = {
     story: StoryWithImage;
-    size?: 'small' | 'medium' | 'big';
 };
 
-function StoryCard({ story, size = 'small' }: Props) {
+function StoryCard({ story }: Props) {
     const { categories, title, subtitle } = story;
     const { showDate, showSubtitle } = useThemeSettings();
 
-    const HeadingTag = size === 'small' ? 'h3' : 'h2';
-
     return (
-        <div
-            className={classNames(styles.container, {
-                [styles.small]: size === 'small',
-                [styles.medium]: size === 'medium',
-                [styles.big]: size === 'big',
-            })}
-        >
+        <div className={styles.container}>
             <Link href={`/${story.slug}`} locale={false} passHref>
                 <a className={styles.imageWrapper}>
                     <StoryImage
@@ -41,18 +31,14 @@ function StoryCard({ story, size = 'small' }: Props) {
             <div className={styles.content}>
                 {categories.length > 0 && (
                     <div className={styles.categories}>
-                        <CategoriesList
-                            categories={categories}
-                            showAllCategories={size !== 'small'}
-                            isStatic
-                        />
+                        <CategoriesList categories={categories} isStatic />
                     </div>
                 )}
-                <HeadingTag className={styles.title}>
+                <h3 className={styles.title}>
                     <Link href={`/${story.slug}`} locale={false} passHref>
                         <a className={styles.titleLink}>{title}</a>
                     </Link>
-                </HeadingTag>
+                </h3>
 
                 {subtitle && showSubtitle && (
                     <p className={styles.subtitle}>

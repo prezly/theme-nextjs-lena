@@ -2,7 +2,7 @@
 .categoryLink {
     @include text-label;
 
-    color: var(--prezly-accent-color);
+    color: $color-base-white;
     font-weight: $font-weight-bold;
 }
 
@@ -19,9 +19,6 @@
     }
 
     &:not(:last-child) {
-        &::after {
-            content: ",";
-            margin-right: $spacing-half;
-        }
+        margin-right: $spacing-half;
     }
 }

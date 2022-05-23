@@ -1,16 +1,29 @@
 .highlightedStoriesContainer {
     margin-bottom: $spacing-8;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-6 $spacing-6;
 
-    @include desktop-up {
-        margin-bottom: $spacing-9;
+    @include tablet-only {
+        grid-template-columns: 1fr;
+    }
+
+    @include mobile-only {
+        grid-template-columns: 1fr;
     }
 }
 
 .storiesContainer {
-    @include desktop-up {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: $spacing-7 $spacing-6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-6 $spacing-6;
+
+    @include tablet-only {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile-only {
+        grid-template-columns: 1fr;
     }
 }
 
