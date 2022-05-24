@@ -3,6 +3,7 @@ import translations from '@prezly/themes-intl-messages';
 import { FormattedMessage } from 'react-intl';
 
 import { SocialMedia } from '@/components';
+import { IconBuilding, IconEmail, IconGlobe, IconPhone } from 'icons';
 
 import {
     getWebsiteHostname,
@@ -49,24 +50,6 @@ function Boilerplate() {
                                     dangerouslySetInnerHTML={{ __html: companyInformation.about }}
                                 />
                             )}
-                            {hasSocialMedia && (
-                                <SocialMedia
-                                    companyInformation={companyInformation}
-                                    className={styles.socialMedia}
-                                />
-                            )}
-                            {companyInformation.website && (
-                                <p>
-                                    <a
-                                        href={companyInformation.website}
-                                        className={styles.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {getWebsiteHostname(companyInformation.website)}
-                                    </a>
-                                </p>
-                            )}
                         </div>
                     )}
                     {hasContactInformation && (
@@ -74,10 +57,15 @@ function Boilerplate() {
                             <h2 className={styles.heading}>
                                 <FormattedMessage {...translations.boilerplate.contact} />
                             </h2>
-                            {hasAddress && <p>{companyInformation.address}</p>}
+                            {hasAddress && (
+                                <div className={styles.linkWrapper}>
+                                    <IconBuilding className={styles.icon} />
+                                    <p>{companyInformation.address}</p>
+                                </div>
+                            )}
                             {hasPhone && (
-                                <>
-                                    {hasAddress && <div className={styles.separator} />}
+                                <div className={styles.linkWrapper}>
+                                    <IconPhone className={styles.icon} />
                                     <p>
                                         <a
                                             className={styles.link}
@@ -86,13 +74,11 @@ function Boilerplate() {
                                             {companyInformation.phone}
                                         </a>
                                     </p>
-                                </>
+                                </div>
                             )}
                             {hasEmail && (
-                                <>
-                                    {(hasAddress || hasPhone) && (
-                                        <div className={styles.separator} />
-                                    )}
+                                <div className={styles.linkWrapper}>
+                                    <IconEmail className={styles.icon} />
                                     <p>
                                         <a
                                             className={styles.link}
@@ -101,7 +87,28 @@ function Boilerplate() {
                                             {companyInformation.email}
                                         </a>
                                     </p>
-                                </>
+                                </div>
+                            )}
+                            {companyInformation.website && (
+                                <div className={styles.linkWrapper}>
+                                    <IconGlobe className={styles.icon} />
+                                    <p>
+                                        <a
+                                            href={companyInformation.website}
+                                            className={styles.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {getWebsiteHostname(companyInformation.website)}
+                                        </a>
+                                    </p>
+                                </div>
+                            )}
+                            {hasSocialMedia && (
+                                <SocialMedia
+                                    companyInformation={companyInformation}
+                                    className={styles.socialMedia}
+                                />
                             )}
                         </div>
                     )}

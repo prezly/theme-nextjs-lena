@@ -81,67 +81,69 @@ function SubscribeForm() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>
-                <FormattedMessage {...translations.subscription.formTitle} />
-            </h2>
+            <div className={styles.content}>
+                <h2 className={styles.title}>
+                    <FormattedMessage {...translations.subscription.formTitle} />
+                </h2>
 
-            <form onSubmit={handleSubmit} noValidate>
-                <div className={styles.inlineForm}>
-                    <FormInput
-                        name="email"
-                        type="email"
-                        label={formatMessage(translations.subscription.labelEmail)}
-                        placeholder={formatMessage(translations.subscription.labelEmail)}
-                        className={styles.input}
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        error={emailError}
-                    />
-                    <Button
-                        type="submit"
-                        variation="primary"
-                        className={styles.button}
-                        isLoading={isSubmitting}
-                    >
-                        <FormattedMessage {...translations.actions.subscribe} />
-                    </Button>
-                </div>
+                <form onSubmit={handleSubmit} noValidate>
+                    <div className={styles.inlineForm}>
+                        <FormInput
+                            name="email"
+                            type="email"
+                            label={formatMessage(translations.subscription.labelEmail)}
+                            placeholder={formatMessage(translations.subscription.labelEmail)}
+                            className={styles.input}
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
+                            error={emailError}
+                        />
+                        <Button
+                            type="submit"
+                            variation="primary"
+                            className={styles.button}
+                            isLoading={isSubmitting}
+                        >
+                            <FormattedMessage {...translations.actions.subscribe} />
+                        </Button>
+                    </div>
 
-                <p className={styles.disclaimer}>
-                    <FormattedMessage
-                        {...translations.subscription.disclaimer}
-                        values={{
-                            subscribe: <FormattedMessage {...translations.actions.subscribe} />,
-                            privacyPolicyLink: (
-                                <a
-                                    href={
-                                        newsroom.custom_privacy_policy_link ??
-                                        'https://www.prezly.com/privacy-policy'
-                                    }
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className={styles.disclaimerLink}
-                                >
-                                    <FormattedMessage
-                                        {...translations.subscription.privacyPolicy}
-                                    />
-                                </a>
-                            ),
-                        }}
-                    />
-                </p>
+                    <p className={styles.disclaimer}>
+                        <FormattedMessage
+                            {...translations.subscription.disclaimer}
+                            values={{
+                                subscribe: <FormattedMessage {...translations.actions.subscribe} />,
+                                privacyPolicyLink: (
+                                    <a
+                                        href={
+                                            newsroom.custom_privacy_policy_link ??
+                                            'https://www.prezly.com/privacy-policy'
+                                        }
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className={styles.disclaimerLink}
+                                    >
+                                        <FormattedMessage
+                                            {...translations.subscription.privacyPolicy}
+                                        />
+                                    </a>
+                                ),
+                            }}
+                        />
+                    </p>
 
-                {NEXT_PUBLIC_HCAPTCHA_SITEKEY && (
-                    <HCaptcha
-                        sitekey={NEXT_PUBLIC_HCAPTCHA_SITEKEY}
-                        size="invisible"
-                        ref={captchaRef}
-                        onVerify={handleCaptchaVerify}
-                        onExpire={() => setCaptchaToken(undefined)}
-                        languageOverride={getLocaleCodeForCaptcha(currentLocale)}
-                    />
-                )}
-            </form>
+                    {NEXT_PUBLIC_HCAPTCHA_SITEKEY && (
+                        <HCaptcha
+                            sitekey={NEXT_PUBLIC_HCAPTCHA_SITEKEY}
+                            size="invisible"
+                            ref={captchaRef}
+                            onVerify={handleCaptchaVerify}
+                            onExpire={() => setCaptchaToken(undefined)}
+                            languageOverride={getLocaleCodeForCaptcha(currentLocale)}
+                        />
+                    )}
+                </form>
+            </div>
         </div>
     );
 }
