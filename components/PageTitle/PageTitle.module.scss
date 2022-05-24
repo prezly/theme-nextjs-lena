@@ -9,7 +9,7 @@
     @include container;
 
     padding: $spacing-8;
-    text-align: center;
+    text-align: left;
 
     @include mobile-only {
         padding: $spacing-5;
@@ -20,7 +20,7 @@
     @include heading-1;
 
     margin-top: 0;
-    color: $color-base-700;
+    color: $color-base-800;
 
     &:only-child {
         margin-bottom: 0;
@@ -30,6 +30,6 @@
 .subtitle {
     @include paragraph;
 
-    max-width: 735px;
+    color: $color-base-500;
     margin: $spacing-3 auto 0;
 }
