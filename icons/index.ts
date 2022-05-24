@@ -18,3 +18,4 @@ export { default as IconSearchCaret } from './search-caret.svg';
 export { default as LogoPrezly } from './prezly.svg';
 export { default as IconImage } from './image.svg';
 export { default as IconBuilding } from './building.svg';
+export { default as IconLayoutVertical } from './layout-vertical.svg';

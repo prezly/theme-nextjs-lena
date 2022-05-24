@@ -4,6 +4,10 @@
     max-width: 730px;
     width: 100%;
     border-radius: $border-radius-lg;
+
+    @include mobile-only {
+        border-radius: 0;
+    }
 }
 
 .overlay {
@@ -22,7 +26,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    z-index: 10;
     padding: $spacing-5;
 }
 
@@ -34,6 +37,10 @@
     bottom: 0;
     border-radius: $border-radius-lg;
     overflow: hidden;
+
+    @include mobile-only {
+        border-radius: 0;
+    }
 }
 
 .image {
@@ -43,7 +50,6 @@
 
 .placeholder {
     background-color: $color-placeholder-bg;
-    border-radius: $border-radius-lg;
 }
 
 .title {

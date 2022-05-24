@@ -75,7 +75,9 @@ function LanguagesDropdown({ buttonClassName, navigationItemClassName, hasError 
                             forceRefresh
                             withMobileDisplay
                         >
-                            {getLanguageDisplayName(language, languages)}
+                            <span className={styles.title}>
+                                {getLanguageDisplayName(language, languages)}
+                            </span>
                         </Dropdown.Item>
                     );
                 })}

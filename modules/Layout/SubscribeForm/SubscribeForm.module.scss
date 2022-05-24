@@ -1,18 +1,26 @@
 .container {
-    padding-top: $spacing-8;
-    padding-bottom: $spacing-8;
+    padding: $spacing-5 $spacing-3;
     background-color: $color-base-800;
     border-top: 1px solid $color-borders;
     text-align: center;
+
+    @include tablet-up {
+        padding: $spacing-8 $spacing-6;
+    }
 }
 
 .content {
-    width: calc(1280px - 10rem);
+    @include container;
+
     margin-left: auto;
     margin-right: auto;
     background-color: $color-base-700;
-    padding: $spacing-6 0;
+    padding: $spacing-6 $spacing-4;
     border-radius: $border-radius-lg;
+
+    @include tablet-up {
+        max-width: calc(1280px - 10rem);
+    }
 }
 
 .title {

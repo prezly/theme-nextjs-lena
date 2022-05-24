@@ -23,6 +23,8 @@
     }
 
     @include mobile-only {
+        padding-right: $grid-spacing-mobile;
+        padding-left: $grid-spacing-mobile;
         grid-template-columns: 1fr;
     }
 }
