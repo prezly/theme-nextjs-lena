@@ -23,10 +23,6 @@
 .aboutUs {
     @include text-small;
 
-    p {
-        @include text-small;
-    }
-
     flex-grow: 2;
     margin-bottom: $spacing-6;
 
@@ -36,6 +32,10 @@
         + .contacts {
             margin-left: $spacing-6;
         }
+    }
+
+    p {
+        @include text-small;
     }
 }
 
