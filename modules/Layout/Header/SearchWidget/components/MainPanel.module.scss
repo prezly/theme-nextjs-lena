@@ -34,7 +34,7 @@
 .title {
     @include text-label;
 
-    color: $color-base-500;
+    color: $color-base-700;
     margin-top: 0;
     margin-bottom: $spacing-3;
     font-weight: $font-weight-medium;
@@ -67,6 +67,9 @@
 
 .categoryLink {
     color: var(--prezly-accent-color);
+    border-radius: 0;
+    background-color: transparent;
+    font-size: $font-size-labels;
 }
 
 .caret {

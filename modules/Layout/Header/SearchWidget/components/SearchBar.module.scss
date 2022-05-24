@@ -55,4 +55,10 @@
 .button {
     margin-left: $spacing-1;
     padding: $spacing-1 $spacing-2 !important;
+    border-radius: $border-radius-lg;
+}
+
+.icon {
+    height: 14px;
+    width: 14px;
 }
