@@ -27,7 +27,7 @@
 ** and stretches to the entire screen width
 */
 @mixin full-width {
-    width: 99vw;
+    width: 99.5vw;
     position: relative;
     left: 50%;
     right: 50%;

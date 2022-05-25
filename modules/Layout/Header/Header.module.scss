@@ -5,10 +5,10 @@ $header-height: 64px;
     background: $color-base-white;
     border-bottom: 1px solid $color-borders;
     height: $header-height;
-    z-index: 20;
 
     @include mobile-only {
         border-bottom: 0;
+        z-index: 20;
     }
 }
 

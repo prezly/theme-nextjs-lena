@@ -8,8 +8,12 @@
     margin: 0;
 
     input {
-        padding: $spacing-2 $spacing-3;
+        padding: $spacing-2 $spacing-6;
         border-color: $color-base-200;
+    }
+
+    input::placeholder {
+        color: $color-base-600;
     }
 
     /* clears the 'X' from Internet Explorer */
@@ -35,7 +39,7 @@
     background-color: transparent !important;
     padding: $spacing-2 !important;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
     font-size: $font-size-m;
 }

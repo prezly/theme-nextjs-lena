@@ -5,6 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { PageTitle } from '@/components';
 
 import { useAlgoliaState } from './AlgoliaStateContext';
+import SearchBar from './SearchBar';
 
 import styles from './Title.module.scss';
 
@@ -40,7 +41,9 @@ function Title() {
             className={classNames({
                 [styles.empty]: !searchQuery,
             })}
-        />
+        >
+            <SearchBar />
+        </PageTitle>
     );
 }
 

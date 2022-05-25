@@ -8,12 +8,9 @@
 .container {
     @include container;
 
-    padding: $spacing-8;
+    padding-top: $spacing-6;
+    padding-bottom: $spacing-6;
     text-align: left;
-
-    @include mobile-only {
-        padding: $spacing-5;
-    }
 }
 
 .title {
@@ -30,6 +27,6 @@
 .subtitle {
     @include paragraph;
 
-    color: $color-base-500;
+    color: $color-base-600;
     margin: $spacing-3 auto 0;
 }

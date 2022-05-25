@@ -1,7 +1,8 @@
 import { Analytics } from '@prezly/analytics-nextjs';
 import { PageSeo, useNewsroom, useNewsroomContext } from '@prezly/theme-kit-nextjs';
+import classNames from 'classnames';
 import dynamic from 'next/dynamic';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import type { PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 
@@ -31,6 +32,8 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
     const [isLoadingPage, setIsLoadingPage] = useState(false);
     const newsroom = useNewsroom();
     const { contacts } = useNewsroomContext();
+    const router = useRouter();
+    const path = router.pathname;
 
     useEffect(() => {
         function onRouteChangeStart() {
@@ -54,7 +57,11 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             <Branding newsroom={newsroom} />
             <PageSeo title={title} description={description} imageUrl={imageUrl} />
             <CookieConsentBar />
-            <div className={styles.layout}>
+            <div
+                className={classNames(styles.layout, {
+                    [styles.landingBg]: path === '/',
+                })}
+            >
                 <Header hasError={hasError} />
                 <CategoriesBar />
                 <main className={styles.content}>

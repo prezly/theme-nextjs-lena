@@ -1,0 +1,43 @@
+.container {
+    position: relative;
+}
+
+.facets {
+    @include shadow-m;
+    @include border-radius-lg;
+
+    border: 1px solid $color-borders;
+    padding: 0;
+    background: $color-base-white;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    margin-top: $spacing-2;
+    min-width: 256px;
+
+    @include mobile-only {
+        width: 100%;
+    }
+
+    &.facetsOpen {
+        display: block;
+        z-index: 1;
+    }
+
+    &:empty {
+        display: none;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+}
+
+.button {
+    margin-left: $spacing-3;
+    padding: $spacing-2;
+    border-radius: $border-radius-lg;
+    color: $color-base-800;
+}
