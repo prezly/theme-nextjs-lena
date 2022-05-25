@@ -95,7 +95,7 @@ $story-container-max-width: 926px;
 .date {
     @include text-small;
 
-    margin-top: auto;
+    margin: $spacing-4 0;
     color: $color-base-400;
     text-transform: uppercase;
 }

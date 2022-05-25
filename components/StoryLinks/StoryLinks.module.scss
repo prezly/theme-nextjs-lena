@@ -1,0 +1,43 @@
+.container {
+    position: fixed;
+    bottom: $spacing-9;
+    right: $spacing-9;
+    display: flex;
+    flex-direction: column;
+    margin: $spacing-6 0;
+
+    @include mobile-only {
+        position: static;
+        flex-direction: row;
+    }
+}
+
+.button {
+    font-size: $font-size-xs;
+    background: $color-base-white;
+    height: $spacing-6;
+    width: $spacing-6;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile-only {
+        &:not(:last-child) {
+            margin-right: $spacing-3;
+        }
+    }
+
+    &:not(:last-child) {
+        margin-bottom: $spacing-3;
+    }
+}
+
+.icon {
+    width: $spacing-3;
+    height: $spacing-3;
+    margin-top: $spacing-1;
+}
+
+.scrollToTop {
+    position: static;
+    margin-bottom: $spacing-3;
+}

@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    position: relative;
+}
+
+.input,
+.message {
+    color: $color-text;
+
+    @include desktop-up {
+        @include shadow-inset;
+
+        padding: $spacing-1 $spacing-2;
+        border: 1px solid $color-borders;
+        border-radius: $border-radius-s;
+    }
+}
+
+.input {
+    @include not-desktop {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.paste {
+    font-size: $font-size-xs;
+    background: $color-base-white;
+    height: $spacing-6;
+    width: $spacing-6;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    width: $spacing-3;
+    height: $spacing-3;
+}
+
+.message {
+    position: absolute;
+    transition: opacity 0.4s ease;
+    will-change: opacity;
+
+    @include not-desktop {
+        left: -1px;
+        right: -1px;
+        top: -1px;
+        bottom: -1px;
+        display: flex;
+        align-items: center;
+        background-color: $color-base-white;
+        color: $color-base-500;
+    }
+
+    @include desktop-up {
+        position: absolute;
+        top: 0;
+        left: -120px;
+        width: 180px;
+        height: 100%;
+        background: $color-base-white;
+        text-align: center;
+    }
+}
+
+.transitionStart {
+    opacity: 0;
+}
+
+.transitionFinish {
+    opacity: 1;
+}

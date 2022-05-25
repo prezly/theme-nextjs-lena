@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
-import { IconCaret } from '@/icons';
+import { IconArrowTop } from '@/icons';
 
 import Button from '../Button';
 
@@ -9,7 +9,11 @@ import styles from './ScrollToTopButton.module.scss';
 
 const SCROLL_TOP_MIN_HEIGHT = 300;
 
-function ScrollToTopButton() {
+interface Props {
+    className?: string;
+}
+
+function ScrollToTopButton({ className }: Props) {
     const [isScrollToTopVisible, setIsScrollToTopVisible] = useState(false);
 
     useEffect(() => {
@@ -40,10 +44,12 @@ function ScrollToTopButton() {
     return (
         <Button
             variation="secondary"
-            className={classNames(styles.button, { [styles.visible]: isScrollToTopVisible })}
+            className={classNames(styles.button, className, {
+                [styles.visible]: isScrollToTopVisible,
+            })}
             onClick={scrollToTop}
         >
-            <IconCaret className={styles.icon} />
+            <IconArrowTop className={styles.icon} />
         </Button>
     );
 }

@@ -5,8 +5,8 @@ import Image from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 
-import { StoryPublicationDate } from '@/components';
-import { useThemeSettings } from '@/hooks';
+import { StoryLinks, StoryPublicationDate } from '@/components';
+import { useDevice, useThemeSettings } from '@/hooks';
 
 import Layout from '../Layout';
 
@@ -27,15 +27,18 @@ const IS_FANCY_IMAGE_ENABLED = false;
 
 function Story({ story }: Props) {
     const { showDate } = useThemeSettings();
+    const { isMobile } = useDevice();
 
     if (!story) {
         return null;
     }
 
-    const { title, subtitle, content, format_version, categories } = story;
+    const { title, subtitle, content, format_version, categories, links } = story;
     const headerImage = story.header_image ? JSON.parse(story.header_image) : null;
     const hasHeaderImage = Boolean(headerImage);
     const hasCategories = categories.length > 0;
+
+    const url = links.short || links.newsroom_view;
 
     return (
         <Layout>
@@ -76,6 +79,7 @@ function Story({ story }: Props) {
                             imageDetails={headerImage}
                         />
                     )}
+                    {isMobile && url && <StoryLinks url={url} />}
                     {format_version === StoryFormatVersion.HTML && (
                         // eslint-disable-next-line react/no-danger
                         <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -85,6 +89,7 @@ function Story({ story }: Props) {
                     )}
                 </div>
             </article>
+            {!isMobile && url && <StoryLinks url={url} />}
         </Layout>
     );
 }

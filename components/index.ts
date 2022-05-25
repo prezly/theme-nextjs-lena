@@ -17,3 +17,4 @@ export { default as StoryPublicationDate } from './StoryPublicationDate';
 export { default as StoryStickyBar } from './StoryStickyBar';
 export { default as ScrollToTopButton } from './ScrollToTopButton';
 export { default as CategoriesBar } from './CategoriesBar';
+export { default as StoryLinks } from './StoryLinks';
