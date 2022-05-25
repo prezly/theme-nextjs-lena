@@ -59,7 +59,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             <CookieConsentBar />
             <div
                 className={classNames(styles.layout, {
-                    [styles.landingBg]: path === '/',
+                    [styles.landingBg]: path === '/' || path === '/[slug]',
                 })}
             >
                 <Header hasError={hasError} />

@@ -19,6 +19,10 @@
             margin-bottom: $spacing-6;
         }
 
+        .prezly-slate-image--full-width {
+            @include full-width;
+        }
+
         .prezly-slate-image-rollover {
             width: 100%;
             z-index: 0;
