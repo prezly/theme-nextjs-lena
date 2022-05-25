@@ -3,7 +3,6 @@ import type { AttachmentNode } from '@prezly/story-content-format';
 import { UploadcareFile } from '@prezly/uploadcare';
 
 import DownloadLink from './DownloadLink';
-import FileTypeIcon from './FileTypeIcon';
 import { formatBytes } from './utils';
 
 import styles from './Attachment.module.scss';
@@ -31,9 +30,6 @@ export function Attachment({ node }: Props) {
             href={downloadUrl}
             onClick={handleClick}
         >
-            <div className={styles.icon}>
-                <FileTypeIcon extension={fileExtension} />
-            </div>
             <div className={styles.content}>
                 <h4 className={styles.name}>{displayedName}</h4>
                 <h5 className={styles.type}>

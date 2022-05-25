@@ -1,5 +1,5 @@
 .container {
-    @include border-radius-m;
+    @include border-radius-s;
 
     display: flex;
     margin: $spacing-6 auto;
@@ -29,7 +29,7 @@
 }
 
 .name {
-    @include paragraph;
+    @include heading-3;
 
     margin: 0 auto $spacing-half;
     color: $color-text;
@@ -39,7 +39,7 @@
 }
 
 .type {
-    @include text-small;
+    @include text-label;
 
     margin: 0 auto;
     color: $color-base-500;
