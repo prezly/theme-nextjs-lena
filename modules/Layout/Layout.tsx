@@ -59,7 +59,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             <CookieConsentBar />
             <div
                 className={classNames(styles.layout, {
-                    [styles.landingBg]: path === '/' || path === '/[slug]',
+                    [styles.landingBg]: path === '/' || path === '/[slug]' || path === '/s/[uuid]',
                 })}
             >
                 <Header hasError={hasError} />
@@ -73,7 +73,8 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
                 <Boilerplate />
                 <Footer />
             </div>
-            <ScrollToTopButton />
+            {/* hide scroll to top on story page */}
+            {path !== '/[slug]' && path !== '/s/[slug]' && <ScrollToTopButton />}
         </>
     );
 }
