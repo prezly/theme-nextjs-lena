@@ -1,5 +1,9 @@
 .container {
     padding: $spacing-8 0 0;
+
+    @include mobile-only {
+        @include container;
+    }
 }
 
 .grid {
