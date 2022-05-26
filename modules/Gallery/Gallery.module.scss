@@ -1,16 +1,21 @@
-.container {
-    width: 100%;
-    // TODO: This doesn't look too good.
-    max-width: 720px;
-    margin: $spacing-9 auto;
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.title {
-    @include heading-1;
+.shareLinks {
+    position: static;
+    margin: 0;
+    margin-left: auto;
+    flex-direction: row;
 }
 
-.divider {
-    height: 1px;
-    background: $color-base-200;
-    margin: $spacing-6 0;
+.shareButton {
+    background-color: transparent;
+    border: 0;
+
+    &:not(:last-child) {
+        margin-right: $spacing-1;
+    }
 }

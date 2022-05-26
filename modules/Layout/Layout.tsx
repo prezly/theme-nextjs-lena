@@ -34,6 +34,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
     const { contacts } = useNewsroomContext();
     const router = useRouter();
     const path = router.pathname;
+    const pathsWithCustomBg = ['/', '/[slug]', '/s/[slug]', '/media', '/media/album/[uuid]'];
 
     useEffect(() => {
         function onRouteChangeStart() {
@@ -59,7 +60,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             <CookieConsentBar />
             <div
                 className={classNames(styles.layout, {
-                    [styles.landingBg]: path === '/' || path === '/[slug]' || path === '/s/[uuid]',
+                    [styles.customBg]: pathsWithCustomBg.includes(path),
                 })}
             >
                 <Header hasError={hasError} />

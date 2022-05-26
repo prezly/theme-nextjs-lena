@@ -1,5 +1,6 @@
 import { Transition } from '@headlessui/react';
 import translations from '@prezly/themes-intl-messages';
+import classNames from 'classnames';
 import { Fragment, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -11,11 +12,12 @@ import styles from './StoryShareUrl.module.scss';
 
 interface Props {
     url: string;
+    buttonClassName?: string;
 }
 
 const TOOLTIP_HIDE_DELAY = 3000; // 3 seconds
 
-function StoryShareUrl({ url }: Props) {
+function StoryShareUrl({ url, buttonClassName }: Props) {
     const [isTooltipShown, setIsTooltipShown] = useState(false);
     const { formatMessage } = useIntl();
 
@@ -32,7 +34,7 @@ function StoryShareUrl({ url }: Props) {
         <div className={styles.container}>
             <Button
                 variation="secondary"
-                className={styles.paste}
+                className={classNames(styles.paste, buttonClassName)}
                 onClick={handleCopyButtonClick}
                 title={formatMessage(translations.actions.copyShareUrl)}
             >

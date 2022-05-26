@@ -1,7 +1,7 @@
 import translations from '@prezly/themes-intl-messages';
 import { FormattedMessage } from 'react-intl';
 
-import { IconDownload } from 'icons';
+import { IconArrowDown } from 'icons';
 
 import styles from './DownloadLink.module.scss';
 
@@ -13,7 +13,7 @@ function DownloadLink({ href }: Props) {
     return (
         <a href={href} className={styles.link}>
             <FormattedMessage {...translations.actions.download} />
-            <IconDownload className={styles.icon} />
+            <IconArrowDown className={styles.icon} />
         </a>
     );
 }

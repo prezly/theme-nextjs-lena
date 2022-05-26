@@ -1,5 +1,21 @@
 .container {
-    color: $color-base-700;
+    @include border-radius-lg;
+
+    min-height: 362px;
+    border: 1px solid $color-borders;
+}
+
+.thumbnail {
+    height: 260px !important;
+    margin: 0 auto $spacing-4;
+    border-top-left-radius: $border-radius-lg;
+    border-top-right-radius: $border-radius-lg;
+}
+
+.title {
+    @include heading-2;
+
+    color: $color-base-800;
     text-decoration: none;
 
     &:hover,
@@ -8,14 +24,18 @@
     }
 }
 
-.thumbnail {
-    @include border-radius-s;
-
-    height: 340px !important;
-    margin: 0 auto $spacing-4;
-    border: 1px solid $color-borders;
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $spacing-4;
 }
 
-.title {
-    @include heading-2;
+.button {
+    @include text-small;
+
+    font-weight: 700;
+    padding: $spacing-2;
+    border-radius: $border-radius-lg;
+    color: $color-base-600;
 }
