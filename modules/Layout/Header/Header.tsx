@@ -16,7 +16,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button } from '@/components';
 import { useDevice } from '@/hooks';
-import { IconClose, IconMenu, IconSearch } from '@/icons';
+import { IconClose, IconImage, IconMenu, IconSearch } from '@/icons';
 
 import CategoriesDropdown from './CategoriesDropdown';
 import LanguagesDropdown from './LanguagesDropdown';
@@ -116,6 +116,19 @@ function Header({ hasError }: Props) {
                     </Link>
 
                     <div className={styles.navigationWrapper}>
+                        <Button
+                            variation="navigation"
+                            icon={isMenuOpen ? IconClose : IconMenu}
+                            className={classNames(styles.navigationToggle, {
+                                [styles.hidden]: isSearchWidgetShown,
+                            })}
+                            onClick={toggleMenu}
+                            aria-expanded={isMenuOpen}
+                            aria-controls="menu"
+                            title={formatMessage(translations.misc.toggleMobileNavigation)}
+                            aria-label={formatMessage(translations.misc.toggleMobileNavigation)}
+                        />
+
                         {IS_SEARCH_ENABLED && (
                             <Button.Link
                                 href="/search"
@@ -131,21 +144,10 @@ function Header({ hasError }: Props) {
                                 aria-controls="search-widget"
                                 title={formatMessage(translations.search.title)}
                                 aria-label={formatMessage(translations.search.title)}
-                            />
+                            >
+                                Search
+                            </Button.Link>
                         )}
-
-                        <Button
-                            variation="navigation"
-                            icon={isMenuOpen ? IconClose : IconMenu}
-                            className={classNames(styles.navigationToggle, {
-                                [styles.hidden]: isSearchWidgetShown,
-                            })}
-                            onClick={toggleMenu}
-                            aria-expanded={isMenuOpen}
-                            aria-controls="menu"
-                            title={formatMessage(translations.misc.toggleMobileNavigation)}
-                            aria-label={formatMessage(translations.misc.toggleMobileNavigation)}
-                        />
 
                         <div
                             className={classNames(styles.navigation, { [styles.open]: isMenuOpen })}
@@ -159,6 +161,7 @@ function Header({ hasError }: Props) {
                                             localeCode={getLinkLocaleSlug()}
                                             variation="navigation"
                                             className={styles.navigationButton}
+                                            icon={IconImage}
                                         >
                                             <FormattedMessage
                                                 {...translations.mediaGallery.title}
@@ -166,12 +169,14 @@ function Header({ hasError }: Props) {
                                         </Button.Link>
                                     </li>
                                 )}
-                                <CategoriesDropdown
-                                    categories={categories}
-                                    buttonClassName={styles.navigationButton}
-                                    navigationItemClassName={styles.navigationItem}
-                                    navigationButtonClassName={styles.navigationButton}
-                                />
+                                {isMobile && (
+                                    <CategoriesDropdown
+                                        categories={categories}
+                                        buttonClassName={styles.navigationButton}
+                                        navigationItemClassName={styles.navigationItem}
+                                        navigationButtonClassName={styles.navigationButton}
+                                    />
+                                )}
                                 <LanguagesDropdown
                                     buttonClassName={styles.navigationButton}
                                     navigationItemClassName={styles.navigationItem}

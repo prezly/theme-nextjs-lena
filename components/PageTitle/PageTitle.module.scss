@@ -2,25 +2,21 @@
     @include full-width;
 
     background: $color-base-50;
-    border-bottom: 1px solid $color-borders;
 }
 
 .container {
     @include container;
 
-    padding: $spacing-8;
-    text-align: center;
-
-    @include mobile-only {
-        padding: $spacing-5;
-    }
+    padding-top: $spacing-6;
+    padding-bottom: $spacing-6;
+    text-align: left;
 }
 
 .title {
     @include heading-1;
 
     margin-top: 0;
-    color: $color-base-700;
+    color: $color-base-800;
 
     &:only-child {
         margin-bottom: 0;
@@ -30,6 +26,6 @@
 .subtitle {
     @include paragraph;
 
-    max-width: 735px;
+    color: $color-base-600;
     margin: $spacing-3 auto 0;
 }

@@ -1,5 +1,5 @@
 .container {
-    padding: $spacing-4;
+    padding: $spacing-2;
 
     &:not(:last-child) {
         border-bottom: 1px solid $color-borders;
@@ -21,7 +21,7 @@
     font-weight: 700;
     overflow: hidden;
     cursor: pointer;
-    color: $color-base-700;
+    color: $color-base-600;
 }
 
 .title {
@@ -60,6 +60,10 @@
 
 .label {
     margin-left: $spacing-1;
+    color: $color-base-800;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    opacity: 0.8;
 }
 
 .count {

@@ -1,7 +1,8 @@
 .link {
-    @include border-radius-m;
+    @include border-radius-lg;
 
     display: flex;
+    border: 1px solid $color-base-400;
     align-items: center;
     padding: $spacing-1 $spacing-2;
     color: $color-text;

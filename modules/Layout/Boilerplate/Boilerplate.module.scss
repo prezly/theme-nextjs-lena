@@ -1,5 +1,5 @@
 .container {
-    padding: $spacing-9 0;
+    padding: $spacing-9 0 0;
     color: $color-base-white;
     background: $color-base-800;
 }
@@ -13,13 +13,16 @@
 }
 
 .heading {
-    @include heading-3;
+    @include paragraph;
 
+    font-weight: 700;
     margin: $spacing-3 0;
     color: $color-base-white;
 }
 
 .aboutUs {
+    @include text-small;
+
     flex-grow: 2;
     margin-bottom: $spacing-6;
 
@@ -29,6 +32,10 @@
         + .contacts {
             margin-left: $spacing-6;
         }
+    }
+
+    p {
+        @include text-small;
     }
 }
 
@@ -47,12 +54,31 @@
 }
 
 .socialMedia {
-    margin-bottom: $spacing-3;
+    margin-top: $spacing-6;
+}
+
+.linkWrapper {
+    display: flex;
+    align-items: center;
+
+    p {
+        font-size: $font-size-xs;
+        margin: $spacing-half;
+    }
+}
+
+.icon {
+    height: 14px;
+    width: 14px;
+    margin-right: $spacing-1;
 }
 
 .link,
 .about a {
     @include link-white;
+
+    text-decoration: none;
+    font-size: $font-size-xs;
 }
 
 .separator {

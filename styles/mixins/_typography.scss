@@ -58,6 +58,20 @@
     }
 }
 
+@mixin link-dark {
+    color: $color-text;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+
+    &:active {
+        color: $color-base-white;
+    }
+}
+
 @mixin link-primary {
     color: var(--prezly-accent-color);
     font-weight: $font-weight-bold;

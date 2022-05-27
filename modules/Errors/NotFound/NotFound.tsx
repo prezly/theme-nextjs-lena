@@ -18,7 +18,12 @@ function NotFound() {
             <Error
                 className={styles.error}
                 action={
-                    <Button.Link href="/" localeCode={getLinkLocaleSlug()} variation="primary">
+                    <Button.Link
+                        href="/"
+                        localeCode={getLinkLocaleSlug()}
+                        variation="primary"
+                        className={styles.button}
+                    >
                         <FormattedMessage {...translations.actions.backToHomePage} />
                     </Button.Link>
                 }

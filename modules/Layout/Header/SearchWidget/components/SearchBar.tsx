@@ -5,6 +5,8 @@ import { connectSearchBox } from 'react-instantsearch-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button, FormInput } from '@/components';
+import { useDevice } from '@/hooks/useDevice';
+import { IconSearch } from 'icons';
 
 import styles from './SearchBar.module.scss';
 
@@ -16,6 +18,7 @@ function SearchBar({ currentRefinement, refine }: Props) {
     const { formatMessage } = useIntl();
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
     const localeSlug = getLinkLocaleSlug();
+    const { isMobile } = useDevice();
 
     const action = localeSlug ? `/${localeSlug}/${SEARCH_PAGE_URL}` : `/${SEARCH_PAGE_URL}`;
 
@@ -38,7 +41,11 @@ function SearchBar({ currentRefinement, refine }: Props) {
                 )}
             </div>
             <Button type="submit" variation="secondary" className={styles.button}>
-                <FormattedMessage {...translations.search.action} />
+                {isMobile ? (
+                    <IconSearch className={styles.icon} />
+                ) : (
+                    <FormattedMessage {...translations.search.action} />
+                )}
             </Button>
         </form>
     );

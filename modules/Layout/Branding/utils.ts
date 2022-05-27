@@ -12,7 +12,7 @@ const ACCENT_COLOR_TINT_FACTOR = 10;
 const ACCENT_COLOR_SHADE_FACTOR = 10;
 
 function getFontFamily(font: Font): string {
-    return FONT_FAMILY[font] || Font.INTER;
+    return FONT_FAMILY[font] || Font.MULISH;
 }
 
 export function getCssVariables(themeSettings: ThemeSettings) {
@@ -58,6 +58,6 @@ export function getGoogleFontName(font: Font): string {
         case Font.SOURCE_CODE_PRO:
             return 'Source+Code+Pro';
         default:
-            return 'Inter';
+            return 'Mulish';
     }
 }

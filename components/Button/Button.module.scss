@@ -24,6 +24,11 @@
     }
 }
 
+.label {
+    display: inline-flex;
+    align-items: center;
+}
+
 .primary {
     background-color: var(--prezly-accent-color);
     border-color: var(--prezly-accent-color);

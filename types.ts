@@ -14,7 +14,7 @@ export interface BasePageProps {
 }
 
 export enum Font {
-    INTER = 'inter',
+    MULISH = 'Mulish',
     MERRIWEATHER = 'merriweather',
     OPEN_SANS = 'open_sans',
     PT_SERIF = 'pt_serif',

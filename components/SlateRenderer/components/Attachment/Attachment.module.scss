@@ -1,5 +1,5 @@
 .container {
-    @include border-radius-m;
+    @include border-radius-s;
 
     display: flex;
     margin: $spacing-6 auto;
@@ -8,6 +8,10 @@
     border: 1px solid $color-borders;
     text-decoration: none;
     color: inherit;
+
+    @include mobile-only {
+        flex-direction: column;
+    }
 }
 
 .icon {
@@ -29,7 +33,7 @@
 }
 
 .name {
-    @include paragraph;
+    @include heading-3;
 
     margin: 0 auto $spacing-half;
     color: $color-text;
@@ -39,7 +43,7 @@
 }
 
 .type {
-    @include text-small;
+    @include text-label;
 
     margin: 0 auto;
     color: $color-base-500;
@@ -51,7 +55,9 @@
     margin-left: $spacing-3;
 
     @include mobile-only {
-        margin-left: $spacing-2;
+        align-self: flex-start;
+        margin-left: 0;
+        margin-top: $spacing-3;
     }
 
     .container:hover & {

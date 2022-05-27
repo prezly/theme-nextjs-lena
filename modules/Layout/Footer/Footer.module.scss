@@ -3,7 +3,7 @@
 
     padding: $spacing-5 0;
     color: $color-base-white;
-    background: $color-base-900;
+    background: $color-base-800;
 }
 
 .footer {
@@ -12,22 +12,14 @@
     justify-content: space-between;
 
     @include mobile-only {
-        display: block;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
 .links {
     display: flex;
     align-items: center;
-
-    @include mobile-only {
-        flex-direction: column;
-        justify-content: center;
-
-        &:not(:last-child) {
-            margin-bottom: $spacing-4;
-        }
-    }
 }
 
 .link {
@@ -42,10 +34,6 @@
 
     & + & {
         margin-left: $spacing-3;
-
-        @include mobile-only {
-            margin: $spacing-2 0 0;
-        }
     }
 }
 
@@ -54,7 +42,7 @@
     align-items: center;
 
     @include mobile-only {
-        justify-content: center;
+        margin-top: $spacing-3;
     }
 }
 

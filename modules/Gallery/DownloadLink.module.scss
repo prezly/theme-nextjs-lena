@@ -1,9 +1,14 @@
 .link {
-    @include border-radius-m;
-    @include link-primary;
+    @include border-radius-lg;
+    @include link-white;
+    @include text-small;
 
     display: inline-flex;
     align-items: center;
+    background-color: var(--prezly-accent-color);
+    padding: $spacing-2;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 .icon {

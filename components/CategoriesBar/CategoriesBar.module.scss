@@ -1,0 +1,34 @@
+.container {
+    background-color: var(--prezly-header-background-color);
+    color: var(--prezly-header-link-color);
+    height: 3rem;
+
+    @include mobile-only {
+        display: none;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        margin-top: $spacing-half;
+    }
+}
+
+.link {
+    font-size: $font-size-xs;
+    color: var(--prezly-header-link-color);
+
+    &:first-child {
+        margin-left: -$spacing-3;
+    }
+}
+
+.more {
+    font-size: $font-size-xs;
+    color: var(--prezly-header-link-color);
+}
+
+.dropdown {
+    top: 50px;
+    z-index: 10;
+}

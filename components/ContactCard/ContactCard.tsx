@@ -29,12 +29,16 @@ function ContactCard({ className, contact, isCompact = false, renderAvatar }: Pr
                 [styles.compact]: isCompact || device.isMobile,
             })}
         >
-            {renderAvatar({ className: styles.avatar })}
             <div className={styles.content}>
-                <h4 className={styles.name}>{name}</h4>
-                {subtitle && <h5 className={styles.position}>{subtitle}</h5>}
-
-                <div className={styles.links}>
+                {renderAvatar({ className: styles.avatar })}
+                <div>
+                    <h4 className={styles.name}>{name}</h4>
+                    {subtitle && <h5 className={styles.position}>{subtitle}</h5>}
+                </div>
+            </div>
+            <hr className={styles.divider} />
+            <div className={styles.links}>
+                <div className={styles.linkGroup}>
                     {email && (
                         <a href={`mailto:${email}`} className={styles.link}>
                             <IconEmail className={styles.icon} />
@@ -59,16 +63,16 @@ function ContactCard({ className, contact, isCompact = false, renderAvatar }: Pr
                             <span className={styles.linkText}>{phone}</span>
                         </a>
                     )}
+                </div>
+                <div className={styles.linkGroup}>
                     {twitter && (
                         <a href={`https://twitter.com/${twitter}`} className={styles.link}>
                             <IconTwitter className={styles.icon} />
-                            <span className={styles.linkText}>{`@${twitter}`}</span>
                         </a>
                     )}
                     {facebook && (
                         <a href={`https://facebook.com/${facebook}`} className={styles.link}>
                             <IconFacebook className={styles.icon} />
-                            <span className={styles.linkText}>{facebook}</span>
                         </a>
                     )}
                 </div>

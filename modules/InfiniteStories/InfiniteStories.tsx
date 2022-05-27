@@ -37,7 +37,7 @@ function InfiniteStories({ initialStories, pagination, category }: Props) {
 
             {canLoadMore && (
                 <Button
-                    variation="secondary"
+                    variation="primary"
                     onClick={loadMoreStories}
                     isLoading={isLoading}
                     className={styles.loadMore}

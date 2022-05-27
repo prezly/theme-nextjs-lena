@@ -11,11 +11,12 @@ type Props = {
     categories: Category[] | AlgoliaCategoryRef[];
     showAllCategories?: boolean;
     isStatic?: boolean;
+    linkClassName?: string;
 };
 
 const MAX_CATEGORIES_CHARACTER_LENGTH = 20;
 
-function CategoriesList({ categories, showAllCategories = false, isStatic }: Props) {
+function CategoriesList({ categories, showAllCategories = false, isStatic, linkClassName }: Props) {
     const [showExtraCategories, setShowExtraCategories] = useState(showAllCategories);
     const currentLocale = useCurrentLocale();
 
@@ -54,7 +55,7 @@ function CategoriesList({ categories, showAllCategories = false, isStatic }: Pro
     return (
         <>
             {visibleCategories.map((category) => (
-                <CategoryLink key={category.id} category={category} />
+                <CategoryLink key={category.id} category={category} className={linkClassName} />
             ))}
             {hiddenCategoriesCount > 0 &&
                 (isStatic ? (

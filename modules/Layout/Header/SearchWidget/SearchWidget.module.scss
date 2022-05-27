@@ -13,12 +13,5 @@
     @include mobile-only {
         padding: 0;
         min-height: 0;
-        height: 100%;
-    }
-}
-
-.backdrop {
-    @include mobile-only {
-        display: none;
     }
 }

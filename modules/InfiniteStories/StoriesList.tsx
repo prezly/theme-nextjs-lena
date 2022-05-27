@@ -4,9 +4,8 @@ import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { HighlightedStoryCard, StoryCard } from '@/components';
+import { useDevice } from '@/hooks/useDevice';
 import type { StoryWithImage } from 'types';
-
-import { useStoryCardLayout } from './lib';
 
 import Illustration from '@/public/images/no-stories-illustration.svg';
 
@@ -20,20 +19,20 @@ type Props = {
 function StoriesList({ stories, isCategoryList = false }: Props) {
     const { name } = useCompanyInformation();
     const { display_name } = useNewsroom();
+    const { isTablet } = useDevice();
+
+    const highlightedStoriesLength = isTablet ? 1 : 2;
 
     const [highlightedStories, restStories] = useMemo(() => {
         if (isCategoryList) {
             return [[], stories];
         }
-        // When there are only two stories, they should be both displayed as highlighted
-        if (stories.length === 2) {
-            return [stories, []];
-        }
 
-        return [stories.slice(0, 1), stories.slice(1)];
-    }, [isCategoryList, stories]);
-
-    const getStoryCardSize = useStoryCardLayout(isCategoryList, restStories.length);
+        return [
+            stories.slice(0, highlightedStoriesLength),
+            stories.slice(highlightedStoriesLength),
+        ];
+    }, [isCategoryList, stories, highlightedStoriesLength]);
 
     if (!highlightedStories.length && !restStories.length) {
         return (
@@ -56,15 +55,18 @@ function StoriesList({ stories, isCategoryList = false }: Props) {
         <>
             {highlightedStories.length > 0 && (
                 <div className={styles.highlightedStoriesContainer}>
-                    {highlightedStories.map((story) => (
-                        <HighlightedStoryCard key={story.uuid} story={story} />
-                    ))}
+                    {highlightedStories.map((story, index) => {
+                        if (index === 0) {
+                            return <HighlightedStoryCard key={story.uuid} story={story} />;
+                        }
+                        return <StoryCard key={story.uuid} story={story} />;
+                    })}
                 </div>
             )}
             {restStories.length > 0 && (
                 <div className={styles.storiesContainer}>
-                    {restStories.map((story, index) => (
-                        <StoryCard key={story.uuid} story={story} size={getStoryCardSize(index)} />
+                    {restStories.map((story) => (
+                        <StoryCard key={story.uuid} story={story} />
                     ))}
                 </div>
             )}

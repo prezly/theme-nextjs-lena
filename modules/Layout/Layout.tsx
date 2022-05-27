@@ -1,11 +1,12 @@
 import { Analytics } from '@prezly/analytics-nextjs';
 import { PageSeo, useNewsroom, useNewsroomContext } from '@prezly/theme-kit-nextjs';
+import classNames from 'classnames';
 import dynamic from 'next/dynamic';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import type { PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 
-import { LoadingBar, ScrollToTopButton } from '@/components';
+import { CategoriesBar, LoadingBar, ScrollToTopButton } from '@/components';
 
 import Boilerplate from './Boilerplate';
 import Branding from './Branding';
@@ -31,6 +32,9 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
     const [isLoadingPage, setIsLoadingPage] = useState(false);
     const newsroom = useNewsroom();
     const { contacts } = useNewsroomContext();
+    const router = useRouter();
+    const path = router.pathname;
+    const pathsWithCustomBg = ['/', '/[slug]', '/s/[slug]', '/media', '/media/album/[uuid]'];
 
     useEffect(() => {
         function onRouteChangeStart() {
@@ -54,8 +58,13 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             <Branding newsroom={newsroom} />
             <PageSeo title={title} description={description} imageUrl={imageUrl} />
             <CookieConsentBar />
-            <div className={styles.layout}>
+            <div
+                className={classNames(styles.layout, {
+                    [styles.customBg]: pathsWithCustomBg.includes(path),
+                })}
+            >
                 <Header hasError={hasError} />
+                <CategoriesBar />
                 <main className={styles.content}>
                     {children}
                     <LoadingBar isLoading={isLoadingPage} />
@@ -65,7 +74,8 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
                 <Boilerplate />
                 <Footer />
             </div>
-            <ScrollToTopButton />
+            {/* hide scroll to top on story page */}
+            {path !== '/[slug]' && path !== '/s/[slug]' && <ScrollToTopButton />}
         </>
     );
 }

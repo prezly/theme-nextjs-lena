@@ -39,7 +39,7 @@ function Results({ hits, hasMore, refineNext }: InfiniteHitsProvided<SearchHit>)
 
             {hasMore && (
                 <Button
-                    variation="secondary"
+                    variation="primary"
                     onClick={refineNext}
                     isLoading={isSearching}
                     className={containerStyles.loadMore}

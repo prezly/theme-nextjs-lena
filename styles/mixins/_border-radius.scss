@@ -5,3 +5,7 @@
 @mixin border-radius-m {
     border-radius: $border-radius-m;
 }
+
+@mixin border-radius-lg {
+    border-radius: $border-radius-lg;
+}

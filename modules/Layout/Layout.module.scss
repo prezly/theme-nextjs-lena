@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.customBg {
+    background-color: $color-base-50;
 }
 
 .content {
@@ -10,4 +15,8 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    @include mobile-only {
+        padding: 0;
+    }
 }
