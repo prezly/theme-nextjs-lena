@@ -3,6 +3,8 @@ import {
     useCategories,
     useCurrentLocale,
 } from '@prezly/theme-kit-nextjs';
+import translations from '@prezly/themes-intl-messages';
+import { useIntl } from 'react-intl';
 
 import { useDevice } from '@/hooks/useDevice';
 import CategoryItem from '@/modules/Layout/Header/CategoriesDropdown/CategoryItem';
@@ -17,6 +19,7 @@ function CategoriesBar() {
     const categories = useCategories();
     const currentLocale = useCurrentLocale();
     const { isTablet } = useDevice();
+    const { formatMessage } = useIntl();
 
     const maxDisplayedCategories = isTablet ? 6 : 10;
 
@@ -39,7 +42,7 @@ function CategoriesBar() {
                 ))}
                 {hasMore && (
                     <Dropdown
-                        label="More" // TODO: use i18n
+                        label={formatMessage(translations.actions.more)}
                         buttonClassName={styles.more}
                         menuClassName={styles.dropdown}
                     >
