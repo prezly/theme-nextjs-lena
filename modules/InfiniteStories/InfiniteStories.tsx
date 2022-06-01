@@ -22,7 +22,7 @@ function InfiniteStories({ initialStories, pagination, category }: Props) {
 
     const { canLoadMore, isLoading, loadMoreStories, stories } = useInfiniteStoriesLoading(
         initialStories,
-        pagination,
+        { ...pagination, pageSize: pagination.currentPage === 1 ? 11 : 12 },
         category,
         ['thumbnail_image'],
     );
