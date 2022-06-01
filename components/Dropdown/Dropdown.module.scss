@@ -30,6 +30,7 @@
 .menu {
     list-style: none;
     overflow: hidden;
+    z-index: 10;
 
     &.withMobileDisplay {
         @include mobile-only {
