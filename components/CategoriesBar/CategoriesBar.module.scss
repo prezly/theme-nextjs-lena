@@ -1,7 +1,10 @@
 .container {
+    @include shadow-l;
+
     background-color: var(--prezly-header-background-color);
     color: var(--prezly-header-link-color);
     height: 3rem;
+    z-index: 1;
 
     @include mobile-only {
         display: none;
@@ -17,6 +20,15 @@
 .link {
     font-size: $font-size-xs;
     color: var(--prezly-header-link-color);
+
+    &.active {
+        border-bottom: 2px solid var(--prezly-accent-color);
+        border-radius: 0;
+    }
+
+    &:active {
+        border: 0;
+    }
 
     &:first-child {
         margin-left: -$spacing-3;

@@ -1,6 +1,8 @@
 $header-height: 64px;
 
 .container {
+    @include shadow-l;
+
     display: flex;
     background: $color-base-white;
     border-bottom: 1px solid $color-borders;
@@ -43,6 +45,10 @@ $header-height: 64px;
             padding: $spacing-4 $grid-gutter-mobile;
             color: inherit;
         }
+
+        &:active {
+            border: 0;
+        }
     }
 
     .searchToggle {
@@ -65,15 +71,17 @@ $header-height: 64px;
 
             order: 10;
             line-height: $line-height-labels;
-            background-color: var(--prezly-accent-color);
-            color: $color-base-white;
-            margin-left: $spacing-1;
+            color: var(--prezly-header-link-color);
+        }
+
+        &:active {
+            border: 0;
         }
     }
 
     .searchToggle.close {
         @include mobile-only {
-            margin-right: -1 * $spacing-2;
+            margin-right: -1 * $spacing-3;
         }
     }
 
@@ -109,7 +117,7 @@ $header-height: 64px;
 .logo {
     width: auto;
     max-width: 20rem;
-    max-height: 2rem;
+    max-height: 3rem;
 }
 
 .navigation,

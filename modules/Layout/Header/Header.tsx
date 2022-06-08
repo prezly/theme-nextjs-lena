@@ -139,6 +139,7 @@ function Header({ hasError }: Props) {
                                     [styles.close]: isSearchWidgetShown,
                                 })}
                                 icon={isSearchWidgetShown && isMobile ? IconClose : IconSearch}
+                                iconPlacement="right"
                                 onClick={toggleSearchWidget}
                                 aria-expanded={isSearchWidgetShown}
                                 aria-controls="search-widget"
