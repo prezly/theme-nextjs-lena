@@ -4,8 +4,15 @@
     }
 }
 
+.active {
+    @include tablet-up {
+        border-color: $color-base-600 !important;
+    }
+}
+
 .menu {
     @include tablet-up {
+        border: 1px solid $color-base-600 !important;
         max-height: 50vh;
         overflow: auto;
     }

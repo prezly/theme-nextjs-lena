@@ -12,6 +12,10 @@ $header-height: 64px;
         border-bottom: 0;
         z-index: 20;
     }
+
+    &.open {
+        border-bottom: 1px solid $color-borders;
+    }
 }
 
 .header {

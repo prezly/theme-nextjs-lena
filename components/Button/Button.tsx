@@ -14,6 +14,7 @@ interface Props extends BaseProps, ButtonHTMLAttributes<HTMLButtonElement> {
     isLoading?: boolean;
     isDisabled?: boolean;
     isActive?: boolean;
+    activeClassName?: string;
     onClick?: () => void;
 }
 
@@ -30,6 +31,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
             isActive,
             onClick,
             children,
+            activeClassName,
             ...buttonProps
         },
         ref,
@@ -38,14 +40,18 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
             ref={ref}
             // eslint-disable-next-line react/button-has-type
             type={type}
-            className={classNames(styles.button, className, {
-                [styles.primary]: variation === 'primary',
-                [styles.secondary]: variation === 'secondary',
-                [styles.navigation]: variation === 'navigation',
-                [styles.loading]: isLoading,
-                [styles.active]: isActive,
-                [styles.iconOnly]: Boolean(icon) && !children,
-            })}
+            className={classNames(
+                styles.button,
+                className,
+                {
+                    [styles.primary]: variation === 'primary',
+                    [styles.secondary]: variation === 'secondary',
+                    [styles.navigation]: variation === 'navigation',
+                    [styles.loading]: isLoading,
+                    [styles.iconOnly]: Boolean(icon) && !children,
+                },
+                isActive && `${styles.active} ${activeClassName}`,
+            )}
             onClick={onClick}
             disabled={isDisabled || isLoading}
             // eslint-disable-next-line react/jsx-props-no-spreading

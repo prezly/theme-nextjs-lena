@@ -18,6 +18,7 @@ type Props = {
     menuClassName?: string;
     buttonClassName?: string;
     withMobileDisplay?: boolean;
+    activeClassName?: string;
 };
 
 function Dropdown({
@@ -28,6 +29,7 @@ function Dropdown({
     buttonClassName,
     withMobileDisplay,
     children,
+    activeClassName,
 }: PropsWithChildren<Props>) {
     return (
         <Menu as="div" className={classNames(styles.container, className)}>
@@ -41,6 +43,7 @@ function Dropdown({
                             className={classNames(buttonClassName, {
                                 [styles.buttonWithMobileDisplay]: withMobileDisplay,
                             })}
+                            activeClassName={activeClassName}
                         >
                             {label}
                             <IconCaret
