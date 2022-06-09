@@ -13,10 +13,10 @@ const INITIAL_ITEMS_SHOWN = 5;
 
 type Props = {
     filteredCategories: Category[];
-    onClose: () => void;
+    onCategoryClick: () => void;
 };
 
-function CategoriesList({ filteredCategories, onClose }: Props) {
+function CategoriesList({ filteredCategories, onCategoryClick }: Props) {
     const [showAllCategories, setShowAllCategories] = useState(false);
 
     const displayedCategories = useMemo(
@@ -43,7 +43,7 @@ function CategoriesList({ filteredCategories, onClose }: Props) {
                         <CategoryLink
                             category={category}
                             className={styles.categoryLink}
-                            onClose={onClose}
+                            onClick={onCategoryClick}
                         />
                     </li>
                 ))}
