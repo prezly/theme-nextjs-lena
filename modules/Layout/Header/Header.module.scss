@@ -63,6 +63,7 @@ $header-height: 64px;
             font-size: $font-size-m;
             line-height: 1;
             padding: $spacing-2;
+            margin-right: -$spacing-2;
 
             /* stylelint-disable-next-line max-nesting-depth */
             span {

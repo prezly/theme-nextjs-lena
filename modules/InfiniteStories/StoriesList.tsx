@@ -4,7 +4,6 @@ import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { HighlightedStoryCard, StoryCard } from '@/components';
-import { useDevice } from '@/hooks/useDevice';
 import type { StoryWithImage } from 'types';
 
 import Illustration from '@/public/images/no-stories-illustration.svg';
@@ -19,9 +18,8 @@ type Props = {
 function StoriesList({ stories, isCategoryList = false }: Props) {
     const { name } = useCompanyInformation();
     const { display_name } = useNewsroom();
-    const { isTablet } = useDevice();
 
-    const highlightedStoriesLength = isTablet ? 1 : 2;
+    const highlightedStoriesLength = 1;
 
     const [highlightedStories, restStories] = useMemo(() => {
         if (isCategoryList) {

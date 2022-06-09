@@ -31,7 +31,11 @@ function StoryCard({ story }: Props) {
             <div className={styles.content}>
                 {categories.length > 0 && (
                     <div className={styles.categories}>
-                        <CategoriesList categories={categories} isStatic />
+                        <CategoriesList
+                            categories={categories}
+                            isStatic
+                            linkClassName={styles.categoryLink}
+                        />
                     </div>
                 )}
                 <h3 className={styles.title}>
