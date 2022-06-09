@@ -35,6 +35,7 @@ function Gallery({ gallery }: Props) {
                         url={url}
                         className={styles.shareLinks}
                         buttonClassName={styles.shareButton}
+                        iconClassName={styles.shareIcon}
                         hideScrollToTop
                     />
                 </div>

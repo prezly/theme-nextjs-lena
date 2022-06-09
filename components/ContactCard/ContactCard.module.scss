@@ -25,14 +25,17 @@
 
 .links {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin: $spacing-2 auto (-$spacing-2);
 }
 
 .linkGroup {
     display: flex;
     flex-wrap: wrap;
-    max-width: 80%;
+
+    &:not(:last-child) {
+        margin-bottom: $spacing-2;
+    }
 }
 
 .link {
@@ -41,9 +44,13 @@
 
     display: flex;
     align-items: center;
-    margin-right: $spacing-4;
+    margin-right: $spacing-2;
     margin-bottom: $spacing-2;
     overflow: hidden;
+}
+
+.social {
+    color: $color-base-600;
 }
 
 .linkText {
@@ -60,7 +67,7 @@
 }
 
 .container {
-    @include border-radius-s;
+    @include border-radius-lg;
 
     padding: $spacing-4;
     background: $color-base-50;

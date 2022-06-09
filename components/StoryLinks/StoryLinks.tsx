@@ -15,10 +15,11 @@ interface Props {
     url: string;
     className?: string;
     buttonClassName?: string;
+    iconClassName?: string;
     hideScrollToTop?: boolean;
 }
 
-function StoryLinks({ url, buttonClassName, hideScrollToTop, className }: Props) {
+function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClassName }: Props) {
     const { isMobile } = useDevice();
 
     return (
@@ -26,17 +27,17 @@ function StoryLinks({ url, buttonClassName, hideScrollToTop, className }: Props)
             {!isMobile && !hideScrollToTop && <ScrollToTopButton className={styles.scrollToTop} />}
             <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
                 <FacebookShareButton url={url}>
-                    <IconFacebook className={styles.icon} />
+                    <IconFacebook className={classNames(styles.icon, iconClassName)} />
                 </FacebookShareButton>
             </Button>
             <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
                 <TwitterShareButton url={url}>
-                    <IconTwitter className={styles.icon} />
+                    <IconTwitter className={classNames(styles.icon, iconClassName)} />
                 </TwitterShareButton>
             </Button>
             <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
                 <LinkedinShareButton url={url}>
-                    <IconLinkedin className={styles.icon} />
+                    <IconLinkedin className={classNames(styles.icon, iconClassName)} />
                 </LinkedinShareButton>
             </Button>
             <StoryShareUrl url={url} buttonClassName={buttonClassName} />
