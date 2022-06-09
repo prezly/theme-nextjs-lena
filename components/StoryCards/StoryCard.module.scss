@@ -8,12 +8,14 @@ $story-content-height: 270px;
     border: 1px solid $color-borders;
     background-color: $color-base-white;
     border-radius: $border-radius-lg;
-    transition: shadow 0.5s ease-in-out, margin 0.5s ease-in-out;
+    transform: translateY(0);
+    box-shadow: none;
+    transition: shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
 
     &:hover {
         @include shadow-xxl;
 
-        margin-top: -$spacing-2;
+        transform: translateY(-$spacing-2);
     }
 }
 
