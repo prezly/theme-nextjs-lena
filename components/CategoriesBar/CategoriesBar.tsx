@@ -1,9 +1,11 @@
 import {
     getCategoryHasTranslation,
+    getLocalizedCategoryData,
     useCategories,
     useCurrentLocale,
 } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
+import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { useDevice } from '@/hooks/useDevice';
@@ -21,23 +23,48 @@ function CategoriesBar() {
     const { isTablet } = useDevice();
     const { formatMessage } = useIntl();
 
-    const maxDisplayedCategories = isTablet ? 6 : 10;
+    const maxDisplayedCharacters = isTablet ? 40 : 90;
 
     const filteredCategories = categories.filter(
         (category) =>
             category.stories_number > 0 && getCategoryHasTranslation(category, currentLocale),
     );
 
-    if (!filteredCategories.length) {
+    const [visibleCategories, hiddenCategoriesCount] = useMemo(() => {
+        let characterCounter = 0;
+        let lastVisibleCategoryIndex = 0;
+
+        while (
+            characterCounter < maxDisplayedCharacters &&
+            lastVisibleCategoryIndex < filteredCategories.length
+        ) {
+            const { name } = getLocalizedCategoryData(
+                filteredCategories[lastVisibleCategoryIndex],
+                currentLocale,
+            );
+            characterCounter += name.length;
+
+            if (characterCounter < maxDisplayedCharacters || lastVisibleCategoryIndex === 0) {
+                lastVisibleCategoryIndex += 1;
+            }
+        }
+
+        return [
+            filteredCategories.slice(0, lastVisibleCategoryIndex),
+            filteredCategories.slice(lastVisibleCategoryIndex).length,
+        ];
+    }, [filteredCategories, currentLocale, maxDisplayedCharacters]);
+
+    if (!visibleCategories.length) {
         return null;
     }
 
-    const hasMore = filteredCategories.length > maxDisplayedCategories;
+    const hasMore = hiddenCategoriesCount > 1;
 
     return (
         <div className={styles.container}>
             <div className="container">
-                {filteredCategories.slice(0, maxDisplayedCategories).map((category) => (
+                {visibleCategories.map((category) => (
                     <CategoryLink key={category.id} category={category} />
                 ))}
                 {hasMore && (
@@ -46,7 +73,7 @@ function CategoriesBar() {
                         buttonClassName={styles.more}
                         menuClassName={styles.dropdown}
                     >
-                        {filteredCategories.slice(maxDisplayedCategories).map((category) => (
+                        {filteredCategories.slice(-hiddenCategoriesCount).map((category) => (
                             <CategoryItem category={category} key={category.id} />
                         ))}
                     </Dropdown>

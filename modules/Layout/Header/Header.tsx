@@ -92,7 +92,12 @@ function Header({ hasError }: Props) {
     const newsroomName = name || display_name;
 
     return (
-        <header ref={headerRef} className={styles.container}>
+        <header
+            ref={headerRef}
+            className={classNames(styles.container, {
+                [styles.open]: isMenuOpen,
+            })}
+        >
             <div className="container">
                 <nav role="navigation" className={styles.header}>
                     <Link href="/" locale={getLinkLocaleSlug()} passHref>
@@ -139,6 +144,7 @@ function Header({ hasError }: Props) {
                                     [styles.close]: isSearchWidgetShown,
                                 })}
                                 icon={isSearchWidgetShown && isMobile ? IconClose : IconSearch}
+                                iconPlacement="right"
                                 onClick={toggleSearchWidget}
                                 aria-expanded={isSearchWidgetShown}
                                 aria-controls="search-widget"

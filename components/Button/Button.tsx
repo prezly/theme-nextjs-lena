@@ -14,6 +14,7 @@ interface Props extends BaseProps, ButtonHTMLAttributes<HTMLButtonElement> {
     isLoading?: boolean;
     isDisabled?: boolean;
     isActive?: boolean;
+    activeClassName?: string;
     onClick?: () => void;
 }
 
@@ -30,6 +31,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
             isActive,
             onClick,
             children,
+            activeClassName,
             ...buttonProps
         },
         ref,
@@ -44,6 +46,9 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
                 [styles.navigation]: variation === 'navigation',
                 [styles.loading]: isLoading,
                 [styles.active]: isActive,
+                ...(activeClassName && {
+                    [activeClassName]: isActive,
+                }),
                 [styles.iconOnly]: Boolean(icon) && !children,
             })}
             onClick={onClick}

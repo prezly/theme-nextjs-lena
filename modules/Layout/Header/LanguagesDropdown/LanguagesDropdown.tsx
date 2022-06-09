@@ -56,6 +56,7 @@ function LanguagesDropdown({ buttonClassName, navigationItemClassName, hasError 
                 label={getLanguageDisplayName(currentLanguage, languages)}
                 className={styles.container}
                 menuClassName={styles.menu}
+                activeClassName={styles.active}
                 buttonClassName={classNames(buttonClassName, styles.button)}
                 withMobileDisplay
             >

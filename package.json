@@ -60,6 +60,7 @@
     "@types/react-instantsearch-dom": "^6.12.1",
     "@types/tinycolor2": "^1.4.3",
     "autoprefixer": "^10.3.7",
+    "eslint": "^8.17.0",
     "next-logger": "^2.2.0",
     "postcss": "^8.3.9",
     "prettier": "^2.5.1",

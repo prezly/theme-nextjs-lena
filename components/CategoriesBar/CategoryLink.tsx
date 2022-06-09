@@ -5,6 +5,8 @@ import {
     useCurrentLocale,
     useGetLinkLocaleSlug,
 } from '@prezly/theme-kit-nextjs';
+import classNames from 'classnames';
+import { useRouter } from 'next/router';
 
 import Button from '../Button';
 
@@ -18,13 +20,18 @@ function CategoryLink({ category }: Props) {
     const currentLocale = useCurrentLocale();
     const { name } = getLocalizedCategoryData(category, currentLocale);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
+    const { asPath } = useRouter();
+
+    const isActive = asPath.includes(getCategoryUrl(category, currentLocale));
 
     return (
         <Button.Link
             variation="navigation"
             href={getCategoryUrl(category, currentLocale)}
             localeCode={getLinkLocaleSlug()}
-            className={styles.link}
+            className={classNames(styles.link, {
+                [styles.active]: isActive,
+            })}
         >
             {name}
         </Button.Link>
