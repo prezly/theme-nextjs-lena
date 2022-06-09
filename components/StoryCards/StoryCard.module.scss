@@ -10,12 +10,29 @@ $story-content-height: 270px;
     border-radius: $border-radius-lg;
     transform: translateY(0);
     box-shadow: 0 0 0 0 rgba(0 0 0 / 0%);
-    transition: shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 
-    &:hover {
+    &::after {
         @include shadow-xxl;
 
+        content: "";
+        border-radius: 5px;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    &:hover {
         transform: translateY(-$spacing-2);
+    }
+
+    &:hover::after {
+        opacity: 1;
     }
 }
 
