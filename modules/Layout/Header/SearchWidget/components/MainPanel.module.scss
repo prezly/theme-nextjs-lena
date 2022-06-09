@@ -70,6 +70,11 @@
     border-radius: 0;
     background-color: transparent;
     font-size: $font-size-labels;
+    padding: $spacing-small 0;
+
+    &:active {
+        color: var(--prezly-accent-color-tint);
+    }
 }
 
 .caret {

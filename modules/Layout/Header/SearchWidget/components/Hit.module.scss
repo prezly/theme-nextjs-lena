@@ -1,11 +1,11 @@
 .container {
     display: flex;
     align-items: center;
-    color: inherit;
+    color: $color-base-600;
     text-decoration: none;
 
     &:hover {
-        color: var(--prezly-accent-color);
+        color: $color-base-800;
     }
 }
 
