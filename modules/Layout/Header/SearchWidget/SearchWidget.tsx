@@ -41,7 +41,7 @@ function SearchWidget({ isOpen, className, dialogClassName, onClose }: Props) {
                     filters={`attributes.culture.code:${currentLocale.toUnderscoreCode()}`}
                 />
                 <SearchBar />
-                <MainPanel />
+                <MainPanel onClose={onClose} />
             </InstantSearch>
         </Modal>
     );

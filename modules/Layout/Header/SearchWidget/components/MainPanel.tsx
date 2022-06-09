@@ -12,7 +12,15 @@ import SearchResults from './SearchResults';
 
 import styles from './MainPanel.module.scss';
 
-function MainPanel({ searchState, searchResults }: StateResultsProvided<AlgoliaStory>) {
+interface Props {
+    onClose: () => void;
+}
+
+function MainPanel({
+    searchState,
+    searchResults,
+    onClose,
+}: StateResultsProvided<AlgoliaStory> & Props) {
     const isQuerySet = Boolean(searchState.query?.length);
     const categories = useCategories();
     const currentLocale = useCurrentLocale();
@@ -31,7 +39,7 @@ function MainPanel({ searchState, searchResults }: StateResultsProvided<AlgoliaS
             {isQuerySet ? (
                 <SearchResults searchResults={searchResults} query={searchState.query} />
             ) : (
-                <CategoriesList filteredCategories={filteredCategories} />
+                <CategoriesList filteredCategories={filteredCategories} onClose={onClose} />
             )}
         </div>
     );

@@ -14,16 +14,22 @@ import styles from './CategoryLink.module.scss';
 type Props = {
     category: Category | AlgoliaCategoryRef;
     className?: string;
+    onClose?: () => void;
 };
 
-function CategoryLink({ category, className }: Props) {
+function CategoryLink({ category, className, onClose }: Props) {
     const currentLocale = useCurrentLocale();
     const { name } = getLocalizedCategoryData(category, currentLocale);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
 
     return (
         <Link href={getCategoryUrl(category, currentLocale)} locale={getLinkLocaleSlug()} passHref>
-            <a className={classNames(styles.link, className)}>
+            <a
+                className={classNames(styles.link, className)}
+                onClick={onClose}
+                onKeyDown={onClose}
+                role="button"
+            >
                 <span>{name}</span>
             </a>
         </Link>
