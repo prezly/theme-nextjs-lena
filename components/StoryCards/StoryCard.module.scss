@@ -8,6 +8,13 @@ $story-content-height: 270px;
     border: 1px solid $color-borders;
     background-color: $color-base-white;
     border-radius: $border-radius-lg;
+    transition: shadow 0.5s ease-in-out, margin 0.5s ease-in-out;
+
+    &:hover {
+        @include shadow-xxl;
+
+        margin-top: -$spacing-2;
+    }
 }
 
 .imageWrapper {
@@ -16,17 +23,6 @@ $story-content-height: 270px;
     text-decoration: none;
     border-top-left-radius: $border-radius-lg;
     border-top-right-radius: $border-radius-lg;
-
-    @include desktop-up {
-        .image {
-            transform: scale(1);
-            transition: transform 0.5s ease-in-out;
-        }
-
-        &:hover .image {
-            transform: scale(1.05);
-        }
-    }
 }
 
 .placeholder,
