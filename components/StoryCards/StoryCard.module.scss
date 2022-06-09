@@ -9,7 +9,7 @@ $story-content-height: 270px;
     background-color: $color-base-white;
     border-radius: $border-radius-lg;
     transform: translateY(0);
-    box-shadow: none;
+    box-shadow: 0 0 0 0 rgba(0 0 0 / 0%);
     transition: shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
 
     &:hover {
