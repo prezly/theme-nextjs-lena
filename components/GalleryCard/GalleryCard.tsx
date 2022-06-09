@@ -23,13 +23,17 @@ function GalleryCard({ className, gallery }: Props) {
 
     return (
         <div className={classNames(styles.container, className)}>
-            <UploadcareImage
-                className={styles.thumbnail}
-                lazy
-                layout="fill"
-                objectFit="cover"
-                imageDetails={images[0].uploadcare_image}
-            />
+            <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()} passHref>
+                <a>
+                    <UploadcareImage
+                        className={styles.thumbnail}
+                        lazy
+                        layout="fill"
+                        objectFit="cover"
+                        imageDetails={images[0].uploadcare_image}
+                    />
+                </a>
+            </Link>
             <div className={styles.content}>
                 <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()} passHref>
                     <a className={styles.title}>{title}</a>

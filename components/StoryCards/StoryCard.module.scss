@@ -22,10 +22,6 @@ $story-content-height: 270px;
             transform: scale(1);
             transition: transform 0.5s ease-in-out;
         }
-
-        &:hover .image {
-            transform: scale(1.05);
-        }
     }
 }
 
@@ -79,7 +75,11 @@ $story-content-height: 270px;
 .date {
     @include text-small;
 
-    margin-top: auto;
+    margin: auto 0 0;
     color: $color-base-400;
-    text-transform: uppercase;
+}
+
+.categoryLink {
+    background-color: var(--prezly-accent-color);
+    color: $color-base-white;
 }
