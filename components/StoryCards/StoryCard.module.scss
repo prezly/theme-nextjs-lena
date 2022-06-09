@@ -16,7 +16,7 @@ $story-content-height: 270px;
         @include shadow-xxl;
 
         content: "";
-        border-radius: 5px;
+        border-radius: $border-radius-lg;
         position: absolute;
         z-index: -1;
         top: 0;
