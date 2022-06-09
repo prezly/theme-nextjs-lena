@@ -39,7 +39,7 @@ function MainPanel({
             {isQuerySet ? (
                 <SearchResults searchResults={searchResults} query={searchState.query} />
             ) : (
-                <CategoriesList filteredCategories={filteredCategories} onClose={onClose} />
+                <CategoriesList filteredCategories={filteredCategories} onCategoryClick={onClose} />
             )}
         </div>
     );
