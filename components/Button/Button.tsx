@@ -40,21 +40,17 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
             ref={ref}
             // eslint-disable-next-line react/button-has-type
             type={type}
-            className={classNames(
-                styles.button,
-                className,
-                {
-                    [styles.primary]: variation === 'primary',
-                    [styles.secondary]: variation === 'secondary',
-                    [styles.navigation]: variation === 'navigation',
-                    [styles.loading]: isLoading,
-                    [styles.active]: isActive,
-                    ...(activeClassName && {
-                        [activeClassName]: isActive
-                    }),
-                    [styles.iconOnly]: Boolean(icon) && !children,
-                },
-            )}
+            className={classNames(styles.button, className, {
+                [styles.primary]: variation === 'primary',
+                [styles.secondary]: variation === 'secondary',
+                [styles.navigation]: variation === 'navigation',
+                [styles.loading]: isLoading,
+                [styles.active]: isActive,
+                ...(activeClassName && {
+                    [activeClassName]: isActive,
+                }),
+                [styles.iconOnly]: Boolean(icon) && !children,
+            })}
             onClick={onClick}
             disabled={isDisabled || isLoading}
             // eslint-disable-next-line react/jsx-props-no-spreading

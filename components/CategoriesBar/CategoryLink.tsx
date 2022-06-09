@@ -22,9 +22,7 @@ function CategoryLink({ category }: Props) {
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
     const { asPath } = useRouter();
 
-    function isActive() {
-        return asPath.includes(getCategoryUrl(category, currentLocale));
-    }
+    const isActive = asPath.includes(getCategoryUrl(category, currentLocale));
 
     return (
         <Button.Link
@@ -32,7 +30,7 @@ function CategoryLink({ category }: Props) {
             href={getCategoryUrl(category, currentLocale)}
             localeCode={getLinkLocaleSlug()}
             className={classNames(styles.link, {
-                [styles.active]: isActive(),
+                [styles.active]: isActive,
             })}
         >
             {name}
