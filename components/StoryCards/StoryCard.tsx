@@ -18,43 +18,37 @@ function StoryCard({ story }: Props) {
     const { showDate, showSubtitle } = useThemeSettings();
 
     return (
-        <div className={styles.container}>
-            <Link href={`/${story.slug}`} locale={false} passHref>
-                <a className={styles.imageWrapper}>
+        <Link href={`/${story.slug}`} locale={false} passHref>
+            <a className={styles.container}>
+                <div className={styles.imageWrapper}>
                     <StoryImage
                         story={story}
                         className={styles.image}
                         placeholderClassName={styles.placeholder}
                     />
-                </a>
-            </Link>
-            <div className={styles.content}>
-                {categories.length > 0 && (
-                    <div className={styles.categories}>
-                        <CategoriesList categories={categories} isStatic />
-                    </div>
-                )}
-                <h3 className={styles.title}>
-                    <Link href={`/${story.slug}`} locale={false} passHref>
-                        <a className={styles.titleLink}>{title}</a>
-                    </Link>
-                </h3>
+                </div>
+                <div className={styles.content}>
+                    {categories.length > 0 && (
+                        <div className={styles.categories}>
+                            <CategoriesList
+                                categories={categories}
+                                isStatic
+                                linkClassName={styles.categoryLink}
+                            />
+                        </div>
+                    )}
+                    <h3 className={styles.title}>{title}</h3>
 
-                {subtitle && showSubtitle && (
-                    <p className={styles.subtitle}>
-                        <Link href={`/${story.slug}`} locale={false} passHref>
-                            <a className={styles.titleLink}>{subtitle}</a>
-                        </Link>
-                    </p>
-                )}
+                    {subtitle && showSubtitle && <p className={styles.subtitle}>{subtitle}</p>}
 
-                {showDate && (
-                    <p className={styles.date}>
-                        <StoryPublicationDate story={story} />
-                    </p>
-                )}
-            </div>
-        </div>
+                    {showDate && (
+                        <p className={styles.date}>
+                            <StoryPublicationDate story={story} />
+                        </p>
+                    )}
+                </div>
+            </a>
+        </Link>
     );
 }
 

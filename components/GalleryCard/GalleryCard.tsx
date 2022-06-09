@@ -22,31 +22,31 @@ function GalleryCard({ className, gallery }: Props) {
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
 
     return (
-        <div className={classNames(styles.container, className)}>
-            <UploadcareImage
-                className={styles.thumbnail}
-                lazy
-                layout="fill"
-                objectFit="cover"
-                imageDetails={images[0].uploadcare_image}
-            />
-            <div className={styles.content}>
-                <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()} passHref>
-                    <a className={styles.title}>{title}</a>
-                </Link>
-                {uploadcare_group_uuid && (
-                    <Button.Link
-                        variation="secondary"
-                        href={getUploadcareGroupUrl(uploadcare_group_uuid, title)}
-                        className={styles.button}
-                        icon={IconArrowDown}
-                        iconPlacement="right"
-                    >
-                        <FormattedMessage {...translations.actions.download} />
-                    </Button.Link>
-                )}
-            </div>
-        </div>
+        <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()} passHref>
+            <a className={classNames(styles.container, className)}>
+                <UploadcareImage
+                    className={styles.thumbnail}
+                    lazy
+                    layout="fill"
+                    objectFit="cover"
+                    imageDetails={images[0].uploadcare_image}
+                />
+                <div className={styles.content}>
+                    <p className={styles.title}>{title}</p>
+                    {uploadcare_group_uuid && (
+                        <Button.Link
+                            variation="secondary"
+                            href={getUploadcareGroupUrl(uploadcare_group_uuid, title)}
+                            className={styles.button}
+                            icon={IconArrowDown}
+                            iconPlacement="right"
+                        >
+                            <FormattedMessage {...translations.actions.download} />
+                        </Button.Link>
+                    )}
+                </div>
+            </a>
+        </Link>
     );
 }
 
