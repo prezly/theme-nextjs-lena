@@ -40,4 +40,8 @@
     padding: $spacing-2;
     border-radius: $border-radius-lg;
     color: $color-base-800;
+
+    @include mobile-only {
+        padding: 0.92rem;
+    }
 }
