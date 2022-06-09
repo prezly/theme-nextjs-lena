@@ -48,9 +48,12 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
                     [styles.secondary]: variation === 'secondary',
                     [styles.navigation]: variation === 'navigation',
                     [styles.loading]: isLoading,
+                    [styles.active]: isActive,
+                    ...(activeClassName && {
+                        [activeClassName]: isActive
+                    }),
                     [styles.iconOnly]: Boolean(icon) && !children,
                 },
-                isActive && `${styles.active} ${activeClassName}`,
             )}
             onClick={onClick}
             disabled={isDisabled || isLoading}
