@@ -26,23 +26,20 @@ function HighlightedStoryCard({ story }: Props) {
                     placeholderClassName={styles.placeholder}
                 />
             </div>
-            <div className={styles.overlay}>
-                <div>
-                    <CategoriesList categories={categories} />
-                </div>
-
-                <h2 className={styles.title}>
-                    <Link href={`/${story.slug}`} locale={false} passHref>
-                        <a className={styles.titleLink}>{title}</a>
-                    </Link>
-                </h2>
-
-                {showDate && (
-                    <span className={styles.date}>
-                        <StoryPublicationDate story={story} />
-                    </span>
-                )}
+            <div className={styles.categoriesList}>
+                <CategoriesList categories={categories} />
             </div>
+            <Link href={`/${story.slug}`} locale={false} passHref>
+                <a className={styles.overlay}>
+                    <h2 className={styles.title}>{title}</h2>
+
+                    {showDate && (
+                        <span className={styles.date}>
+                            <StoryPublicationDate story={story} />
+                        </span>
+                    )}
+                </a>
+            </Link>
         </div>
     );
 }

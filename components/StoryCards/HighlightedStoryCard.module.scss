@@ -26,6 +26,7 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: $spacing-5;
+    text-decoration: none;
 }
 
 .imageWrapper {
@@ -55,18 +56,21 @@
     @include heading-1;
 
     margin-top: $spacing-3;
-}
-
-.titleLink {
-    text-decoration: none;
     color: $color-base-white;
 
-    &:hover,
-    &:focus {
+    &:hover {
         color: $color-base-200;
     }
 }
 
 .date {
     color: $color-base-white;
+}
+
+.categoriesList {
+    position: absolute;
+    top: 65%;
+    left: 0;
+    padding-left: $spacing-5;
+    z-index: 10;
 }
