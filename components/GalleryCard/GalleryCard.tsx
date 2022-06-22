@@ -1,14 +1,13 @@
 import type { NewsroomGallery } from '@prezly/sdk';
 import { getUploadcareGroupUrl, useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
+import { Button } from '@prezly/themes-ui-components';
 import UploadcareImage from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 
 import { IconArrowDown } from 'icons';
-
-import Button from '../Button';
 
 import styles from './GalleryCard.module.scss';
 

@@ -1,9 +1,9 @@
 import translations from '@prezly/themes-intl-messages';
+import { Button } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { Button } from '@/components';
 import { useDevice } from '@/hooks/useDevice';
 import { IconCaret, IconFilter } from '@/icons';
 

@@ -38,6 +38,10 @@
 }
 
 .scrollToTop {
-    position: static;
+    position: static !important;
     margin-bottom: $spacing-3;
+}
+
+.scrollTopIcon {
+    transform: rotate(0);
 }

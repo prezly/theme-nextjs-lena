@@ -1,11 +1,12 @@
 import type { ExtendedStory } from '@prezly/sdk';
 import { StoryFormatVersion } from '@prezly/sdk';
 import { StorySeo } from '@prezly/theme-kit-nextjs';
+import { StoryPublicationDate } from '@prezly/themes-ui-components';
 import Image from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 
-import { StoryLinks, StoryPublicationDate } from '@/components';
+import { StoryLinks } from '@/components';
 import { useDevice, useThemeSettings } from '@/hooks';
 
 import Layout from '../Layout';
