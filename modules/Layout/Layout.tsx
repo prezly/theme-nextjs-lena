@@ -1,12 +1,14 @@
 import { Analytics } from '@prezly/analytics-nextjs';
 import { PageSeo, useNewsroom, useNewsroomContext } from '@prezly/theme-kit-nextjs';
+import { LoadingBar, ScrollToTopButton } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import { Router, useRouter } from 'next/router';
 import type { PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 
-import { CategoriesBar, LoadingBar, ScrollToTopButton } from '@/components';
+import { CategoriesBar } from '@/components';
+import { IconArrowTop } from 'icons';
 
 import Boilerplate from './Boilerplate';
 import Branding from './Branding';
@@ -75,7 +77,9 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
                 <Footer />
             </div>
             {/* hide scroll to top on story page */}
-            {path !== '/[slug]' && path !== '/s/[slug]' && <ScrollToTopButton />}
+            {path !== '/[slug]' && path !== '/s/[slug]' && (
+                <ScrollToTopButton icon={IconArrowTop} iconClassName={styles.scrollToTopIcon} />
+            )}
         </>
     );
 }

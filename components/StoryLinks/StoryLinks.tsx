@@ -1,11 +1,9 @@
+import { Button, ScrollToTopButton } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 
 import { useDevice } from '@/hooks/useDevice';
-import { IconFacebook, IconLinkedin, IconTwitter } from 'icons';
-
-import Button from '../Button';
-import ScrollToTopButton from '../ScrollToTopButton';
+import { IconArrowTop, IconFacebook, IconLinkedin, IconTwitter } from 'icons';
 
 import StoryShareUrl from './StoryShareUrl';
 
@@ -24,7 +22,13 @@ function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClas
 
     return (
         <div className={classNames(styles.container, className)}>
-            {!isMobile && !hideScrollToTop && <ScrollToTopButton className={styles.scrollToTop} />}
+            {!isMobile && !hideScrollToTop && (
+                <ScrollToTopButton
+                    className={styles.scrollToTop}
+                    icon={IconArrowTop}
+                    iconClassName={styles.scrollTopIcon}
+                />
+            )}
             <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
                 <FacebookShareButton url={url}>
                     <IconFacebook className={classNames(styles.icon, iconClassName)} />

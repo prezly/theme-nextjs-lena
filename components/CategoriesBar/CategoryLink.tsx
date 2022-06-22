@@ -5,10 +5,9 @@ import {
     useCurrentLocale,
     useGetLinkLocaleSlug,
 } from '@prezly/theme-kit-nextjs';
+import { Button } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
-
-import Button from '../Button';
 
 import styles from './CategoriesBar.module.scss';
 

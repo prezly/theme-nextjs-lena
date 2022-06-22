@@ -20,3 +20,8 @@
         padding: 0;
     }
 }
+
+// TODO: use icon that does not require transform properties
+.scrollToTopIcon {
+    transform: rotate(0);
+}
