@@ -53,8 +53,8 @@
 }
 
 .title {
-    @include heading-1;
-    @include ensure-max-text-height(3, $line-height-l);
+    @include heading-1-xxl;
+    @include ensure-max-text-height(3, $line-height-xl);
 
     margin-top: $spacing-3;
     color: $color-base-white;
