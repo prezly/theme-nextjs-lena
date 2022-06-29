@@ -54,7 +54,7 @@
 
 .title {
     @include heading-1-xxl;
-    @include ensure-max-text-height(3, $line-height-xl);
+    @include ensure-max-text-height(2, $line-height-xl);
 
     margin-top: $spacing-3;
     color: $color-base-white;
@@ -70,7 +70,7 @@
 
 .categoriesList {
     position: absolute;
-    top: 65%;
+    top: 55%;
     left: 0;
     padding-left: $spacing-5;
     z-index: 10;
