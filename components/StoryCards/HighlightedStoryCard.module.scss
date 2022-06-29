@@ -10,7 +10,7 @@
 }
 
 .overlay {
-    position: inherit;
+    position: relative;
     width: 100%;
     height: 100%;
     border-radius: $border-radius-lg;
@@ -26,7 +26,6 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: $spacing-5;
-    text-decoration: none;
 }
 
 .imageWrapper {
@@ -54,7 +53,7 @@
 
 .title {
     @include heading-1-xxl;
-    @include ensure-max-text-height(3, $line-height-xl);
+    @include ensure-max-text-height(2, $line-height-xl);
 
     margin-top: $spacing-3;
     color: $color-base-white;
@@ -68,14 +67,6 @@
     color: $color-base-white;
 }
 
-.categoriesList {
-    position: absolute;
-    top: 65%;
-    left: 0;
-    padding-left: $spacing-5;
-    z-index: 10;
-
-    @include mobile-only {
-        top: 50%;
-    }
+.link {
+    text-decoration: none;
 }
