@@ -27,7 +27,7 @@ function HighlightedStoryCard({ story }: Props) {
                 />
             </div>
             <div className={styles.overlay}>
-                <div className={styles.categoriesList}>
+                <div>
                     <CategoriesList categories={categories} />
                 </div>
 
