@@ -10,11 +10,9 @@
 }
 
 .overlay {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
     border-radius: $border-radius-lg;
     /* stylelint-disable color-function-notation */
     background-image: linear-gradient(
