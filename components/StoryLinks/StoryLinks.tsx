@@ -1,6 +1,5 @@
-import { Button, ScrollToTopButton } from '@prezly/themes-ui-components';
+import { Button, ScrollToTopButton, SocialShareButton } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
-import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 
 import { useDevice } from '@/hooks/useDevice';
 import { IconArrowTop, IconFacebook, IconLinkedin, IconTwitter } from 'icons';
@@ -30,19 +29,19 @@ function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClas
                 />
             )}
             <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
-                <FacebookShareButton url={url}>
+                <SocialShareButton network="facebook" url={url}>
                     <IconFacebook className={classNames(styles.icon, iconClassName)} />
-                </FacebookShareButton>
+                </SocialShareButton>
             </Button>
             <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
-                <TwitterShareButton url={url}>
+                <SocialShareButton network="twitter" url={url}>
                     <IconTwitter className={classNames(styles.icon, iconClassName)} />
-                </TwitterShareButton>
+                </SocialShareButton>
             </Button>
             <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
-                <LinkedinShareButton url={url}>
+                <SocialShareButton network="linkedin" url={url}>
                     <IconLinkedin className={classNames(styles.icon, iconClassName)} />
-                </LinkedinShareButton>
+                </SocialShareButton>
             </Button>
             <StoryShareUrl url={url} buttonClassName={buttonClassName} />
         </div>
