@@ -1,9 +1,8 @@
+import { IconBuilding, IconEmail, IconGlobe, IconPhone } from '@prezly/icons';
 import { useCompanyInformation, useNewsroom } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
 import { SocialMedia } from '@prezly/themes-ui-components';
 import { FormattedMessage } from 'react-intl';
-
-import { IconBuilding, IconEmail, IconGlobe, IconPhone } from 'icons';
 
 import {
     getWebsiteHostname,

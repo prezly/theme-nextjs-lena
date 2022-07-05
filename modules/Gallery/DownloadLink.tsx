@@ -1,7 +1,6 @@
+import { IconArrowDown } from '@prezly/icons';
 import translations from '@prezly/themes-intl-messages';
 import { FormattedMessage } from 'react-intl';
-
-import { IconArrowDown } from 'icons';
 
 import styles from './DownloadLink.module.scss';
 

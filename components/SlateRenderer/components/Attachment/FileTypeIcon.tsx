@@ -13,7 +13,7 @@ import {
     IconFileTypeWord,
     IconFileTypeXd,
     IconFileTypeZip,
-} from '@/icons';
+} from '@prezly/icons';
 
 interface Props {
     className?: string;

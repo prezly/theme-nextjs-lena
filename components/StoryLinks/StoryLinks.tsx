@@ -1,8 +1,8 @@
+import { IconArrowTop, IconFacebook, IconLinkedin, IconTwitter } from '@prezly/icons';
 import { Button, ScrollToTopButton, SocialShareButton } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 
 import { useDevice } from '@/hooks/useDevice';
-import { IconArrowTop, IconFacebook, IconLinkedin, IconTwitter } from 'icons';
 
 import StoryShareUrl from './StoryShareUrl';
 

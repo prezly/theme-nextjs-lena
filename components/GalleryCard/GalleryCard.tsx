@@ -1,3 +1,4 @@
+import { IconArrowDown } from '@prezly/icons';
 import type { NewsroomGallery } from '@prezly/sdk';
 import { getUploadcareGroupUrl, useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
@@ -6,8 +7,6 @@ import UploadcareImage from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
-
-import { IconArrowDown } from 'icons';
 
 import styles from './GalleryCard.module.scss';
 

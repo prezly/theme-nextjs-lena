@@ -1,3 +1,4 @@
+import { IconSearch } from '@prezly/icons';
 import { useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
 import { Button, FormInput } from '@prezly/themes-ui-components';
@@ -6,7 +7,6 @@ import { connectSearchBox } from 'react-instantsearch-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useDevice } from '@/hooks/useDevice';
-import { IconSearch } from 'icons';
 
 import styles from './SearchBar.module.scss';
 

@@ -1,8 +1,7 @@
+import { IconArrowRight } from '@prezly/icons';
 import translations from '@prezly/themes-intl-messages';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
-
-import { IconArrowRight } from 'icons';
 
 import styles from './DownloadLink.module.scss';
 

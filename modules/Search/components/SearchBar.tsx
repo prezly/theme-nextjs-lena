@@ -1,3 +1,4 @@
+import { IconCaret, IconFilter } from '@prezly/icons';
 import translations from '@prezly/themes-intl-messages';
 import { Button } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
@@ -5,7 +6,6 @@ import { useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { useDevice } from '@/hooks/useDevice';
-import { IconCaret, IconFilter } from '@/icons';
 
 import { AVAILABLE_FACET_ATTRIBUTES } from '../utils';
 
