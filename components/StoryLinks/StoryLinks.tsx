@@ -1,4 +1,4 @@
-import { Button, ScrollToTopButton, SocialShareButton } from '@prezly/themes-ui-components';
+import { ScrollToTopButton, SocialShareButton } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 
 import { useDevice } from '@/hooks/useDevice';
@@ -17,32 +17,38 @@ interface Props {
 }
 
 function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClassName }: Props) {
-    const { isMobile } = useDevice();
+    const { isTablet } = useDevice();
 
     return (
         <div className={classNames(styles.container, className)}>
-            {!isMobile && !hideScrollToTop && (
+            {!isTablet && !hideScrollToTop && (
                 <ScrollToTopButton
                     className={styles.scrollToTop}
                     icon={IconArrowTop}
                     iconClassName={styles.scrollTopIcon}
                 />
             )}
-            <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
-                <SocialShareButton network="facebook" url={url}>
-                    <IconFacebook className={classNames(styles.icon, iconClassName)} />
-                </SocialShareButton>
-            </Button>
-            <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
-                <SocialShareButton network="twitter" url={url}>
-                    <IconTwitter className={classNames(styles.icon, iconClassName)} />
-                </SocialShareButton>
-            </Button>
-            <Button variation="secondary" className={classNames(styles.button, buttonClassName)}>
-                <SocialShareButton network="linkedin" url={url}>
-                    <IconLinkedin className={classNames(styles.icon, iconClassName)} />
-                </SocialShareButton>
-            </Button>
+            <SocialShareButton
+                network="facebook"
+                url={url}
+                className={classNames(styles.button, buttonClassName)}
+            >
+                <IconFacebook className={classNames(styles.icon, iconClassName)} />
+            </SocialShareButton>
+            <SocialShareButton
+                network="twitter"
+                url={url}
+                className={classNames(styles.button, buttonClassName)}
+            >
+                <IconTwitter className={classNames(styles.icon, iconClassName)} />
+            </SocialShareButton>
+            <SocialShareButton
+                network="linkedin"
+                url={url}
+                className={classNames(styles.button, buttonClassName)}
+            >
+                <IconLinkedin className={classNames(styles.icon, iconClassName)} />
+            </SocialShareButton>
             <StoryShareUrl url={url} buttonClassName={buttonClassName} />
         </div>
     );

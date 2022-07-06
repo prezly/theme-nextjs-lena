@@ -28,7 +28,7 @@ const IS_FANCY_IMAGE_ENABLED = false;
 
 function Story({ story }: Props) {
     const { showDate } = useThemeSettings();
-    const { isMobile } = useDevice();
+    const { isTablet } = useDevice();
 
     if (!story) {
         return null;
@@ -80,7 +80,7 @@ function Story({ story }: Props) {
                             imageDetails={headerImage}
                         />
                     )}
-                    {isMobile && url && <StoryLinks url={url} />}
+                    {isTablet && url && <StoryLinks url={url} />}
                     {format_version === StoryFormatVersion.HTML && (
                         // eslint-disable-next-line react/no-danger
                         <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -90,7 +90,7 @@ function Story({ story }: Props) {
                     )}
                 </div>
             </article>
-            {!isMobile && url && <StoryLinks url={url} />}
+            {!isTablet && url && <StoryLinks url={url} />}
         </Layout>
     );
 }
