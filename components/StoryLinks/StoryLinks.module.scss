@@ -7,7 +7,7 @@
     margin: $spacing-6 0;
     z-index: 10;
 
-    @include mobile-only {
+    @include not-desktop {
         position: static;
         flex-direction: row;
     }
@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: center;
 
-    @include mobile-only {
+    @include not-desktop {
         &:not(:last-child) {
             margin-right: $spacing-3;
         }

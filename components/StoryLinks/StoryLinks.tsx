@@ -17,11 +17,11 @@ interface Props {
 }
 
 function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClassName }: Props) {
-    const { isMobile } = useDevice();
+    const { isTablet } = useDevice();
 
     return (
         <div className={classNames(styles.container, className)}>
-            {!isMobile && !hideScrollToTop && (
+            {!isTablet && !hideScrollToTop && (
                 <ScrollToTopButton
                     className={styles.scrollToTop}
                     icon={IconArrowTop}
