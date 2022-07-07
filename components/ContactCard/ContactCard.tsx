@@ -47,19 +47,19 @@ function ContactCard({ className, contact, isCompact = false, renderAvatar }: Pr
                     )}
                     {website && (
                         <a href={website} className={styles.link}>
-                            <IconGlobe className={styles.icon} />
+                            <IconGlobe width={16} height={16} className={styles.icon} />
                             <span className={styles.linkText}>{website}</span>
                         </a>
                     )}
                     {mobile && (
                         <a href={`tel:${mobile}`} className={styles.link}>
-                            <IconPhone className={styles.icon} />
+                            <IconPhone width={16} height={16} className={styles.icon} />
                             <span className={styles.linkText}>{mobile}</span>
                         </a>
                     )}
                     {phone && (
                         <a href={`tel:${phone}`} className={styles.link}>
-                            <IconPhone className={styles.icon} />
+                            <IconPhone width={16} height={16} className={styles.icon} />
                             <span className={styles.linkText}>{phone}</span>
                         </a>
                     )}
@@ -70,7 +70,7 @@ function ContactCard({ className, contact, isCompact = false, renderAvatar }: Pr
                             href={`https://twitter.com/${twitter}`}
                             className={classNames(styles.link, styles.social)}
                         >
-                            <IconTwitter className={styles.icon} />
+                            <IconTwitter width={16} height={16} className={styles.icon} />
                         </a>
                     )}
                     {facebook && (
@@ -78,7 +78,7 @@ function ContactCard({ className, contact, isCompact = false, renderAvatar }: Pr
                             href={`https://facebook.com/${facebook}`}
                             className={classNames(styles.link, styles.social)}
                         >
-                            <IconFacebook className={styles.icon} />
+                            <IconFacebook width={16} height={16} className={styles.icon} />
                         </a>
                     )}
                 </div>
