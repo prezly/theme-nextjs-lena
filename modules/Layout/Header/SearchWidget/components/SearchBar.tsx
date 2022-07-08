@@ -42,7 +42,7 @@ function SearchBar({ currentRefinement, refine }: Props) {
             </div>
             <Button type="submit" variation="secondary" className={styles.button}>
                 {isMobile ? (
-                    <IconSearch className={styles.icon} />
+                    <IconSearch width={14} height={14} className={styles.icon} />
                 ) : (
                     <FormattedMessage {...translations.search.action} />
                 )}
