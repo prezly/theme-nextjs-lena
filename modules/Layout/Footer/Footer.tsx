@@ -1,9 +1,8 @@
 import { CookieConsentLink } from '@prezly/analytics-nextjs';
+import { LogoPrezly } from '@prezly/icons';
 import { useNewsroom } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
 import { useIntl } from 'react-intl';
-
-import { LogoPrezly } from '@/icons';
 
 import { DataRequestLink } from './DataRequestLink';
 
@@ -38,7 +37,7 @@ function Footer() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <LogoPrezly />
+                                <LogoPrezly height={20} width={77} className={styles.prezlyLogo} />
                             </a>
                         </div>
                     )}

@@ -1,4 +1,5 @@
 import { Analytics } from '@prezly/analytics-nextjs';
+import { IconArrowTop } from '@prezly/icons';
 import { PageSeo, useNewsroom, useNewsroomContext } from '@prezly/theme-kit-nextjs';
 import { LoadingBar, ScrollToTopButton } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
@@ -8,7 +9,6 @@ import type { PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 
 import { CategoriesBar } from '@/components';
-import { IconArrowTop } from 'icons';
 
 import Boilerplate from './Boilerplate';
 import Branding from './Branding';
