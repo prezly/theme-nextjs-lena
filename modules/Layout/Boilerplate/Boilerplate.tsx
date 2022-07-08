@@ -59,13 +59,13 @@ function Boilerplate() {
                             </h2>
                             {hasAddress && (
                                 <div className={styles.linkWrapper}>
-                                    <IconBuilding className={styles.icon} />
+                                    <IconBuilding width={14} height={14} className={styles.icon} />
                                     <p>{companyInformation.address}</p>
                                 </div>
                             )}
                             {hasPhone && (
                                 <div className={styles.linkWrapper}>
-                                    <IconPhone className={styles.icon} />
+                                    <IconPhone width={14} height={14} className={styles.icon} />
                                     <p>
                                         <a
                                             className={styles.link}
@@ -78,7 +78,7 @@ function Boilerplate() {
                             )}
                             {hasEmail && (
                                 <div className={styles.linkWrapper}>
-                                    <IconEmail className={styles.icon} />
+                                    <IconEmail width={14} height={14} className={styles.icon} />
                                     <p>
                                         <a
                                             className={styles.link}
@@ -91,7 +91,7 @@ function Boilerplate() {
                             )}
                             {companyInformation.website && (
                                 <div className={styles.linkWrapper}>
-                                    <IconGlobe className={styles.icon} />
+                                    <IconGlobe width={14} height={14} className={styles.icon} />
                                     <p>
                                         <a
                                             href={companyInformation.website}
