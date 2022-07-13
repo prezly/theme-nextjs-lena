@@ -42,7 +42,7 @@ function StoryShareUrl({ url, buttonClassName }: Props) {
                 show={isTooltipShown}
                 as={Fragment}
                 enterFrom={styles.transitionStart}
-                enterTo={styles.transitionStart}
+                enterTo={styles.transitionFinish}
                 leaveFrom={styles.transitionFinish}
                 leaveTo={styles.transitionStart}
             >

@@ -47,12 +47,13 @@
     will-change: opacity;
 
     @include not-desktop {
-        left: -1px;
-        right: -1px;
-        top: -1px;
-        bottom: -1px;
+        left: -10.5rem;
+        right: 0;
+        top: 0;
+        bottom: 0;
         display: flex;
         align-items: center;
+        justify-content: center;
         background-color: $color-base-white;
         color: $color-base-500;
     }
@@ -64,7 +65,9 @@
         width: 200px;
         height: 100%;
         background: $color-base-white;
+        display: flex;
         text-align: center;
+        justify-content: center;
     }
 }
 
