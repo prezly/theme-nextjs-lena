@@ -22,6 +22,7 @@ function HighlightedStoryCard({ story }: Props) {
             <div className={styles.imageWrapper}>
                 <StoryImage
                     story={story}
+                    size="big"
                     className={styles.image}
                     placeholderClassName={styles.placeholder}
                 />

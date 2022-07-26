@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 
 import { StoryLinks } from '@/components';
 import { useDevice, useThemeSettings } from '@/hooks';
+import { getStoryImageSizes } from '@/utils';
 
 import Layout from '../Layout';
 
@@ -71,6 +72,7 @@ function Story({ story }: Props) {
                             objectFit="cover"
                             layout="fill"
                             imageDetails={headerImage}
+                            sizes={getStoryImageSizes()}
                         />
                     )}
                     {isTablet && url && <StoryLinks url={url} />}

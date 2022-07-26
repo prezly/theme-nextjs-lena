@@ -1,4 +1,5 @@
 export * from './capitaliseFirstLetter';
+export * from './getImageSizes';
 export * from './getTypedKeys';
 export * from './isTrackingEnabled';
 export * from './lang';
