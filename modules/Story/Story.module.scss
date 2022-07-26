@@ -19,13 +19,6 @@ $story-container-max-width: 926px;
     }
 }
 
-.fullWidthImage {
-    @include full-width;
-
-    max-height: 460px;
-    z-index: -1;
-}
-
 .container {
     margin: 0 auto;
     padding: $spacing-6 0;
@@ -40,12 +33,6 @@ $story-container-max-width: 926px;
 
         @include desktop-up {
             padding-top: 0;
-        }
-    }
-
-    &.withFullWidthImage {
-        @include desktop-up {
-            margin: -230px auto 0;
         }
     }
 }
