@@ -28,6 +28,7 @@ function HitComponent({ hit }: Props) {
                 <a className={cardStyles.imageWrapper}>
                     <StoryImage
                         story={story}
+                        size="default"
                         className={cardStyles.image}
                         placeholderClassName={cardStyles.placeholder}
                     />
