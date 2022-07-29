@@ -55,7 +55,7 @@ jobs:
         id: clear-cache
         run: |
           sleep 90
-          curl --request POST \
+          curl --fail --request POST \
               --url https://admin-api.prezly.com/v1/themes/9648bb4f-19df-44a3-a1b4-18bce22c76fd/clear-cache \
               --header 'Authorization: Bearer ${{ secrets.PREZLY_API_TOKEN }}' \
               --header 'Content-Type: application/json'
