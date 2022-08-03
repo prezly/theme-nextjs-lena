@@ -1,4 +1,4 @@
-import { Analytics } from '@prezly/analytics-nextjs';
+import { Analytics, useAnalyticsContext } from '@prezly/analytics-nextjs';
 import { IconArrowTop } from '@prezly/icons';
 import { PageSeo, useNewsroom, useNewsroomContext } from '@prezly/theme-kit-nextjs';
 import { LoadingBar, ScrollToTopButton } from '@prezly/themes-ui-components';
@@ -34,6 +34,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
     const [isLoadingPage, setIsLoadingPage] = useState(false);
     const newsroom = useNewsroom();
     const { contacts } = useNewsroomContext();
+    const { isEnabled: isAnalyticsEnabled } = useAnalyticsContext();
     const router = useRouter();
     const path = router.pathname;
     const pathsWithCustomBg = ['/', '/[slug]', '/s/[slug]', '/media', '/media/album/[uuid]'];
@@ -58,7 +59,13 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
         <>
             <Analytics />
             <Branding newsroom={newsroom} />
-            <PageSeo title={title} description={description} imageUrl={imageUrl} />
+            <PageSeo
+                title={title}
+                description={description}
+                imageUrl={imageUrl}
+                noindex={!isAnalyticsEnabled}
+                nofollow={!isAnalyticsEnabled}
+            />
             <CookieConsentBar />
             <div
                 className={classNames(styles.layout, {
