@@ -8,22 +8,21 @@ import translations from '@prezly/themes-intl-messages';
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
-import { useDevice } from '@/hooks/useDevice';
 import CategoryItem from '@/modules/Layout/Header/CategoriesDropdown/CategoryItem';
 
 import Dropdown from '../Dropdown';
 
 import CategoryLink from './CategoryLink';
+import { useCategoryCharacterLimit } from './lib';
 
 import styles from './CategoriesBar.module.scss';
 
 function CategoriesBar() {
     const categories = useCategories();
     const currentLocale = useCurrentLocale();
-    const { isTablet } = useDevice();
     const { formatMessage } = useIntl();
 
-    const maxDisplayedCharacters = isTablet ? 40 : 90;
+    const maxDisplayedCharacters = useCategoryCharacterLimit();
 
     const filteredCategories = categories.filter(
         (category) =>
@@ -59,11 +58,11 @@ function CategoriesBar() {
         return null;
     }
 
-    const hasMore = hiddenCategoriesCount > 1;
+    const hasMore = hiddenCategoriesCount > 0;
 
     return (
-        <div className={styles.container}>
-            <div className="container">
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
                 {visibleCategories.map((category) => (
                     <CategoryLink key={category.id} category={category} />
                 ))}

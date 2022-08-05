@@ -1,20 +1,22 @@
-.container {
+.wrapper {
     @include shadow-l;
 
     background-color: var(--prezly-header-background-color);
     color: var(--prezly-header-link-color);
-    height: 3rem;
     z-index: 1;
 
     @include mobile-only {
         display: none;
     }
+}
 
-    div {
-        display: flex;
-        align-items: center;
-        margin-top: $spacing-half;
-    }
+.container {
+    @include container;
+
+    display: flex;
+    align-items: center;
+    padding-top: $spacing-half;
+    padding-bottom: $spacing-half;
 }
 
 .link {
@@ -31,7 +33,7 @@
     }
 
     &:first-child {
-        margin-left: -$spacing-3;
+        margin-left: -$spacing-2;
     }
 }
 
