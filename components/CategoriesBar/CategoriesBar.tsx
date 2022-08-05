@@ -16,6 +16,7 @@ import Dropdown from '../Dropdown';
 import CategoryLink from './CategoryLink';
 
 import styles from './CategoriesBar.module.scss';
+import classNames from 'classnames';
 
 function CategoriesBar() {
     const categories = useCategories();
@@ -62,8 +63,8 @@ function CategoriesBar() {
     const hasMore = hiddenCategoriesCount > 1;
 
     return (
-        <div className={styles.container}>
-            <div className="container">
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
                 {visibleCategories.map((category) => (
                     <CategoryLink key={category.id} category={category} />
                 ))}
