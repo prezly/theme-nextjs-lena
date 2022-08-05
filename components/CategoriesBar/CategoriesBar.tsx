@@ -58,7 +58,7 @@ function CategoriesBar() {
         return null;
     }
 
-    const hasMore = hiddenCategoriesCount > 1;
+    const hasMore = hiddenCategoriesCount > 0;
 
     return (
         <div className={styles.wrapper}>
