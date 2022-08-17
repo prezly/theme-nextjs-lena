@@ -24,7 +24,7 @@ function Boilerplate() {
     const hasPhone = Boolean(companyInformation.phone);
     const hasEmail = Boolean(companyInformation.email);
 
-    if (!hasAboutInformation && !hasContactInformation) {
+    if (!hasAboutInformation && !hasContactInformation && !hasAnySocialMedia) {
         return null;
     }
 
@@ -51,7 +51,7 @@ function Boilerplate() {
                             )}
                         </div>
                     )}
-                    {hasContactInformation && (
+                    {(hasContactInformation || hasAnySocialMedia) && (
                         <div className={styles.contacts}>
                             <h2 className={styles.heading}>
                                 <FormattedMessage {...translations.boilerplate.contact} />
