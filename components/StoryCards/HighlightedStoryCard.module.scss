@@ -70,3 +70,9 @@
 .link {
     text-decoration: none;
 }
+
+.categoryLink {
+    &:active {
+        color: var(--prezly-header-link-color);
+    }
+}
