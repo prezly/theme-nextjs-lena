@@ -101,4 +101,13 @@ $story-content-height: 270px;
 .categoryLink {
     background-color: var(--prezly-accent-color);
     color: $color-base-white;
+    transition: background-color 0.15s ease-in;
+
+    &:hover {
+        background-color: var(--prezly-accent-color-tint);
+    }
+
+    &:active {
+        background-color: var(--prezly-accent-color-shade);
+    }
 }
