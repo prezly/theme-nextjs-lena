@@ -65,20 +65,22 @@ function ContactCard({ className, contact, isCompact = false, renderAvatar }: Pr
                     )}
                 </div>
                 <div className={styles.linkGroup}>
-                    {twitter && (
-                        <a
-                            href={`https://twitter.com/${twitter}`}
-                            className={classNames(styles.link, styles.social)}
-                        >
-                            <IconTwitter width={16} height={16} className={styles.icon} />
-                        </a>
-                    )}
                     {facebook && (
                         <a
                             href={`https://facebook.com/${facebook}`}
-                            className={classNames(styles.link, styles.social)}
+                            className={classNames(styles.link)}
                         >
                             <IconFacebook width={16} height={16} className={styles.icon} />
+                            <span className={styles.linkText}>{facebook}</span>
+                        </a>
+                    )}
+                    {twitter && (
+                        <a
+                            href={`https://twitter.com/${twitter}`}
+                            className={classNames(styles.link)}
+                        >
+                            <IconTwitter width={16} height={16} className={styles.icon} />
+                            <span className={styles.linkText}>{`@${twitter}`}</span>
                         </a>
                     )}
                 </div>
