@@ -52,6 +52,9 @@ function CategoriesList({ categories, showAllCategories = false, isStatic, linkC
         ];
     }, [categories, showExtraCategories, currentLocale]);
 
+    // This effect is needed to make sure when we update `showAllCategories`
+    // the new value is applied. More context on this can be found on:
+    // https://github.com/prezly/theme-nextjs-lena/pull/184
     useEffect(() => {
         if (showAllCategories) {
             setShowExtraCategories(true);
