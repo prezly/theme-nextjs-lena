@@ -29,7 +29,7 @@ function HighlightedStoryCard({ story }: Props) {
             </div>
             <div className={styles.overlay}>
                 <div>
-                    <CategoriesList categories={categories} />
+                    <CategoriesList categories={categories} linkClassName={styles.categoryLink} />
                 </div>
 
                 <Link href={`/${story.slug}`} locale={false} passHref>

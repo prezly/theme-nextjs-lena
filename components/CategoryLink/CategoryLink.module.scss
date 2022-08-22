@@ -11,9 +11,7 @@
 
     &:hover,
     &:focus {
-        span {
-            text-decoration: underline;
-        }
+        text-decoration: none;
     }
 
     &:not(:last-child) {
