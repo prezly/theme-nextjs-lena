@@ -1,7 +1,7 @@
 import { StoryPublicationDate } from '@prezly/themes-ui-components';
 import Link from 'next/link';
 
-import { useThemeSettings } from '@/hooks';
+import { useDevice, useThemeSettings } from '@/hooks';
 import type { StoryWithImage } from 'types';
 
 import CategoriesList from '../CategoriesList';
@@ -16,6 +16,7 @@ type Props = {
 function HighlightedStoryCard({ story }: Props) {
     const { categories, title } = story;
     const { showDate } = useThemeSettings();
+    const { isTablet } = useDevice();
 
     return (
         <div className={styles.container}>
@@ -29,7 +30,11 @@ function HighlightedStoryCard({ story }: Props) {
             </div>
             <div className={styles.overlay}>
                 <div>
-                    <CategoriesList categories={categories} linkClassName={styles.categoryLink} />
+                    <CategoriesList
+                        showAllCategories={!isTablet}
+                        categories={categories}
+                        linkClassName={styles.categoryLink}
+                    />
                 </div>
 
                 <Link href={`/${story.slug}`} locale={false} passHref>
