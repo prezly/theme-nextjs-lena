@@ -1,7 +1,7 @@
 import type { Category } from '@prezly/sdk';
 import type { AlgoliaCategoryRef } from '@prezly/theme-kit-nextjs';
 import { getLocalizedCategoryData, useCurrentLocale } from '@prezly/theme-kit-nextjs';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { CategoryLink } from '@/components';
 
@@ -51,6 +51,17 @@ function CategoriesList({ categories, showAllCategories = false, isStatic, linkC
             categories.slice(lastVisibleCategoryIndex).length,
         ];
     }, [categories, showExtraCategories, currentLocale]);
+
+    // This effect is needed to make sure when we update `showAllCategories`
+    // the new value is applied. More context on this can be found on:
+    // https://github.com/prezly/theme-nextjs-lena/pull/184
+    useEffect(() => {
+        if (showAllCategories) {
+            setShowExtraCategories(true);
+        } else {
+            setShowExtraCategories(false);
+        }
+    }, [showAllCategories]);
 
     return (
         <>
