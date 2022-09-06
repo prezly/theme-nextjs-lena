@@ -94,3 +94,9 @@
         width: 100%;
     }
 }
+
+.acceptButton {
+    &:hover {
+        color: $color-base-white;
+    }
+}

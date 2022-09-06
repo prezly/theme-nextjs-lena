@@ -42,7 +42,7 @@ function CookieConsentBar() {
                                     <FormattedMessage {...translations.cookieConsent.reject} />
                                 </Button>
                                 <Button
-                                    className={styles.button}
+                                    className={classNames(styles.button, styles.acceptButton)}
                                     onClick={onAccept}
                                     variation="primary"
                                 >
