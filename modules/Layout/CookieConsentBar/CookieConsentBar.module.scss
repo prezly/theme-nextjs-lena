@@ -96,7 +96,9 @@
 }
 
 .acceptButton {
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
         color: $color-base-white;
     }
 }
