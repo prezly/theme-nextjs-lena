@@ -94,3 +94,11 @@
         width: 100%;
     }
 }
+
+.acceptButton {
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-base-white;
+    }
+}

@@ -105,10 +105,10 @@ $story-content-height: 270px;
     transition: background-color 0.15s ease-in;
 
     &:hover {
-        background-color: var(--prezly-accent-color-tint);
+        background-color: var(--prezly-accent-color-lightest);
     }
 
     &:active {
-        background-color: var(--prezly-accent-color-shade);
+        background-color: var(--prezly-accent-color-darkest);
     }
 }
