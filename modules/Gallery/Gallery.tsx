@@ -15,7 +15,7 @@ interface Props {
 }
 
 function Gallery({ gallery }: Props) {
-    const { content, images, title, uploadcare_group_uuid } = gallery;
+    const { content, images, name, uploadcare_group_uuid, description } = gallery;
     const [url, setUrl] = useState('');
 
     useEffect(() => {
@@ -25,11 +25,12 @@ function Gallery({ gallery }: Props) {
     }, []);
 
     return (
-        <Layout title={title} imageUrl={getAssetsUrl(images[0].uploadcare_image.uuid)}>
-            <PageTitle title={title}>
+        <Layout title={name} imageUrl={getAssetsUrl(images[0].uploadcare_image.uuid)}>
+            <PageTitle title={name}>
+                {description && <p className={styles.description}>{description}</p>}
                 <div className={styles.links}>
                     {uploadcare_group_uuid && (
-                        <DownloadLink href={getUploadcareGroupUrl(uploadcare_group_uuid, title)} />
+                        <DownloadLink href={getUploadcareGroupUrl(uploadcare_group_uuid, name)} />
                     )}
                     <StoryLinks
                         url={url}

@@ -16,7 +16,7 @@ interface Props {
 }
 
 function GalleryCard({ className, gallery }: Props) {
-    const { title, images, uuid, uploadcare_group_uuid } = gallery;
+    const { name, images, uuid, uploadcare_group_uuid } = gallery;
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
 
     return (
@@ -34,12 +34,12 @@ function GalleryCard({ className, gallery }: Props) {
             </Link>
             <div className={styles.content}>
                 <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()} passHref>
-                    <a className={styles.title}>{title}</a>
+                    <a className={styles.title}>{name}</a>
                 </Link>
                 {uploadcare_group_uuid && (
                     <Button.Link
                         variation="secondary"
-                        href={getUploadcareGroupUrl(uploadcare_group_uuid, title)}
+                        href={getUploadcareGroupUrl(uploadcare_group_uuid, name)}
                         className={styles.button}
                         icon={IconArrowDown}
                         iconPlacement="right"

@@ -24,3 +24,10 @@
     width: $spacing-4;
     height: $spacing-4;
 }
+
+.description {
+    font-size: $font-size-l;
+    line-height: $line-height-l;
+    font-weight: $font-weight-regular;
+    color: $color-base-500;
+}
