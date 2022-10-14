@@ -1,4 +1,5 @@
 import { StoryPublicationDate } from '@prezly/themes-ui-components';
+import classNames from 'classnames';
 import Link from 'next/link';
 
 import { useThemeSettings } from '@/hooks';
@@ -39,7 +40,11 @@ function StoryCard({ story }: Props) {
                         />
                     </div>
                 )}
-                <h3 className={styles.title}>
+                <h3
+                    className={classNames(styles.title, {
+                        [styles.extendedTitle]: !subtitle.length,
+                    })}
+                >
                     <Link href={`/${story.slug}`} locale={false} passHref>
                         <a className={styles.titleLink}>{title}</a>
                     </Link>

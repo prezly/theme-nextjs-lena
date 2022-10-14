@@ -70,6 +70,16 @@ $story-content-height: 270px;
     font-weight: $font-weight-bold;
     margin-top: 0;
     margin-bottom: $spacing-2;
+
+    @include tablet-up {
+        @include ensure-max-text-height(3, $line-height-l);
+    }
+
+    &.extendedTitle {
+        @include tablet-up {
+            @include ensure-max-text-height(4, $line-height-l);
+        }
+    }
 }
 
 .titleLink {
