@@ -42,7 +42,7 @@ function StoryCard({ story }: Props) {
                 )}
                 <h3
                     className={classNames(styles.title, {
-                        [styles.extendedTitle]: !subtitle.length,
+                        [styles.extendedTitle]: !subtitle || !showSubtitle,
                     })}
                 >
                     <Link href={`/${story.slug}`} locale={false} passHref>
