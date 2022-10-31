@@ -4,7 +4,7 @@ $header-height: 64px;
     @include shadow-l;
 
     display: flex;
-    background: $color-base-white;
+    background: var(--prezly-header-background-color);
     border-bottom: 1px solid $color-borders;
     height: $header-height;
 
