@@ -1,7 +1,7 @@
 $story-container-max-width: 926px;
 
 .story {
-    padding: $spacing-5 $spacing-3;
+    padding: $spacing-5 $spacing-3 0;
 }
 
 .mainImage {
@@ -21,11 +21,11 @@ $story-container-max-width: 926px;
 
 .container {
     margin: 0 auto;
-    padding: $spacing-6 0;
+    padding-top: $spacing-6;
 
     @include desktop-up {
         max-width: $story-container-max-width;
-        padding: $spacing-9;
+        padding-top: $spacing-9;
     }
 
     &.withImage {
