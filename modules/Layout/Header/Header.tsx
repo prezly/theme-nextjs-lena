@@ -7,7 +7,6 @@ import {
     useNewsroom,
 } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
-import { Button } from '@prezly/themes-ui-components';
 import Image from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
@@ -17,6 +16,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useDevice } from '@/hooks';
+import { Button, ButtonLink } from '@/ui';
 
 import CategoriesDropdown from './CategoriesDropdown';
 import LanguagesDropdown from './LanguagesDropdown';
@@ -135,7 +135,7 @@ function Header({ hasError }: Props) {
                         />
 
                         {IS_SEARCH_ENABLED && (
-                            <Button.Link
+                            <ButtonLink
                                 href="/search"
                                 localeCode={getLinkLocaleSlug()}
                                 variation="navigation"
@@ -151,7 +151,7 @@ function Header({ hasError }: Props) {
                                 aria-label={formatMessage(translations.search.title)}
                             >
                                 Search
-                            </Button.Link>
+                            </ButtonLink>
                         )}
 
                         <div
@@ -161,7 +161,7 @@ function Header({ hasError }: Props) {
                             <ul id="menu" className={styles.navigationInner}>
                                 {public_galleries_number > 0 && (
                                     <li className={styles.navigationItem}>
-                                        <Button.Link
+                                        <ButtonLink
                                             href="/media"
                                             localeCode={getLinkLocaleSlug()}
                                             variation="navigation"
@@ -171,7 +171,7 @@ function Header({ hasError }: Props) {
                                             <FormattedMessage
                                                 {...translations.mediaGallery.title}
                                             />
-                                        </Button.Link>
+                                        </ButtonLink>
                                     </li>
                                 )}
                                 {isMobile && (

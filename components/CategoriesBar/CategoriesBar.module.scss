@@ -20,8 +20,8 @@
 }
 
 .link {
-    font-size: $font-size-xs;
-    color: var(--prezly-header-link-color);
+    font-size: $font-size-xs !important;
+    color: var(--prezly-header-link-color) !important;
 
     &.active {
         border-bottom: 2px solid var(--prezly-accent-color);
