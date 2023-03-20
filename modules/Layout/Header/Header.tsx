@@ -141,7 +141,6 @@ function Header({ hasError }: Props) {
                                 variation="navigation"
                                 className={classNames(styles.searchToggle, {
                                     [styles.hidden]: isMenuOpen,
-                                    [styles.close]: isSearchWidgetShown,
                                 })}
                                 icon={isSearchWidgetShown && isMobile ? IconClose : IconSearch}
                                 onClick={toggleSearchWidget}
