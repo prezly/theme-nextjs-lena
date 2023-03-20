@@ -1,4 +1,3 @@
-import { StoryPublicationDate } from '@prezly/themes-ui-components';
 import Link from 'next/link';
 
 import { useDevice, useThemeSettings } from '@/hooks';
@@ -6,6 +5,7 @@ import type { StoryWithImage } from 'types';
 
 import CategoriesList from '../CategoriesList';
 import StoryImage from '../StoryImage';
+import { StoryPublicationDate } from '../StoryPublicationDate';
 
 import styles from './HighlightedStoryCard.module.scss';
 
