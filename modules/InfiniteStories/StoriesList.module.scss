@@ -8,17 +8,20 @@
 
 .storiesContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: $spacing-6 $spacing-6;
 
-    @include tablet-only {
+    @media screen and (min-width: 600px) and (max-width: 940px) {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 941px) {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     @include mobile-only {
         padding-right: $grid-spacing-mobile;
         padding-left: $grid-spacing-mobile;
-        grid-template-columns: 1fr;
     }
 }
 

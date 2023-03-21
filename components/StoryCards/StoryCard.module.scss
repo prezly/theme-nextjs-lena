@@ -64,7 +64,7 @@ $story-content-height: 270px;
 }
 
 .title {
-    @include heading-2;
+    @include heading-3;
     @include ensure-max-text-height(3, $line-height-l);
 
     font-weight: $font-weight-bold;
