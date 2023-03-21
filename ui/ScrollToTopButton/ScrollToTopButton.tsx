@@ -1,4 +1,4 @@
-import { IconArrowDown } from '@prezly/icons';
+import { IconArrowDown } from '@/icons';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 

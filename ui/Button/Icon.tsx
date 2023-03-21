@@ -1,4 +1,4 @@
-import { IconLoading } from '@prezly/icons';
+import { IconLoading } from '@/icons';
 import classNames from 'classnames';
 
 import type { BaseProps } from './types';
