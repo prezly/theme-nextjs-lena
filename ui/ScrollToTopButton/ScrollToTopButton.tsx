@@ -1,6 +1,7 @@
-import { IconArrowDown } from '@/icons';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+
+import { IconArrowTop } from '@/icons';
 
 import { Button } from '../Button';
 
@@ -52,7 +53,7 @@ export function ScrollToTopButton({ className, ariaLabel = 'Scroll to top' }: Pr
             aria-label={ariaLabel}
             onClick={scrollToTop}
         >
-            <IconArrowDown width={16} height={16} className={styles.icon} />
+            <IconArrowTop width={16} height={16} className={styles.icon} />
         </Button>
     );
 }
