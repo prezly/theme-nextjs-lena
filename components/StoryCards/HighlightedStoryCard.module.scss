@@ -52,9 +52,19 @@
 }
 
 .title {
-    @include heading-1-xxl;
-    @include ensure-max-text-height(2, $line-height-xl);
+    @include heading-3;
+    @include ensure-max-text-height(4, $line-height-m);
 
+    @include tablet-up {
+        @include heading-2;
+    }
+
+    @include desktop-large-up {
+        @include heading-1-xxl;
+        @include ensure-max-text-height(2, $line-height-xl);
+    }
+
+    /* stylelint-disable-next-line order/order */
     margin-top: $spacing-3;
     color: $color-base-white;
 
