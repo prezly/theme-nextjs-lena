@@ -1,5 +1,9 @@
 .highlightedStoriesContainer {
-    margin-bottom: $spacing-8;
+    margin-bottom: $spacing-6;
+
+    @include not-desktop {
+        margin-bottom: $spacing-5;
+    }
 }
 
 .storiesContainer {
