@@ -1,4 +1,3 @@
-import { IconLayoutVertical } from '@prezly/icons';
 import type { Category } from '@prezly/sdk';
 import { getCategoryHasTranslation, useCurrentLocale } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
@@ -6,6 +5,7 @@ import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import { Dropdown } from '@/components';
+import { IconLayoutVertical } from '@/icons';
 
 import CategoryButton from './CategoryButton';
 import CategoryItem from './CategoryItem';

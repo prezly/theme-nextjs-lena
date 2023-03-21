@@ -1,7 +1,7 @@
-import { IconFacebook, IconLinkedin, IconTwitter } from '@prezly/icons';
 import classNames from 'classnames';
 
 import { useDevice } from '@/hooks/useDevice';
+import { IconFacebook, IconLinkedin, IconTwitter } from '@/icons';
 import { ScrollToTopButton } from '@/ui';
 
 import { SocialShareButton } from '../SocialMedia';

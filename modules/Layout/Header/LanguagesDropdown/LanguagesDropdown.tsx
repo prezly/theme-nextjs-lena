@@ -1,4 +1,3 @@
-import { IconGlobe } from '@prezly/icons';
 import {
     getLanguageDisplayName,
     getUsedLanguages,
@@ -13,6 +12,7 @@ import classNames from 'classnames';
 import { useMemo } from 'react';
 
 import { Dropdown } from '@/components';
+import { IconGlobe } from '@/icons';
 
 import styles from './LanguagesDropdown.module.scss';
 
