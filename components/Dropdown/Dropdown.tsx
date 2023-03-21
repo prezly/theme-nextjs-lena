@@ -1,10 +1,10 @@
 import { Menu, Transition } from '@headlessui/react';
 import { IconCaret } from '@prezly/icons';
-import { Button } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 import type { FunctionComponent, PropsWithChildren, ReactChild, SVGProps } from 'react';
 import { Fragment } from 'react';
 
+import { Button } from '@/ui';
 import { makeComposableComponent } from '@/utils';
 
 import Item from './DropdownItem';
@@ -38,12 +38,13 @@ function Dropdown({
                     <Menu.Button as={Fragment}>
                         <Button
                             variation="navigation"
-                            isActive={open}
                             icon={icon}
                             className={classNames(buttonClassName, {
                                 [styles.buttonWithMobileDisplay]: withMobileDisplay,
+                                ...(activeClassName && {
+                                    [activeClassName]: open,
+                                }),
                             })}
-                            activeClassName={activeClassName}
                         >
                             {label}
                             <IconCaret

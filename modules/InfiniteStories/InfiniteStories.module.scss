@@ -7,17 +7,6 @@
 }
 
 .loadMore {
-    display: flex;
+    display: flex !important;
     margin: $spacing-8 auto 0;
-    color: $color-base-white;
-    transition: background-color 0.15s ease-in;
-
-    &:hover {
-        background-color: var(--prezly-accent-color-lightest) !important;
-    }
-
-    &:active,
-    &:focus {
-        background-color: var(--prezly-accent-color-darkest) !important;
-    }
 }

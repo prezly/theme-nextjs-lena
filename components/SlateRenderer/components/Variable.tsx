@@ -1,6 +1,7 @@
 import type { VariableNode } from '@prezly/story-content-format';
 import { useCurrentStory } from '@prezly/theme-kit-nextjs';
-import { StoryPublicationDate } from '@prezly/themes-ui-components';
+
+import { StoryPublicationDate } from '../../StoryPublicationDate';
 
 interface Props {
     node: VariableNode;

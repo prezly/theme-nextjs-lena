@@ -30,7 +30,6 @@ $header-height: 64px;
         font-size: $font-size-m;
         line-height: 1;
         padding: $spacing-2;
-        margin-right: -1 * $spacing-2;
 
         @include tablet-up {
             display: none;
@@ -63,7 +62,11 @@ $header-height: 64px;
             font-size: $font-size-m;
             line-height: 1;
             padding: $spacing-2;
-            margin-right: -$spacing-2;
+
+            /* stylelint-disable-next-line max-nesting-depth */
+            svg {
+                margin: 0;
+            }
 
             /* stylelint-disable-next-line max-nesting-depth */
             span {
@@ -80,13 +83,7 @@ $header-height: 64px;
         }
 
         &:active {
-            border: 0;
-        }
-    }
-
-    .searchToggle.close {
-        @include mobile-only {
-            margin-right: -1 * $spacing-3;
+            border-color: transparent !important;
         }
     }
 
@@ -123,6 +120,10 @@ $header-height: 64px;
     width: auto;
     max-width: 20rem;
     max-height: 3rem;
+
+    @include mobile-only {
+        max-width: 100%;
+    }
 }
 
 .navigation,
@@ -137,6 +138,10 @@ $header-height: 64px;
     display: flex;
     align-items: center;
     margin-left: auto;
+
+    @include mobile-only {
+        margin-right: -$spacing-1;
+    }
 }
 
 /* Since search widget is in a portal, there is no better way of increasing the specificity other than adding global selectors */

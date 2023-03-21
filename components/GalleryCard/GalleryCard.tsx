@@ -2,11 +2,12 @@ import { IconArrowDown } from '@prezly/icons';
 import type { NewsroomGallery } from '@prezly/sdk';
 import { getUploadcareGroupUrl, useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
-import { Button } from '@prezly/themes-ui-components';
 import UploadcareImage from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
+
+import { ButtonLink } from '@/ui';
 
 import styles from './GalleryCard.module.scss';
 
@@ -37,7 +38,7 @@ function GalleryCard({ className, gallery }: Props) {
                     <a className={styles.title}>{name}</a>
                 </Link>
                 {uploadcare_group_uuid && (
-                    <Button.Link
+                    <ButtonLink
                         variation="secondary"
                         href={getUploadcareGroupUrl(uploadcare_group_uuid, name)}
                         className={styles.button}
@@ -45,7 +46,7 @@ function GalleryCard({ className, gallery }: Props) {
                         iconPlacement="right"
                     >
                         <FormattedMessage {...translations.actions.download} />
-                    </Button.Link>
+                    </ButtonLink>
                 )}
             </div>
         </div>

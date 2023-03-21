@@ -23,6 +23,7 @@
     width: $spacing-6;
     align-items: center;
     justify-content: center;
+    line-height: 0;
 
     @include not-desktop {
         &:not(:last-child) {
@@ -43,15 +44,9 @@
 .icon {
     width: $spacing-3;
     height: $spacing-3;
-    margin-top: $spacing-half;
 }
 
 .scrollToTop {
     position: static !important;
     margin-bottom: $spacing-3;
-}
-
-// TODO: use icon that does not require transform properties
-.scrollTopIcon {
-    transform: rotate(0);
 }

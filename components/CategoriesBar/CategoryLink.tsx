@@ -5,9 +5,10 @@ import {
     useCurrentLocale,
     useGetLinkLocaleSlug,
 } from '@prezly/theme-kit-nextjs';
-import { Button } from '@prezly/themes-ui-components';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
+
+import { ButtonLink } from '@/ui';
 
 import styles from './CategoriesBar.module.scss';
 
@@ -24,7 +25,7 @@ function CategoryLink({ category }: Props) {
     const isActive = asPath.includes(getCategoryUrl(category, currentLocale));
 
     return (
-        <Button.Link
+        <ButtonLink
             variation="navigation"
             href={getCategoryUrl(category, currentLocale)}
             localeCode={getLinkLocaleSlug()}
@@ -33,7 +34,7 @@ function CategoryLink({ category }: Props) {
             })}
         >
             {name}
-        </Button.Link>
+        </ButtonLink>
     );
 }
 

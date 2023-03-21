@@ -2,12 +2,11 @@ import { useAnalyticsContext } from '@prezly/analytics-nextjs';
 import type { ExtendedStory } from '@prezly/sdk';
 import { Story as StorySdk } from '@prezly/sdk';
 import { StorySeo } from '@prezly/theme-kit-nextjs';
-import { StoryPublicationDate } from '@prezly/themes-ui-components';
 import Image from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 
-import { StoryLinks } from '@/components';
+import { StoryLinks, StoryPublicationDate } from '@/components';
 import { useDevice, useThemeSettings } from '@/hooks';
 import { getStoryImageSizes } from '@/utils';
 
