@@ -29,16 +29,14 @@ function HitComponent({ hit }: Props) {
 
     return (
         <div className={classNames(cardStyles.container, cardStyles.small)}>
-            <Link href={storyLink} locale={false} passHref>
-                <a className={cardStyles.imageWrapper}>
-                    <StoryImage
-                        story={story}
-                        size="default"
-                        className={cardStyles.image}
-                        placeholderClassName={cardStyles.placeholder}
-                    />
-                </a>
-            </Link>
+            <div className={cardStyles.imageWrapper}>
+                <StoryImage
+                    story={story}
+                    size="default"
+                    className={cardStyles.image}
+                    placeholderClassName={cardStyles.placeholder}
+                />
+            </div>
             <div className={cardStyles.content}>
                 {categories.length > 0 && (
                     <div className={cardStyles.categories}>
@@ -48,6 +46,7 @@ function HitComponent({ hit }: Props) {
                 <h3 className={classNames(cardStyles.title, cardStyles.titleSmaller)}>
                     <Link href={storyLink} locale={false} passHref>
                         <a className={classNames(cardStyles.titleLink, styles.title)}>
+                            <span className={cardStyles.linkMask} />
                             <Highlight hit={hit} attribute="attributes.title" tagName="mark" />
                         </a>
                     </Link>
@@ -55,9 +54,7 @@ function HitComponent({ hit }: Props) {
 
                 {showSubtitle && (
                     <p className={cardStyles.subtitle}>
-                        <Link href={storyLink} locale={false} passHref>
-                            <a className={cardStyles.titleLink}>{story.subtitle}</a>
-                        </Link>
+                        <a className={cardStyles.titleLink}>{story.subtitle}</a>
                     </p>
                 )}
 
