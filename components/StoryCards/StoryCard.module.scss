@@ -31,12 +31,14 @@ $story-content-height: 270px;
         transition: all 0.5s ease-in-out;
     }
 
-    &:hover {
-        transform: translateY(-$spacing-2);
-    }
+    @media (hover: hover) {
+        &:hover {
+            transform: translateY(-$spacing-2);
+        }
 
-    &:hover::after {
-        opacity: 1;
+        &:hover::after {
+            opacity: 1;
+        }
     }
 }
 
