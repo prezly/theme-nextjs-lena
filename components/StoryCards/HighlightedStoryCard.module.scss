@@ -53,12 +53,8 @@
 }
 
 .title {
-    @include heading-3;
+    @include heading-2;
     @include ensure-max-text-height(4, $line-height-m);
-
-    @include tablet-up {
-        @include heading-2;
-    }
 
     @include desktop-large-up {
         @include heading-1-xxl;
