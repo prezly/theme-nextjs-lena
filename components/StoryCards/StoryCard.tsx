@@ -20,16 +20,14 @@ function StoryCard({ story }: Props) {
 
     return (
         <div className={styles.container}>
-            <Link href={`/${story.slug}`} locale={false} passHref>
-                <a className={styles.imageWrapper}>
-                    <StoryImage
-                        story={story}
-                        size="default"
-                        className={styles.image}
-                        placeholderClassName={styles.placeholder}
-                    />
-                </a>
-            </Link>
+            <div className={styles.imageWrapper}>
+                <StoryImage
+                    story={story}
+                    size="default"
+                    className={styles.image}
+                    placeholderClassName={styles.placeholder}
+                />
+            </div>
             <div className={styles.content}>
                 {categories.length > 0 && (
                     <div className={styles.categories}>
@@ -46,17 +44,14 @@ function StoryCard({ story }: Props) {
                     })}
                 >
                     <Link href={`/${story.slug}`} locale={false} passHref>
-                        <a className={styles.titleLink}>{title}</a>
+                        <a className={styles.titleLink}>
+                            <span className={styles.linkMask} />
+                            {title}
+                        </a>
                     </Link>
                 </h3>
 
-                {subtitle && showSubtitle && (
-                    <p className={styles.subtitle}>
-                        <Link href={`/${story.slug}`} locale={false} passHref>
-                            <a className={styles.titleLink}>{subtitle}</a>
-                        </Link>
-                    </p>
-                )}
+                {subtitle && showSubtitle && <p className={styles.subtitle}>{subtitle}</p>}
 
                 {showDate && (
                     <p className={styles.date}>

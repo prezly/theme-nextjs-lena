@@ -39,18 +39,15 @@ function HighlightedStoryCard({ story }: Props) {
 
                 <Link href={`/${story.slug}`} locale={false} passHref>
                     <a className={styles.link}>
+                        <span className={styles.linkMask} />
                         <h2 className={styles.title}>{title}</h2>
                     </a>
                 </Link>
 
                 {showDate && (
-                    <Link href={`/${story.slug}`} locale={false} passHref>
-                        <a className={styles.link}>
-                            <span className={styles.date}>
-                                <StoryPublicationDate story={story} />
-                            </span>
-                        </a>
-                    </Link>
+                    <span className={styles.date}>
+                        <StoryPublicationDate story={story} />
+                    </span>
                 )}
             </div>
         </div>

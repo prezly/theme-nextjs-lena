@@ -1,20 +1,27 @@
 .highlightedStoriesContainer {
-    margin-bottom: $spacing-8;
+    margin-bottom: $spacing-6;
+
+    @include not-desktop {
+        margin-bottom: $spacing-5;
+    }
 }
 
 .storiesContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: $spacing-6 $spacing-6;
 
-    @include tablet-only {
+    @media screen and (min-width: $breakpoint-cards-small) and (max-width: $breakpoint-cards-medium) {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: ($breakpoint-cards-medium + 1px)) {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     @include mobile-only {
         padding-right: $grid-spacing-mobile;
         padding-left: $grid-spacing-mobile;
-        grid-template-columns: 1fr;
     }
 }
 

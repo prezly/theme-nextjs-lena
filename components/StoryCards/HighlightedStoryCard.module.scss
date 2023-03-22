@@ -1,5 +1,6 @@
 .container {
     position: relative;
+    isolation: isolate;
     height: 450px;
     width: 100%;
     border-radius: $border-radius-lg;
@@ -52,9 +53,15 @@
 }
 
 .title {
-    @include heading-1-xxl;
-    @include ensure-max-text-height(2, $line-height-xl);
+    @include heading-2;
+    @include ensure-max-text-height(4, $line-height-m);
 
+    @include desktop-large-up {
+        @include heading-1-xxl;
+        @include ensure-max-text-height(2, $line-height-xl);
+    }
+
+    /* stylelint-disable-next-line order/order */
     margin-top: $spacing-3;
     color: $color-base-white;
 
@@ -71,7 +78,18 @@
     text-decoration: none;
 }
 
+.linkMask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .categoryLink {
+    position: relative;
+    z-index: 1;
+
     &:active {
         color: var(--prezly-header-link-color);
     }
