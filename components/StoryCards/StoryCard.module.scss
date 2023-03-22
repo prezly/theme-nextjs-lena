@@ -43,6 +43,7 @@ $story-content-height: 270px;
 }
 
 .imageWrapper {
+    display: block;
     overflow: hidden;
     border-top-left-radius: $border-radius-lg;
     border-top-right-radius: $border-radius-lg;
