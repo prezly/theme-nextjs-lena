@@ -68,7 +68,7 @@
 .categoryLink {
     color: var(--prezly-accent-color);
     border-radius: 0;
-    background-color: transparent;
+    background-color: transparent !important;
     font-size: $font-size-labels;
     padding: $spacing-small 0;
 
