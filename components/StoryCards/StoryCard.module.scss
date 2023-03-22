@@ -4,6 +4,7 @@ $story-content-height: 270px;
 
 .container {
     position: relative;
+    isolation: isolate;
     border: 1px solid $color-borders;
     background-color: $color-base-white;
     border-radius: $border-radius-lg;
@@ -40,9 +41,7 @@ $story-content-height: 270px;
 }
 
 .imageWrapper {
-    display: block;
     overflow: hidden;
-    text-decoration: none;
     border-top-left-radius: $border-radius-lg;
     border-top-right-radius: $border-radius-lg;
     height: $story-image-height;
@@ -85,11 +84,14 @@ $story-content-height: 270px;
 .titleLink {
     text-decoration: none;
     color: inherit;
+}
 
-    &:hover,
-    &:focus {
-        color: $color-base-500;
-    }
+.linkMask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .subtitle {
@@ -110,6 +112,8 @@ $story-content-height: 270px;
 }
 
 .categoryLink {
+    position: relative;
+    z-index: 1;
     background-color: var(--prezly-accent-color);
     color: $color-base-white;
     transition: background-color 0.15s ease-in;

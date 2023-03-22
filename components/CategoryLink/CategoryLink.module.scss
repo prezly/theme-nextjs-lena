@@ -3,7 +3,7 @@
     @include link-dark;
 
     padding: $spacing-small $spacing-1;
-    background-color: #f1f5f9;
+    background-color: $color-base-100;
     border-radius: $border-radius-m;
     font-weight: $font-weight-bold;
     text-decoration: none;
@@ -12,6 +12,7 @@
     &:hover,
     &:focus {
         text-decoration: none;
+        background-color: $color-base-200;
     }
 
     &:not(:last-child) {

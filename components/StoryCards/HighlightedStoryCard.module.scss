@@ -1,5 +1,6 @@
 .container {
     position: relative;
+    isolation: isolate;
     height: 450px;
     width: 100%;
     border-radius: $border-radius-lg;
@@ -81,7 +82,18 @@
     text-decoration: none;
 }
 
+.linkMask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .categoryLink {
+    position: relative;
+    z-index: 1;
+
     &:active {
         color: var(--prezly-header-link-color);
     }
