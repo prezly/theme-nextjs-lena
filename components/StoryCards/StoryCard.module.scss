@@ -4,13 +4,16 @@ $story-content-height: 270px;
 
 .container {
     position: relative;
-    height: $story-card-height;
     border: 1px solid $color-borders;
     background-color: $color-base-white;
     border-radius: $border-radius-lg;
     transform: translateY(0);
     box-shadow: 0 0 0 0 rgba(0 0 0 / 0%);
     transition: all 0.5s ease-in-out;
+
+    @media screen and (min-width: $breakpoint-cards-small) {
+        height: $story-card-height;
+    }
 
     &::after {
         @include shadow-xxl;
@@ -52,9 +55,12 @@ $story-content-height: 270px;
 
 .content {
     padding: $spacing-3 $spacing-3;
-    height: $story-content-height;
     display: flex;
     flex-direction: column;
+
+    @media screen and (min-width: 600px) {
+        height: $story-content-height;
+    }
 }
 
 .categories {
