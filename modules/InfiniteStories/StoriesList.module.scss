@@ -11,11 +11,11 @@
     grid-template-columns: 1fr;
     gap: $spacing-6 $spacing-6;
 
-    @media screen and (min-width: 600px) and (max-width: 940px) {
+    @media screen and (min-width: $breakpoint-cards-small) and (max-width: $breakpoint-cards-medium) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media screen and (min-width: 941px) {
+    @media screen and (min-width: ($breakpoint-cards-medium + 1px)) {
         grid-template-columns: repeat(3, 1fr);
     }
 
