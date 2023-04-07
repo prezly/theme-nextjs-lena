@@ -1,9 +1,5 @@
-import {
-    getCategoryHasTranslation,
-    getLocalizedCategoryData,
-    useCategories,
-    useCurrentLocale,
-} from '@prezly/theme-kit-nextjs';
+import { getCategoryHasTranslation, getLocalizedCategoryData } from '@prezly/theme-kit-core';
+import { useCategories, useCurrentLocale } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';

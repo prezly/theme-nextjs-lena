@@ -1,10 +1,6 @@
 import type { Category } from '@prezly/sdk';
-import {
-    getCategoryUrl,
-    getLocalizedCategoryData,
-    useCurrentLocale,
-    useGetLinkLocaleSlug,
-} from '@prezly/theme-kit-nextjs';
+import { getCategoryUrl, getLocalizedCategoryData } from '@prezly/theme-kit-core';
+import { useCurrentLocale, useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
 
