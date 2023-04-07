@@ -1,6 +1,7 @@
 import { useAnalyticsContext } from '@prezly/analytics-nextjs';
 import type { ExtendedStory } from '@prezly/sdk';
 import { Story as StorySdk } from '@prezly/sdk';
+import { isEmbargoStory } from '@prezly/theme-kit-core';
 import { StorySeo } from '@prezly/theme-kit-nextjs';
 import Image from '@prezly/uploadcare-image';
 import classNames from 'classnames';
@@ -11,8 +12,6 @@ import { useDevice, useThemeSettings } from '@/hooks';
 import { getStoryImageSizes } from '@/utils';
 
 import Layout from '../Layout';
-
-import { isEmbargoStory } from './lib';
 
 import styles from './Story.module.scss';
 
