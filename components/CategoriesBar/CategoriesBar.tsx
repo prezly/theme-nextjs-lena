@@ -4,8 +4,7 @@ import translations from '@prezly/themes-intl-messages';
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
-import CategoryItem from '@/modules/Layout/Header/CategoriesDropdown/CategoryItem';
-
+import { CategoryItem } from '../CategoryItem';
 import Dropdown from '../Dropdown';
 
 import CategoryLink from './CategoryLink';
