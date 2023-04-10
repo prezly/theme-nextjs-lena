@@ -11,7 +11,7 @@ type Props = {
     navigationButtonClassName?: string;
 };
 
-function CategoryButton({ category, navigationButtonClassName }: Props) {
+export function CategoryButton({ category, navigationButtonClassName }: Props) {
     const currentLocale = useCurrentLocale();
     const { name, description } = getLocalizedCategoryData(category, currentLocale);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
@@ -28,5 +28,3 @@ function CategoryButton({ category, navigationButtonClassName }: Props) {
         </ButtonLink>
     );
 }
-
-export default CategoryButton;

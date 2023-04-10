@@ -5,11 +5,8 @@ import translations from '@prezly/themes-intl-messages';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
-import { Dropdown } from '@/components';
+import { CategoryButton, CategoryItem, Dropdown } from '@/components';
 import { IconLayoutVertical } from '@/icons';
-
-import CategoryButton from './CategoryButton';
-import CategoryItem from './CategoryItem';
 
 import styles from './CategoriesDropdown.module.scss';
 

@@ -4,7 +4,7 @@ import { getLocalizedCategoryData } from '@prezly/theme-kit-core';
 import { useCurrentLocale } from '@prezly/theme-kit-nextjs';
 import { useEffect, useMemo, useState } from 'react';
 
-import { CategoryLink } from '@/components';
+import CategoryLink from '../CategoryLink';
 
 import styles from './CategoriesList.module.scss';
 

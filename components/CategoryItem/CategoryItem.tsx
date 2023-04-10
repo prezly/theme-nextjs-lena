@@ -2,7 +2,7 @@ import type { Category } from '@prezly/sdk';
 import { getCategoryUrl, getLocalizedCategoryData } from '@prezly/theme-kit-core';
 import { useCurrentLocale } from '@prezly/theme-kit-nextjs';
 
-import { Dropdown } from '@/components';
+import Dropdown from '../Dropdown';
 
 import styles from './CategoryItem.module.scss';
 
@@ -10,7 +10,7 @@ type Props = {
     category: Category;
 };
 
-function CategoryItem({ category }: Props) {
+export function CategoryItem({ category }: Props) {
     const currentLocale = useCurrentLocale();
     const { name, description } = getLocalizedCategoryData(category, currentLocale);
 
@@ -25,5 +25,3 @@ function CategoryItem({ category }: Props) {
         </Dropdown.Item>
     );
 }
-
-export default CategoryItem;
