@@ -10,7 +10,7 @@ type Props = {
 };
 
 function Embargo({ story }: Props) {
-    const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
+    const { timezone } = story.newsroom;
 
     return (
         <div className={styles.embargo}>
@@ -24,14 +24,14 @@ function Embargo({ story }: Props) {
                                 year="numeric"
                                 month="long"
                                 day="numeric"
-                                timeZone={timeZone}
+                                timeZone={timezone}
                             />{' '}
                             <FormattedTime
                                 value={new Date(story.published_at)}
                                 hour="2-digit"
                                 minute="2-digit"
                                 timeZoneName="short"
-                                timeZone={timeZone}
+                                timeZone={timezone}
                             />
                         </>
                     ),
