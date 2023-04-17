@@ -1,73 +1,66 @@
-import { getCategoryHasTranslation, getLocalizedCategoryData } from '@prezly/theme-kit-core';
-import { useCategories, useCurrentLocale } from '@prezly/theme-kit-nextjs';
+import type { Category } from '@prezly/sdk';
 import translations from '@prezly/themes-intl-messages';
-import { useMemo } from 'react';
+import { differenceWith, isEqual } from 'lodash-es';
+import { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { CategoryItem } from '../CategoryItem';
 import Dropdown from '../Dropdown';
 
 import CategoryLink from './CategoryLink';
-import { useCategoryCharacterLimit } from './lib';
+import { useCategories } from './lib';
 
 import styles from './CategoriesBar.module.scss';
 
 function CategoriesBar() {
-    const categories = useCategories();
-    const currentLocale = useCurrentLocale();
+    const containerRef = useRef<HTMLDivElement>(null);
     const { formatMessage } = useIntl();
+    const initialCategories = useCategories();
+    const [categories, setCategories] = useState({
+        nonOverflowing: initialCategories,
+        overflowing: [] as Category[],
+    });
 
-    const maxDisplayedCharacters = useCategoryCharacterLimit();
-
-    const filteredCategories = categories.filter(
-        (category) =>
-            category.stories_number > 0 && getCategoryHasTranslation(category, currentLocale),
-    );
-
-    const [visibleCategories, hiddenCategoriesCount] = useMemo(() => {
-        let characterCounter = 0;
-        let lastVisibleCategoryIndex = 0;
-
-        while (
-            characterCounter < maxDisplayedCharacters &&
-            lastVisibleCategoryIndex < filteredCategories.length
-        ) {
-            const { name } = getLocalizedCategoryData(
-                filteredCategories[lastVisibleCategoryIndex],
-                currentLocale,
-            );
-            characterCounter += name.length;
-
-            if (characterCounter < maxDisplayedCharacters || lastVisibleCategoryIndex === 0) {
-                lastVisibleCategoryIndex += 1;
-            }
+    useEffect(() => {
+        if (categories.overflowing.length > 0) {
+            const { nonOverflowing, overflowing } = categories;
+            setCategories({
+                ...categories,
+                nonOverflowing: differenceWith(nonOverflowing, overflowing, isEqual),
+            });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [categories.overflowing]);
 
-        return [
-            filteredCategories.slice(0, lastVisibleCategoryIndex),
-            filteredCategories.slice(lastVisibleCategoryIndex).length,
-        ];
-    }, [filteredCategories, currentLocale, maxDisplayedCharacters]);
-
-    if (!visibleCategories.length) {
+    if (!initialCategories.length) {
         return null;
     }
 
-    const hasMore = hiddenCategoriesCount > 0;
-
     return (
         <div className={styles.wrapper}>
-            <div className={styles.container}>
-                {visibleCategories.map((category) => (
-                    <CategoryLink key={category.id} category={category} />
+            <div className={styles.container} ref={containerRef}>
+                {categories.nonOverflowing.map((category) => (
+                    <CategoryLink
+                        key={category.id}
+                        category={category}
+                        containerRef={containerRef}
+                        onIsOverflowing={(isOverflowing) => {
+                            if (isOverflowing) {
+                                setCategories((prev) => ({
+                                    ...prev,
+                                    overflowing: [...prev.overflowing, category],
+                                }));
+                            }
+                        }}
+                    />
                 ))}
-                {hasMore && (
+                {categories.overflowing.length > 0 && (
                     <Dropdown
                         label={formatMessage(translations.actions.more)}
                         buttonClassName={styles.more}
                         menuClassName={styles.dropdown}
                     >
-                        {filteredCategories.slice(-hiddenCategoriesCount).map((category) => (
+                        {categories.overflowing.map((category) => (
                             <CategoryItem category={category} key={category.id} />
                         ))}
                     </Dropdown>
