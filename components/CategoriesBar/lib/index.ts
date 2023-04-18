@@ -1,1 +1,1 @@
-export * from './useCategories';
+export * from './useCategoriesWithStoriesInCurrentLocale';
