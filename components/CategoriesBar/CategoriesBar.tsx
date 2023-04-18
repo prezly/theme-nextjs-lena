@@ -1,7 +1,6 @@
 import type { Category } from '@prezly/sdk';
 import translations from '@prezly/themes-intl-messages';
-import { differenceWith, isEqual } from 'lodash-es';
-import { useEffect, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import { useIntl } from 'react-intl';
 
 import { CategoryItem } from '../CategoryItem';
@@ -12,55 +11,63 @@ import { useCategoriesWithStoriesInCurrentLocale } from './lib';
 
 import styles from './CategoriesBar.module.scss';
 
+const MORE_BUTTON_WIDTH = +styles.MORE_BUTTON_WIDTH.replace('px', '');
+
 function CategoriesBar() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { formatMessage } = useIntl();
-    const initialCategories = useCategoriesWithStoriesInCurrentLocale();
-    const [categories, setCategories] = useState({
-        nonOverflowing: initialCategories,
-        overflowing: [] as Category[],
-    });
+    const categories = useCategoriesWithStoriesInCurrentLocale();
+    const container = containerRef.current;
 
-    useEffect(() => {
-        if (categories.overflowing.length > 0) {
-            const { nonOverflowing, overflowing } = categories;
-            setCategories({
-                ...categories,
-                nonOverflowing: differenceWith(nonOverflowing, overflowing, isEqual),
-            });
+    const [visibleCategories, hiddenCategories] = useMemo<[Category[], Category[]]>(() => {
+        if (!container) {
+            return [categories, []];
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categories.overflowing]);
 
-    if (!initialCategories.length) {
+        const { width: containerWidth } = container.getBoundingClientRect();
+        const { paddingLeft, paddingRight } = getComputedStyle(container);
+        const containerWidthWithoutPadding =
+            containerWidth - parseInt(paddingLeft) - parseInt(paddingRight);
+
+        if (!container || container.scrollWidth <= containerWidthWithoutPadding) {
+            return [categories, []];
+        }
+
+        let index = 0;
+        let width = 0;
+        const widthLimit = containerWidthWithoutPadding - MORE_BUTTON_WIDTH;
+        const nodesArray = Array.from(container.children);
+
+        for (let i = 0; i < nodesArray.length; i += 1) {
+            const { width: nodeWidth } = nodesArray[i].getBoundingClientRect();
+
+            if (nodeWidth + width > widthLimit) {
+                break;
+            }
+            width += nodeWidth;
+            index = i + 1;
+        }
+
+        return [categories.slice(0, index), categories.slice(index)];
+    }, [container, categories]);
+
+    if (!visibleCategories.length) {
         return null;
     }
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.container} ref={containerRef}>
-                {categories.nonOverflowing.map((category) => (
-                    <CategoryLink
-                        key={category.id}
-                        category={category}
-                        containerRef={containerRef}
-                        onIsOverflowing={(isOverflowing) => {
-                            if (isOverflowing) {
-                                setCategories((prev) => ({
-                                    ...prev,
-                                    overflowing: [...prev.overflowing, category],
-                                }));
-                            }
-                        }}
-                    />
+                {visibleCategories.map((category) => (
+                    <CategoryLink key={category.id} category={category} />
                 ))}
-                {categories.overflowing.length > 0 && (
+                {hiddenCategories.length > 0 && (
                     <Dropdown
                         label={formatMessage(translations.actions.more)}
                         buttonClassName={styles.more}
                         menuClassName={styles.dropdown}
                     >
-                        {categories.overflowing.map((category) => (
+                        {hiddenCategories.map((category) => (
                             <CategoryItem category={category} key={category.id} />
                         ))}
                     </Dropdown>
