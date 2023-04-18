@@ -8,14 +8,14 @@ import { CategoryItem } from '../CategoryItem';
 import Dropdown from '../Dropdown';
 
 import CategoryLink from './CategoryLink';
-import { useCategories } from './lib';
+import { useCategoriesWithStoriesInCurrentLocale } from './lib';
 
 import styles from './CategoriesBar.module.scss';
 
 function CategoriesBar() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { formatMessage } = useIntl();
-    const initialCategories = useCategories();
+    const initialCategories = useCategoriesWithStoriesInCurrentLocale();
     const [categories, setCategories] = useState({
         nonOverflowing: initialCategories,
         overflowing: [] as Category[],

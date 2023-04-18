@@ -1,8 +1,8 @@
 import { getCategoryHasTranslation } from '@prezly/theme-kit-core';
-import { useCurrentLocale, useCategories as usePrezlyCategories } from '@prezly/theme-kit-nextjs';
+import { useCategories, useCurrentLocale } from '@prezly/theme-kit-nextjs';
 
-export function useCategories() {
-    const categories = usePrezlyCategories();
+export function useCategoriesWithStoriesInCurrentLocale() {
+    const categories = useCategories();
     const currentLocale = useCurrentLocale();
     return categories.filter(
         (category) =>
