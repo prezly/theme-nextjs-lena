@@ -13,11 +13,10 @@ interface Props {
 }
 
 function CategoryLink({ category }: Props) {
+    const { asPath } = useRouter();
     const currentLocale = useCurrentLocale();
     const { name } = getLocalizedCategoryData(category, currentLocale);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
-    const { asPath } = useRouter();
-
     const isActive = asPath.includes(getCategoryUrl(category, currentLocale));
 
     return (

@@ -1,73 +1,73 @@
-import { getCategoryHasTranslation, getLocalizedCategoryData } from '@prezly/theme-kit-core';
-import { useCategories, useCurrentLocale } from '@prezly/theme-kit-nextjs';
+import type { Category } from '@prezly/sdk';
 import translations from '@prezly/themes-intl-messages';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { useIntl } from 'react-intl';
 
 import { CategoryItem } from '../CategoryItem';
 import Dropdown from '../Dropdown';
 
 import CategoryLink from './CategoryLink';
-import { useCategoryCharacterLimit } from './lib';
+import { useCategoriesWithStoriesInCurrentLocale } from './lib';
 
 import styles from './CategoriesBar.module.scss';
 
+const MORE_BUTTON_WIDTH = +styles.MORE_BUTTON_WIDTH.replace('px', '');
+
 function CategoriesBar() {
-    const categories = useCategories();
-    const currentLocale = useCurrentLocale();
+    const containerRef = useRef<HTMLDivElement>(null);
     const { formatMessage } = useIntl();
+    const categories = useCategoriesWithStoriesInCurrentLocale();
+    const container = containerRef.current;
 
-    const maxDisplayedCharacters = useCategoryCharacterLimit();
-
-    const filteredCategories = categories.filter(
-        (category) =>
-            category.stories_number > 0 && getCategoryHasTranslation(category, currentLocale),
-    );
-
-    const [visibleCategories, hiddenCategoriesCount] = useMemo(() => {
-        let characterCounter = 0;
-        let lastVisibleCategoryIndex = 0;
-
-        while (
-            characterCounter < maxDisplayedCharacters &&
-            lastVisibleCategoryIndex < filteredCategories.length
-        ) {
-            const { name } = getLocalizedCategoryData(
-                filteredCategories[lastVisibleCategoryIndex],
-                currentLocale,
-            );
-            characterCounter += name.length;
-
-            if (characterCounter < maxDisplayedCharacters || lastVisibleCategoryIndex === 0) {
-                lastVisibleCategoryIndex += 1;
-            }
+    const [visibleCategories, hiddenCategories] = useMemo<[Category[], Category[]]>(() => {
+        if (!container) {
+            return [categories, []];
         }
 
-        return [
-            filteredCategories.slice(0, lastVisibleCategoryIndex),
-            filteredCategories.slice(lastVisibleCategoryIndex).length,
-        ];
-    }, [filteredCategories, currentLocale, maxDisplayedCharacters]);
+        const { width: containerWidth } = container.getBoundingClientRect();
+        const { paddingLeft, paddingRight } = getComputedStyle(container);
+        const containerWidthWithoutPadding =
+            containerWidth - parseInt(paddingLeft) - parseInt(paddingRight);
+
+        if (!container || container.scrollWidth <= containerWidthWithoutPadding) {
+            return [categories, []];
+        }
+
+        let index = 0;
+        let width = 0;
+        const widthLimit = containerWidthWithoutPadding - MORE_BUTTON_WIDTH;
+        const nodesArray = Array.from(container.children);
+
+        for (let i = 0; i < nodesArray.length; i += 1) {
+            const { width: nodeWidth } = nodesArray[i].getBoundingClientRect();
+
+            if (nodeWidth + width > widthLimit) {
+                break;
+            }
+            width += nodeWidth;
+            index = i + 1;
+        }
+
+        return [categories.slice(0, index), categories.slice(index)];
+    }, [container, categories]);
 
     if (!visibleCategories.length) {
         return null;
     }
 
-    const hasMore = hiddenCategoriesCount > 0;
-
     return (
         <div className={styles.wrapper}>
-            <div className={styles.container}>
+            <div className={styles.container} ref={containerRef}>
                 {visibleCategories.map((category) => (
                     <CategoryLink key={category.id} category={category} />
                 ))}
-                {hasMore && (
+                {hiddenCategories.length > 0 && (
                     <Dropdown
                         label={formatMessage(translations.actions.more)}
                         buttonClassName={styles.more}
                         menuClassName={styles.dropdown}
                     >
-                        {filteredCategories.slice(-hiddenCategoriesCount).map((category) => (
+                        {hiddenCategories.map((category) => (
                             <CategoryItem category={category} key={category.id} />
                         ))}
                     </Dropdown>

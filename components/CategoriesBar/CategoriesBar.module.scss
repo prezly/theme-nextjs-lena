@@ -1,3 +1,10 @@
+$more-button-width: 100px;
+
+:export {
+    /* stylelint-disable-next-line property-no-unknown */
+    MORE_BUTTON_WIDTH: $more-button-width;
+}
+
 .wrapper {
     @include shadow-l;
 
@@ -22,6 +29,7 @@
 .link {
     font-size: $font-size-xs !important;
     color: var(--prezly-header-link-color) !important;
+    white-space: nowrap;
 
     &.active {
         border-bottom: 2px solid var(--prezly-accent-color);
@@ -40,6 +48,7 @@
 .more {
     font-size: $font-size-xs;
     color: var(--prezly-header-link-color);
+    width: $more-button-width;
 }
 
 .dropdown {

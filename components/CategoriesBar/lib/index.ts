@@ -1,1 +1,1 @@
-export { useCategoryCharacterLimit } from './useCategoryCharacterLimit';
+export * from './useCategoriesWithStoriesInCurrentLocale';
