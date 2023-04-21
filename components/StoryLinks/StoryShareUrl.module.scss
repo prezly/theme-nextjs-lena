@@ -47,10 +47,7 @@
     will-change: opacity;
 
     @include not-desktop {
-        left: -10.5rem;
-        right: 0;
-        top: 0;
-        bottom: 0;
+        inset: 0 0 0 -10.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
