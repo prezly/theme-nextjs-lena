@@ -44,11 +44,13 @@ function HitComponent({ hit }: Props) {
                     </div>
                 )}
                 <h3 className={classNames(cardStyles.title, cardStyles.titleSmaller)}>
-                    <Link href={storyLink} locale={false} passHref>
-                        <a className={classNames(cardStyles.titleLink, styles.title)}>
-                            <span className={cardStyles.linkMask} />
-                            <Highlight hit={hit} attribute="attributes.title" tagName="mark" />
-                        </a>
+                    <Link
+                        href={storyLink}
+                        locale={false}
+                        className={classNames(cardStyles.titleLink, styles.title)}
+                    >
+                        <span className={cardStyles.linkMask} />
+                        <Highlight hit={hit} attribute="attributes.title" tagName="mark" />
                     </Link>
                 </h3>
 

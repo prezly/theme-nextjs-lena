@@ -43,11 +43,9 @@ function StoryCard({ story }: Props) {
                         [styles.extendedTitle]: !subtitle || !showSubtitle,
                     })}
                 >
-                    <Link href={`/${story.slug}`} locale={false} passHref>
-                        <a className={styles.titleLink}>
-                            <span className={styles.linkMask} />
-                            {title}
-                        </a>
+                    <Link href={`/${story.slug}`} locale={false} className={styles.titleLink}>
+                        <span className={styles.linkMask} />
+                        {title}
                     </Link>
                 </h3>
 

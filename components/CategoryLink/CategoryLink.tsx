@@ -19,11 +19,14 @@ function CategoryLink({ category, className, onClick }: Props) {
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
 
     return (
-        <Link href={getCategoryUrl(category, currentLocale)} locale={getLinkLocaleSlug()} passHref>
-            {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-            <a className={classNames(styles.link, className)} onClick={onClick} onKeyDown={onClick}>
-                <span>{name}</span>
-            </a>
+        <Link
+            href={getCategoryUrl(category, currentLocale)}
+            locale={getLinkLocaleSlug()}
+            className={classNames(styles.link, className)}
+            onClick={onClick}
+            onKeyDown={onClick}
+        >
+            <span>{name}</span>
         </Link>
     );
 }
