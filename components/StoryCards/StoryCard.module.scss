@@ -60,7 +60,7 @@ $story-content-height: 270px;
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 600px) {
+    @media screen and (width >= 600px) {
         height: $story-content-height;
     }
 }
@@ -91,10 +91,7 @@ $story-content-height: 270px;
 
 .linkMask {
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
 }
 
 .subtitle {
