@@ -14,8 +14,8 @@ type Props = {
 };
 
 function HighlightedStoryCard({ story }: Props) {
-    const { categories, title } = story;
-    const { showDate } = useThemeSettings();
+    const { categories, title, subtitle } = story;
+    const { showDate, showSubtitle } = useThemeSettings();
     const { isTablet } = useDevice();
 
     return (
@@ -41,6 +41,8 @@ function HighlightedStoryCard({ story }: Props) {
                     <span className={styles.linkMask} />
                     <h2 className={styles.title}>{title}</h2>
                 </Link>
+
+                {subtitle && showSubtitle && <p className={styles.subtitle}>{subtitle}</p>}
 
                 {showDate && (
                     <span className={styles.date}>
