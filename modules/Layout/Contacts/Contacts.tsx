@@ -7,7 +7,6 @@ import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { ContactCard } from '@/components';
-import { useDevice } from '@/hooks';
 
 import { getNumberOfColumns } from './lib';
 
@@ -19,7 +18,6 @@ interface Props {
 
 function Contacts({ contacts }: Props) {
     const currentLocale = useCurrentLocale();
-    const device = useDevice();
     const contactsInCurrentLocale = useMemo(
         () =>
             contacts.filter((contact) => {
@@ -30,7 +28,6 @@ function Contacts({ contacts }: Props) {
     );
 
     const numberOfColumns = getNumberOfColumns(contactsInCurrentLocale.length);
-    const isCompactCard = numberOfColumns === 3 && !device.isTablet;
 
     if (contactsInCurrentLocale.length === 0) {
         return null;
@@ -62,7 +59,7 @@ function Contacts({ contacts }: Props) {
                                 facebook: contact.facebook ?? '',
                                 twitter: contact.twitter ?? '',
                             }}
-                            isCompact={isCompactCard}
+                            layout="card"
                             renderAvatar={({ className }) =>
                                 contact.avatar_image && (
                                     <UploadcareImage
@@ -72,6 +69,7 @@ function Contacts({ contacts }: Props) {
                                     />
                                 )
                             }
+                            showAvatar
                             uuid={contact.uuid}
                         />
                     ))}
