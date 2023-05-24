@@ -11,10 +11,8 @@
         .prezly-slate-document {
             color: inherit;
 
-            @include tablet-up {
-                > *:last-child {
-                    margin-bottom: 0 !important;
-                }
+            > *:last-child {
+                margin-bottom: 0 !important;
             }
         }
 

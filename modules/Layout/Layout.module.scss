@@ -19,5 +19,6 @@
 
     @include mobile-only {
         padding: 0;
+        padding-bottom: $spacing-7;
     }
 }
