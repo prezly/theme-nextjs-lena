@@ -43,12 +43,6 @@
         margin-bottom: $spacing-4;
     }
 
-    &.social {
-        .link {
-            color: $color-base-600;
-        }
-    }
-
     .signature &:not(.social) {
         flex-direction: column;
         gap: $spacing-1;
@@ -63,6 +57,10 @@
     align-items: center;
     gap: $spacing-1;
     overflow: hidden;
+
+    .linkGroup.social & {
+        color: $color-base-600;
+    }
 }
 
 .linkText {
