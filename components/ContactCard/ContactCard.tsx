@@ -92,7 +92,7 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
                 )}
                 <div className={classNames(styles.linkGroup, styles.social)}>
                     {website && isCard && (
-                        <a href={website.toString()} className={styles.link}>
+                        <a href={website.toString()} className={styles.link} title="Website">
                             <IconGlobe width={16} height={16} className={styles.icon} />
                         </a>
                     )}
@@ -100,6 +100,7 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
                         <a
                             href={`https://facebook.com/${facebook}`}
                             className={classNames(styles.link)}
+                            title="Facebook"
                         >
                             <IconFacebook width={16} height={16} className={styles.icon} />
                         </a>
@@ -108,6 +109,7 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
                         <a
                             href={`https://twitter.com/${twitter}`}
                             className={classNames(styles.link)}
+                            title="Twitter"
                         >
                             <IconTwitter width={16} height={16} className={styles.icon} />
                         </a>
