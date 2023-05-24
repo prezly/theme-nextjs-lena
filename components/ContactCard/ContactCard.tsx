@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { IconEmail, IconFacebook, IconGlobe, IconMobile, IconPhone, IconTwitter } from '@/icons';
 
 import type { ContactInfo } from './types';
-import { getSocialHandles } from './utils';
+import { getSocialHandles, getUrl } from './utils';
 
 import styles from './ContactCard.module.scss';
 
@@ -20,7 +20,7 @@ interface Props {
 
 function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar, uuid }: Props) {
     const { name, description, company, email, phone, mobile } = contactInfo;
-    const website = contactInfo.website ? new URL(contactInfo.website) : null;
+    const website = getUrl(contactInfo.website);
     const { facebook, twitter } = getSocialHandles(contactInfo);
     const subtitle = description && company ? `${description}, ${company}` : description;
 

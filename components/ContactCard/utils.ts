@@ -18,3 +18,11 @@ export function getSocialHandles(contactInfo: ContactInfo) {
         twitter: isValidTwitter ? socialLinks.getProfileId('twitter', twitter) : null,
     };
 }
+
+export function getUrl(url: string): URL | null {
+    try {
+        return new URL(url);
+    } catch (error) {
+        return null;
+    }
+}
