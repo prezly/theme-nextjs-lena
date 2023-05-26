@@ -13,6 +13,7 @@ export function ContactCard({ node }: Props) {
         <BaseContactCard
             className={styles.contactCard}
             contactInfo={node.contact}
+            layout={node.layout}
             renderAvatar={({ className }) =>
                 node.contact.avatar_url && (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -23,6 +24,7 @@ export function ContactCard({ node }: Props) {
                     />
                 )
             }
+            showAvatar={node.show_avatar}
             uuid={node.uuid}
         />
     );

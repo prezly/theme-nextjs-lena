@@ -7,18 +7,24 @@
 
 .content {
     display: flex;
+
+    .meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 .name {
     @include paragraph;
 
-    margin: 0 auto $spacing-half;
+    margin: 0;
 }
 
 .position {
     @include text-small;
 
-    margin: 0 auto $spacing-3;
+    margin: 0;
     color: $color-base-500;
     font-weight: $font-weight-regular;
 }
@@ -26,27 +32,35 @@
 .links {
     display: flex;
     flex-direction: column;
-    margin: $spacing-2 auto (-$spacing-2);
 }
 
 .linkGroup {
     display: flex;
+    gap: $spacing-3;
     flex-wrap: wrap;
 
     &:not(:last-child) {
-        margin-bottom: $spacing-2;
+        margin-bottom: $spacing-4;
+    }
+
+    .signature &:not(.social) {
+        flex-direction: column;
+        gap: $spacing-1;
     }
 }
 
 .link {
-    @include text-small;
+    @include text-label;
     @include link-primary;
 
     display: flex;
     align-items: center;
-    margin-right: $spacing-2;
-    margin-bottom: $spacing-2;
+    gap: $spacing-1;
     overflow: hidden;
+
+    .linkGroup.social & {
+        color: $color-base-600;
+    }
 }
 
 .linkText {
@@ -59,18 +73,27 @@
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
-    margin-right: $spacing-1;
 }
 
 .container {
-    @include border-radius-lg;
-
-    padding: $spacing-4;
-    background: $color-base-50;
-    border: 1px solid $color-borders;
     overflow: hidden;
+
+    &.card {
+        @include border-radius-lg;
+
+        padding: $spacing-4;
+        border: 1px solid $color-borders;
+    }
 }
 
 .divider {
     border: 1px solid $color-borders;
+
+    .card & {
+        margin: $spacing-4 0;
+    }
+
+    .signature & {
+        margin: $spacing-3 0;
+    }
 }
