@@ -30,17 +30,18 @@ const CookieConsentBar = dynamic(() => import('./CookieConsentBar'), {
     ssr: false,
 });
 
+const PATHS_WITH_CUSTOM_BG = ['/', '/[slug]', '/s/[slug]', '/media', '/media/album/[uuid]'];
+const STORY_PAGE_PATHS = ['/[slug]', '/s/[slug]'];
+
 function Layout({ children, description, imageUrl, title, hasError }: PropsWithChildren<Props>) {
     const [isLoadingPage, setIsLoadingPage] = useState(false);
     const newsroom = useNewsroom();
     const { contacts, notifications } = useNewsroomContext();
     const { isEnabled: isAnalyticsEnabled } = useAnalyticsContext();
-    const router = useRouter();
-    const path = router.pathname;
-    const pathsWithCustomBg = ['/', '/[slug]', '/s/[slug]', '/media', '/media/album/[uuid]'];
+    const { pathname } = useRouter();
 
     const displayedNotifications = useMemo(() => {
-        if (router.pathname === '/s/[uuid]') {
+        if (pathname === '/s/[uuid]') {
             return [
                 ...notifications,
                 {
@@ -55,7 +56,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
         }
 
         return notifications;
-    }, [notifications, router.pathname]);
+    }, [notifications, pathname]);
 
     useEffect(() => {
         function onRouteChangeStart() {
@@ -89,7 +90,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             <CookieConsentBar />
             <div
                 className={classNames(styles.layout, {
-                    [styles.customBg]: pathsWithCustomBg.includes(path),
+                    [styles.customBg]: PATHS_WITH_CUSTOM_BG.includes(pathname),
                 })}
             >
                 <Header hasError={hasError} />
@@ -104,7 +105,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
                 <Footer />
             </div>
             {/* hide scroll to top on story page */}
-            {path !== '/[slug]' && path !== '/s/[slug]' && <ScrollToTopButton />}
+            {!STORY_PAGE_PATHS.includes(pathname) && <ScrollToTopButton />}
         </>
     );
 }
