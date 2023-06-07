@@ -2,7 +2,7 @@ import type { NewsroomGallery } from '@prezly/sdk';
 import { getAssetsUrl, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
 import { useEffect, useState } from 'react';
 
-import { PageTitle, SlateRenderer, StoryLinks } from '@/components';
+import { ContentRenderer, PageTitle, StoryLinks } from '@/components';
 
 import Layout from '../Layout';
 
@@ -41,7 +41,7 @@ function Gallery({ gallery }: Props) {
                     />
                 </div>
             </PageTitle>
-            <SlateRenderer nodes={JSON.parse(content)} />
+            <ContentRenderer nodes={JSON.parse(content)} />
         </Layout>
     );
 }

@@ -31,7 +31,7 @@ import {
 
 import { Attachment, ContactCard, Gallery, Image, StoryBookmark, Variable } from './components';
 
-import styles from './SlateRenderer.module.scss';
+import styles from './ContentRenderer.module.scss';
 
 interface Props {
     nodes: Node | Node[];
