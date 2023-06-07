@@ -1,0 +1,17 @@
+.renderer {
+    :global {
+        /* stylelint-disable selector-class-pattern, max-nesting-depth */
+        .prezly-slate-heading--heading-1 {
+            @include heading-2;
+
+            @include desktop-large-up {
+                @include heading-1;
+            }
+
+            /* stylelint-disable-next-line order/order */
+            margin: $spacing-4 0;
+            color: $color-base-800;
+        }
+        /* stylelint-enable selector-class-pattern, max-nesting-depth */
+    }
+}
