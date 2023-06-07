@@ -1,6 +1,6 @@
 .renderer {
     :global {
-        /* stylelint-disable selector-class-pattern */
+        /* stylelint-disable selector-class-pattern, max-nesting-depth */
         .prezly-slate-heading--heading-1 {
             @include heading-2;
 
@@ -12,6 +12,6 @@
             margin: $spacing-4 0;
             color: $color-base-800;
         }
-        /* stylelint-enable selector-class-pattern */
+        /* stylelint-enable selector-class-pattern, max-nesting-depth */
     }
 }
