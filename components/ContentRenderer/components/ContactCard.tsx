@@ -2,7 +2,7 @@ import type { ContactNode } from '@prezly/story-content-format';
 
 import BaseContactCard from '../../ContactCard';
 
-import styles from '../SlateRenderer.module.scss';
+import styles from './ContactCard.module.scss';
 
 interface Props {
     node: ContactNode;
