@@ -1,5 +1,5 @@
 import type { NewsroomGallery } from '@prezly/sdk';
-import { getUploadcareGroupUrl } from '@prezly/theme-kit-core';
+import { getGalleryThumbnail, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
 import { useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
 import translations from '@prezly/themes-intl-messages';
 import UploadcareImage from '@prezly/uploadcare-image';
@@ -18,20 +18,23 @@ interface Props {
 }
 
 function GalleryCard({ className, gallery }: Props) {
-    const { name, images, uuid, uploadcare_group_uuid } = gallery;
+    const { name, uuid, uploadcare_group_uuid } = gallery;
+    const galleryThumbnail = getGalleryThumbnail(gallery);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
 
     return (
         <div className={classNames(styles.container, className)}>
-            <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()}>
-                <UploadcareImage
-                    className={styles.thumbnail}
-                    lazy
-                    layout="fill"
-                    objectFit="cover"
-                    imageDetails={images[0].uploadcare_image}
-                />
-            </Link>
+            {galleryThumbnail && (
+                <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()}>
+                    <UploadcareImage
+                        className={styles.thumbnail}
+                        lazy
+                        layout="fill"
+                        objectFit="cover"
+                        imageDetails={galleryThumbnail}
+                    />
+                </Link>
+            )}
             <div className={styles.content}>
                 <Link
                     href={`/media/album/${uuid}`}
