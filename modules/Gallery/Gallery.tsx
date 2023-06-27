@@ -1,5 +1,5 @@
 import type { NewsroomGallery } from '@prezly/sdk';
-import { getAssetsUrl, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
+import { getAssetsUrl, getGalleryThumbnail, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
 import { useEffect, useState } from 'react';
 
 import { ContentRenderer, PageTitle, StoryLinks } from '@/components';
@@ -15,7 +15,8 @@ interface Props {
 }
 
 function Gallery({ gallery }: Props) {
-    const { content, images, name, uploadcare_group_uuid, description } = gallery;
+    const { content, name, uploadcare_group_uuid, description } = gallery;
+    const galleryThumbnail = getGalleryThumbnail(gallery);
     const [url, setUrl] = useState('');
 
     useEffect(() => {
@@ -25,7 +26,10 @@ function Gallery({ gallery }: Props) {
     }, []);
 
     return (
-        <Layout title={name} imageUrl={getAssetsUrl(images[0].uploadcare_image.uuid)}>
+        <Layout
+            title={name}
+            imageUrl={galleryThumbnail ? getAssetsUrl(galleryThumbnail.uuid) : undefined}
+        >
             <PageTitle title={name}>
                 {description && <p className={styles.description}>{description}</p>}
                 <div className={styles.links}>
