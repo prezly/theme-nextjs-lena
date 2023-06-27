@@ -7,7 +7,7 @@ import { Router, useRouter } from 'next/router';
 import type { PropsWithChildren } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
-import { CategoriesBar, MadeWithPrezly, NotificationsBar } from '@/components';
+import { CategoriesBar, NotificationsBar } from '@/components';
 import { LoadingBar, ScrollToTopButton } from '@/ui';
 
 import Boilerplate from './Boilerplate';
@@ -106,7 +106,6 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             </div>
             {/* hide scroll to top on story page */}
             {!STORY_PAGE_PATHS.includes(pathname) && <ScrollToTopButton />}
-            {!newsroom.is_white_labeled && <MadeWithPrezly />}
         </>
     );
 }
