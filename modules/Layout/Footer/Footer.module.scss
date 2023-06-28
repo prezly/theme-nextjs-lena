@@ -37,15 +37,6 @@
     }
 }
 
-.poweredBy {
-    display: flex;
-    align-items: center;
-
-    @include mobile-only {
-        margin-top: $spacing-3;
-    }
-}
-
 .prezly {
     margin-left: $spacing-1;
     font-size: 0;
