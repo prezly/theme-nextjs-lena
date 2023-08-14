@@ -2,6 +2,7 @@ import { Component, Elements, Renderer } from '@prezly/content-renderer-react-js
 import type { Node } from '@prezly/story-content-format';
 import {
     AttachmentNode,
+    ButtonBlockNode,
     ContactNode,
     GalleryNode,
     HeadingNode,
@@ -50,6 +51,10 @@ function ContentRenderer({ nodes }: Props) {
         <div className={styles.renderer}>
             <Renderer nodes={nodes} defaultComponents>
                 <Component match={AttachmentNode.isAttachmentNode} component={Attachment} />
+                <Component
+                    match={ButtonBlockNode.isButtonBlockNode}
+                    component={Elements.ButtonBlock}
+                />
                 <Component match={ContactNode.isContactNode} component={ContactCard} />
                 <Component match={GalleryNode.isGalleryNode} component={Gallery} />
                 {/* Title and Subtitle heading rules must be defined above the general Heading */}
