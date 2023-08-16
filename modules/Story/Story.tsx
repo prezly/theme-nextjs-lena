@@ -1,4 +1,3 @@
-import { useAnalyticsContext } from '@prezly/analytics-nextjs';
 import type { ExtendedStory } from '@prezly/sdk';
 import { isEmbargoStory } from '@prezly/theme-kit-core';
 import { StorySeo } from '@prezly/theme-kit-nextjs';
@@ -22,10 +21,11 @@ type Props = {
     story: ExtendedStory;
 };
 
+const noIndex = process.env.VERCEL === '1';
+
 function Story({ story }: Props) {
     const { showDate } = useThemeSettings();
     const { isTablet } = useDevice();
-    const { isEnabled: isAnalyticsEnabled } = useAnalyticsContext();
 
     if (!story) {
         return null;
@@ -41,7 +41,7 @@ function Story({ story }: Props) {
 
     return (
         <Layout>
-            <StorySeo story={story} noindex={!isAnalyticsEnabled} />
+            <StorySeo story={story} noindex={noIndex} />
             <article className={styles.story}>
                 <div
                     className={classNames(styles.container, {
