@@ -7,7 +7,7 @@ import { CategoryItem } from '../CategoryItem';
 import Dropdown from '../Dropdown';
 
 import CategoryLink from './CategoryLink';
-import { useCategoriesWithStoriesInCurrentLocale } from './lib';
+import { useCategoriesWithStoriesInCurrentLocale, useRect } from './lib';
 
 import styles from './CategoriesBar.module.scss';
 
@@ -16,6 +16,7 @@ const MORE_BUTTON_WIDTH = +styles.MORE_BUTTON_WIDTH.replace('px', '');
 function CategoriesBar() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { formatMessage } = useIntl();
+    const { width: containerWidth } = useRect(containerRef);
     const categories = useCategoriesWithStoriesInCurrentLocale();
     const container = containerRef.current;
 
@@ -24,7 +25,6 @@ function CategoriesBar() {
             return [categories, []];
         }
 
-        const { width: containerWidth } = container.getBoundingClientRect();
         const { paddingLeft, paddingRight } = getComputedStyle(container);
         const containerWidthWithoutPadding =
             containerWidth - parseInt(paddingLeft) - parseInt(paddingRight);
@@ -49,7 +49,7 @@ function CategoriesBar() {
         }
 
         return [categories.slice(0, index), categories.slice(index)];
-    }, [container, categories]);
+    }, [categories, container, containerWidth]);
 
     if (!visibleCategories.length) {
         return null;
