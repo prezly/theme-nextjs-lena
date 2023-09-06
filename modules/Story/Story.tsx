@@ -1,4 +1,5 @@
 import type { ExtendedStory } from '@prezly/sdk';
+import { Alignment } from '@prezly/story-content-format';
 import { isEmbargoStory } from '@prezly/theme-kit-core';
 import { StorySeo } from '@prezly/theme-kit-nextjs';
 import classNames from 'classnames';
@@ -6,6 +7,7 @@ import dynamic from 'next/dynamic';
 
 import { StoryLinks, StoryPublicationDate } from '@/components';
 import { useDevice, useThemeSettings } from '@/hooks';
+import { getHeaderAlignment } from '@/utils';
 
 import Layout from '../Layout';
 
@@ -37,6 +39,8 @@ function Story({ story }: Props) {
     const hasCategories = categories.length > 0;
     const nodes = JSON.parse(story.content);
 
+    const headerAlignment = getHeaderAlignment(nodes);
+
     const url = links.short || links.newsroom_view;
 
     return (
@@ -60,7 +64,13 @@ function Story({ story }: Props) {
                     )}
                     <HeaderRenderer nodes={nodes} />
                     {showDate && (
-                        <p className={styles.date}>
+                        <p
+                            className={classNames(styles.date, {
+                                [styles.left]: headerAlignment === Alignment.LEFT,
+                                [styles.right]: headerAlignment === Alignment.RIGHT,
+                                [styles.center]: headerAlignment === Alignment.CENTER,
+                            })}
+                        >
                             <StoryPublicationDate story={story} />
                         </p>
                     )}

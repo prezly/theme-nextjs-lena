@@ -56,4 +56,16 @@ $story-container-max-width: 926px;
     margin: $spacing-4 0;
     color: $color-base-400;
     text-transform: uppercase;
+
+    &.left {
+        text-align: left;
+    }
+
+    &.right {
+        text-align: right;
+    }
+
+    &.center {
+        text-align: center;
+    }
 }
