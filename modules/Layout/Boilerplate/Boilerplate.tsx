@@ -52,7 +52,7 @@ function Boilerplate() {
                             )}
                         </div>
                     )}
-                    {(hasContactInformation || hasAnySocialMedia) && (
+                    {(hasContactInformation || hasSocialMedia) && (
                         <div className={styles.contacts}>
                             <h2 className={styles.heading}>
                                 <FormattedMessage {...translations.boilerplate.contact} />
