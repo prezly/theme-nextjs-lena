@@ -22,7 +22,7 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
     const { name, description, company, email, phone, mobile } = contactInfo;
     const website = getUrl(contactInfo.website);
     const { facebook, twitter } = getSocialHandles(contactInfo);
-    const subtitle = description && company ? `${description}, ${company}` : description;
+    const subtitle = description && company ? `${description}, ${company}` : description || company;
 
     const isCard = layout === 'card';
     const isSignature = layout === 'signature';
