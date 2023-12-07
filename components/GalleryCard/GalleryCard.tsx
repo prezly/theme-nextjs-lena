@@ -1,7 +1,7 @@
 import type { NewsroomGallery } from '@prezly/sdk';
 import { getGalleryThumbnail, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
+import { translations } from '@prezly/theme-kit-intl';
 import { useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
-import translations from '@prezly/themes-intl-messages';
 import UploadcareImage from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import Link from 'next/link';
