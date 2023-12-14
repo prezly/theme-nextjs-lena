@@ -33,7 +33,7 @@ function Story({ story }: Props) {
         return null;
     }
 
-    const { categories, links } = story;
+    const { categories, links, visibility } = story;
     const headerImage = story.header_image ? JSON.parse(story.header_image) : null;
     const hasHeaderImage = Boolean(headerImage);
     const hasCategories = categories.length > 0;
@@ -74,11 +74,11 @@ function Story({ story }: Props) {
                             <StoryPublicationDate story={story} />
                         </p>
                     )}
-                    {isTablet && url && <StoryLinks url={url} />}
+                    {isTablet && url && visibility === 'public' && <StoryLinks url={url} />}
                     <ContentRenderer nodes={nodes} />
                 </div>
             </article>
-            {!isTablet && url && <StoryLinks url={url} />}
+            {!isTablet && url && visibility === 'public' && <StoryLinks url={url} />}
         </Layout>
     );
 }
