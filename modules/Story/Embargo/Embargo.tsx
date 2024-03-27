@@ -34,13 +34,14 @@ function Embargo({ story }: Props) {
                                 minute="2-digit"
                                 timeZone={timezone}
                             />{' '}
-                            UTC
+                            (UTC
                             {date
                                 .toLocaleString(Culture.isoCode(story.culture.code), {
                                     timeZoneName: 'longOffset',
                                     timeZone: timezone,
                                 })
                                 .replace(/^.*? GMT/, '')}
+                            )
                         </>
                     ),
                 }}
