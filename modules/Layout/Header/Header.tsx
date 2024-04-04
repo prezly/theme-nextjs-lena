@@ -1,4 +1,3 @@
-import { ACTIONS, useAnalytics } from '@prezly/analytics-nextjs';
 import { translations } from '@prezly/theme-kit-intl';
 import {
     useAlgoliaSettings,
@@ -31,7 +30,6 @@ interface Props {
 }
 
 function Header({ hasError }: Props) {
-    const { track } = useAnalytics();
     const { newsroom_logo, display_name, public_galleries_number } = useNewsroom();
     const categories = useCategories();
     const { name } = useCompanyInformation();
@@ -77,7 +75,6 @@ function Header({ hasError }: Props) {
 
         // Adding a timeout to update the state only after the scrolling is triggered.
         setTimeout(() => setIsSearchWidgetShown((o) => !o));
-        track(ACTIONS.SEARCH);
     }
     function closeSearchWidget() {
         return setIsSearchWidgetShown(false);
