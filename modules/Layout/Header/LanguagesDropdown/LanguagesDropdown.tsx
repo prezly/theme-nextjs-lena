@@ -1,3 +1,4 @@
+import { ACTIONS, useAnalytics } from '@prezly/analytics-nextjs';
 import { getLanguageDisplayName, getUsedLanguages, LocaleObject } from '@prezly/theme-kit-core';
 import {
     useCurrentLocale,
@@ -21,6 +22,7 @@ type Props = {
 };
 
 function LanguagesDropdown({ buttonClassName, navigationItemClassName, hasError }: Props) {
+    const { track } = useAnalytics();
     const currentLocale = useCurrentLocale();
     const languages = useLanguages();
     const getTranslationUrl = useGetTranslationUrl();
@@ -72,6 +74,9 @@ function LanguagesDropdown({ buttonClassName, navigationItemClassName, hasError 
                                     : getLinkLocaleSlug(locale)
                             }
                             forceRefresh
+                            onClick={() =>
+                                track(ACTIONS.SWITCH_LANGUAGE, { code: locale.toHyphenCode() })
+                            }
                             withMobileDisplay
                         >
                             <span className={styles.title}>
