@@ -1,3 +1,4 @@
+import { DOWNLOAD, useAnalytics } from '@prezly/analytics-nextjs';
 import type { NewsroomGallery } from '@prezly/sdk';
 import { getGalleryThumbnail, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
 import { translations } from '@prezly/theme-kit-intl';
@@ -18,9 +19,14 @@ interface Props {
 }
 
 function GalleryCard({ className, gallery }: Props) {
+    const { track } = useAnalytics();
     const { name, uuid, uploadcare_group_uuid } = gallery;
     const galleryThumbnail = getGalleryThumbnail(gallery);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
+
+    function handleDownloadClick() {
+        track(DOWNLOAD.MEDIA_GALLERY);
+    }
 
     return (
         <div className={classNames(styles.container, className)}>
@@ -50,6 +56,7 @@ function GalleryCard({ className, gallery }: Props) {
                         className={styles.button}
                         icon={IconArrowDown}
                         iconPlacement="right"
+                        onClick={handleDownloadClick}
                     >
                         <FormattedMessage {...translations.actions.download} />
                     </ButtonLink>
