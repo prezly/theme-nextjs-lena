@@ -4,6 +4,7 @@ import {
     AttachmentNode,
     ButtonBlockNode,
     ContactNode,
+    EmbedNode,
     GalleryNode,
     HeadingNode,
     HtmlNode,
@@ -16,6 +17,7 @@ import {
     QuoteNode,
     StoryBookmarkNode,
     VariableNode,
+    VideoNode,
 } from '@prezly/story-content-format';
 import { useEffect } from 'react';
 
@@ -30,7 +32,16 @@ import {
     Quote,
 } from '@/components/RichText';
 
-import { Attachment, ContactCard, Gallery, Image, StoryBookmark, Variable } from './components';
+import {
+    Attachment,
+    ContactCard,
+    Embed,
+    Gallery,
+    Image,
+    StoryBookmark,
+    Variable,
+    Video,
+} from './components';
 
 import styles from './ContentRenderer.module.scss';
 
@@ -56,6 +67,7 @@ function ContentRenderer({ nodes }: Props) {
                     component={Elements.ButtonBlock}
                 />
                 <Component match={ContactNode.isContactNode} component={ContactCard} />
+                <Component match={EmbedNode.isEmbedNode} component={Embed} />
                 <Component match={GalleryNode.isGalleryNode} component={Gallery} />
                 {/* Title and Subtitle heading rules must be defined above the general Heading */}
                 <Component match={HeadingNode.isTitleHeadingNode} component={Elements.Ignore} />
@@ -74,6 +86,7 @@ function ContentRenderer({ nodes }: Props) {
                     component={StoryBookmark}
                 />
                 <Component match={VariableNode.isVariableNode} component={Variable} />
+                <Component match={VideoNode.isVideoNode} component={Video} />
             </Renderer>
         </div>
     );
