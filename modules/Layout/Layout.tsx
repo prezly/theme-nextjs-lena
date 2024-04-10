@@ -1,4 +1,4 @@
-import { Analytics } from '@prezly/analytics-nextjs';
+import { Analytics, useAnalytics } from '@prezly/analytics-nextjs';
 import { Notification, Story } from '@prezly/sdk';
 import {
     PageSeo,
@@ -41,6 +41,7 @@ const noIndex = process.env.VERCEL === '1';
 
 function Layout({ children, description, imageUrl, title, hasError }: PropsWithChildren<Props>) {
     const [isLoadingPage, setIsLoadingPage] = useState(false);
+    const { page } = useAnalytics();
     const newsroom = useNewsroom();
     const story = useCurrentStory();
     const { contacts, notifications } = useNewsroomContext();
@@ -69,6 +70,10 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
 
         return notifications;
     }, [notifications, isPreview]);
+
+    useEffect(() => {
+        page();
+    }, [page, pathname]);
 
     useEffect(() => {
         function onRouteChangeStart() {
