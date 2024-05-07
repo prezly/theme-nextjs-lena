@@ -1,23 +1,33 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 export type CardSize = 'default' | 'big' | 'tiny';
 
-export function getCardImageSizes(desiredSize: CardSize) {
-    if (desiredSize === 'tiny') {
-        return {
-            default: 60,
-        };
+export function getCardImageSizes(cardSize: CardSize) {
+    if (cardSize === 'tiny') {
+        return '60px';
     }
 
-    return {
-        mobile: 420,
-        tablet: desiredSize === 'big' ? 800 : 350,
-        desktop: desiredSize === 'big' ? 1120 : 350,
-        default: 1120,
-    };
+    return [
+        '(max-width: 430px) 420px',
+        // '(max-width: 767px) 730px',
+        `(max-width: 1023px) ${getTabletImageSize(cardSize)}`,
+        getDesktopImageSize(cardSize),
+    ].join(', ');
 }
 
-export function getStoryImageSizes() {
-    return {
-        mobile: 420,
-        default: 720,
-    };
+function getTabletImageSize(cardSize: CardSize) {
+    switch (cardSize) {
+        case 'big':
+            return '800px';
+        default:
+            return '350px';
+    }
+}
+
+function getDesktopImageSize(cardSize: CardSize) {
+    switch (cardSize) {
+        case 'big':
+            return '1120px';
+        default:
+            return '350px';
+    }
 }
