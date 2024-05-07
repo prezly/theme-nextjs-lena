@@ -46,8 +46,8 @@ function StoryImage({ story, size, className, placeholderClassName }: Props) {
                     alt="No image"
                     src={logoImage.cdnUrl}
                     className={classNames(styles.placeholderLogo, className)}
-                    width={256}
-                    height={64}
+                    width={320}
+                    height={48}
                 />
             )}
             {!logo && name}
