@@ -1,6 +1,5 @@
 import type { AlgoliaStory } from '@prezly/theme-kit-core';
 import { useNewsroom } from '@prezly/theme-kit-nextjs';
-import Image from '@prezly/uploadcare-image';
 import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
 
