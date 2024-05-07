@@ -3,13 +3,14 @@ import type { NewsroomGallery } from '@prezly/sdk';
 import { getGalleryThumbnail, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
 import { translations } from '@prezly/theme-kit-intl';
 import { useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
-import UploadcareImage from '@prezly/uploadcare-image';
+import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 
 import { IconArrowDown } from '@/icons';
 import { ButtonLink } from '@/ui';
+import { getUploadcareFile } from '@/utils';
 
 import styles from './GalleryCard.module.scss';
 
@@ -23,6 +24,7 @@ function GalleryCard({ className, gallery }: Props) {
     const { name, uuid, uploadcare_group_uuid } = gallery;
     const galleryThumbnail = getGalleryThumbnail(gallery);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
+    const thumbnailImage = getUploadcareFile(galleryThumbnail);
 
     function handleDownloadClick() {
         track(DOWNLOAD.MEDIA_GALLERY);
@@ -30,14 +32,18 @@ function GalleryCard({ className, gallery }: Props) {
 
     return (
         <div className={classNames(styles.container, className)}>
-            {galleryThumbnail && (
-                <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()}>
+            {thumbnailImage && (
+                <Link
+                    className={styles.thumbnailWrapper}
+                    href={`/media/album/${uuid}`}
+                    locale={getLinkLocaleSlug()}
+                >
                     <UploadcareImage
+                        alt={name}
                         className={styles.thumbnail}
-                        lazy
-                        layout="fill"
-                        objectFit="cover"
-                        imageDetails={galleryThumbnail}
+                        src={thumbnailImage.cdnUrl}
+                        width={540}
+                        height={260}
                     />
                 </Link>
             )}

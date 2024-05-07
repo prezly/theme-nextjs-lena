@@ -2,6 +2,7 @@ export * from './capitaliseFirstLetter';
 export * from './getHeaderAlignment';
 export * from './getImageSizes';
 export * from './getTypedKeys';
+export * from './getUploadcareFile';
 export * from './isTrackingEnabled';
 export * from './lang';
 export * from './makeComposableComponent';

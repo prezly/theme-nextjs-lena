@@ -6,7 +6,7 @@ import {
     useGetLinkLocaleSlug,
     useNewsroom,
 } from '@prezly/theme-kit-nextjs';
-import Image from '@prezly/uploadcare-image';
+import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -17,6 +17,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useDevice } from '@/hooks';
 import { IconClose, IconImage, IconMenu, IconSearch } from '@/icons';
 import { Button, ButtonLink } from '@/ui';
+import { getUploadcareFile } from '@/utils';
 
 import CategoriesDropdown from './CategoriesDropdown';
 import LanguagesDropdown from './LanguagesDropdown';
@@ -90,6 +91,7 @@ function Header({ hasError }: Props) {
     }, [isMenuOpen]);
 
     const newsroomName = name || display_name;
+    const newsroomLogo = getUploadcareFile(newsroom_logo);
 
     return (
         <header
@@ -114,13 +116,13 @@ function Header({ hasError }: Props) {
                         >
                             {newsroomName}
                         </h1>
-                        {newsroom_logo && (
-                            <Image
-                                layout="fill"
-                                objectFit="contain"
-                                imageDetails={newsroom_logo}
-                                alt={newsroomName}
+                        {newsroomLogo && (
+                            <UploadcareImage
+                                src={newsroomLogo.cdnUrl}
+                                alt="" // This is a presentation image, the link has text inside <h1>, no need to have it twice. See [DEV-12311].
                                 className={styles.logo}
+                                width={320}
+                                height={48}
                             />
                         )}
                     </Link>

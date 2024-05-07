@@ -3,7 +3,12 @@
     height: 100%;
 }
 
+.image {
+    object-fit: cover;
+}
+
 .imageContainer {
+    position: relative;
     display: block;
 }
 
@@ -23,6 +28,7 @@
 }
 
 .placeholderLogo {
+    object-fit: contain;
     max-width: 16rem;
     max-height: 4rem;
 }

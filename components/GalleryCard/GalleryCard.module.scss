@@ -5,11 +5,15 @@
     border: 1px solid $color-borders;
 }
 
+.thumbnailWrapper {
+    position: relative;
+}
+
 .thumbnail {
-    height: 260px !important;
     margin: 0 auto;
     border-top-left-radius: $border-radius-lg;
     border-top-right-radius: $border-radius-lg;
+    object-fit: cover;
 }
 
 .title {
