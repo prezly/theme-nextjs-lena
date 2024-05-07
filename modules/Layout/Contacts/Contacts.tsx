@@ -1,12 +1,13 @@
 import type { NewsroomContact } from '@prezly/sdk';
 import { translations } from '@prezly/theme-kit-intl';
 import { useCurrentLocale } from '@prezly/theme-kit-nextjs';
-import { UploadcareImage } from '@prezly/uploadcare-image';
+import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { ContactCard } from '@/components';
+import { getUploadcareFile } from '@/utils';
 
 import { getNumberOfColumns } from './lib';
 
@@ -60,15 +61,21 @@ function Contacts({ contacts }: Props) {
                                 twitter: contact.twitter ?? '',
                             }}
                             layout="card"
-                            renderAvatar={({ className }) =>
-                                contact.avatar_image && (
-                                    <UploadcareImage
-                                        layout="fixed"
-                                        imageDetails={contact.avatar_image}
-                                        className={className}
-                                    />
-                                )
-                            }
+                            renderAvatar={({ className }) => {
+                                const image = getUploadcareFile(contact.avatar_image);
+
+                                return (
+                                    image && (
+                                        <UploadcareImage
+                                            className={className}
+                                            src={image.cdnUrl}
+                                            width={64}
+                                            height={64}
+                                            alt={contact.name}
+                                        />
+                                    )
+                                );
+                            }}
                             showAvatar
                             uuid={contact.uuid}
                         />
