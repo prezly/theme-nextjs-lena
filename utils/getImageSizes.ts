@@ -3,7 +3,7 @@ export type CardSize = 'default' | 'big' | 'tiny';
 
 export function getCardImageSizes(cardSize: CardSize) {
     if (cardSize === 'tiny') {
-        return '60px';
+        return '100px';
     }
 
     return [
