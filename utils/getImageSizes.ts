@@ -8,7 +8,6 @@ export function getCardImageSizes(cardSize: CardSize) {
 
     return [
         '(max-width: 430px) 420px',
-        // '(max-width: 767px) 730px',
         `(max-width: 1023px) ${getTabletImageSize(cardSize)}`,
         getDesktopImageSize(cardSize),
     ].join(', ');
