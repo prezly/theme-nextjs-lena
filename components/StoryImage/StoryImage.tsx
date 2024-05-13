@@ -3,7 +3,7 @@ import { useNewsroom } from '@prezly/theme-kit-nextjs';
 import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
 
-import { type CardSize, getCardImageSizes, getUploadcareFile } from '@/utils';
+import { type CardSize, getCardImageSizes, getUploadcareImage } from '@/utils';
 import type { StoryWithImage } from 'types';
 
 import { getStoryThumbnail } from './lib';
@@ -20,7 +20,7 @@ type Props = {
 function StoryImage({ story, size, className, placeholderClassName }: Props) {
     const { name, newsroom_logo: logo } = useNewsroom();
     const image = getStoryThumbnail(story);
-    const uploadcareImage = getUploadcareFile(image);
+    const uploadcareImage = getUploadcareImage(image);
 
     if (uploadcareImage) {
         return (
@@ -36,7 +36,7 @@ function StoryImage({ story, size, className, placeholderClassName }: Props) {
         );
     }
 
-    const logoImage = getUploadcareFile(logo);
+    const logoImage = getUploadcareImage(logo);
 
     return (
         <span className={classNames(styles.placeholder, placeholderClassName)}>
