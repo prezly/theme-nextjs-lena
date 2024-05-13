@@ -17,7 +17,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useDevice } from '@/hooks';
 import { IconClose, IconImage, IconMenu, IconSearch } from '@/icons';
 import { Button, ButtonLink } from '@/ui';
-import { getUploadcareFile } from '@/utils';
+import { getUploadcareImage } from '@/utils';
 
 import CategoriesDropdown from './CategoriesDropdown';
 import LanguagesDropdown from './LanguagesDropdown';
@@ -91,7 +91,7 @@ function Header({ hasError }: Props) {
     }, [isMenuOpen]);
 
     const newsroomName = name || display_name;
-    const newsroomLogo = getUploadcareFile(newsroom_logo);
+    const newsroomLogo = getUploadcareImage(newsroom_logo);
 
     return (
         <header

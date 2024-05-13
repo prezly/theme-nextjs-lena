@@ -7,7 +7,7 @@ import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { ContactCard } from '@/components';
-import { getUploadcareFile } from '@/utils';
+import { getUploadcareImage } from '@/utils';
 
 import { getNumberOfColumns } from './lib';
 
@@ -62,7 +62,7 @@ function Contacts({ contacts }: Props) {
                             }}
                             layout="card"
                             renderAvatar={({ className }) => {
-                                const image = getUploadcareFile(contact.avatar_image);
+                                const image = getUploadcareImage(contact.avatar_image);
 
                                 return (
                                     image && (
