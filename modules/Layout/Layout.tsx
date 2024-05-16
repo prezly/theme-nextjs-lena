@@ -13,6 +13,7 @@ import type { PropsWithChildren } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
 import { CategoriesBar, NotificationsBar } from '@/components';
+import { PreviewPageMask } from '@/components/PreviewPageMask';
 import { LoadingBar, ScrollToTopButton } from '@/ui';
 
 import Boilerplate from './Boilerplate';
@@ -123,6 +124,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             </div>
             {/* hide scroll to top on story page */}
             {!STORY_PAGE_PATHS.includes(pathname) && <ScrollToTopButton />}
+            <PreviewPageMask />
         </>
     );
 }
