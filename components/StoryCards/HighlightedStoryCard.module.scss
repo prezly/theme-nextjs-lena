@@ -53,7 +53,7 @@
     @include heading-2;
     @include ensure-max-text-height(4, $line-height-m);
 
-    @include desktop-large-up {
+    @include desktop-up {
         @include heading-1-xxl;
         @include ensure-max-text-height(2, $line-height-xl);
     }

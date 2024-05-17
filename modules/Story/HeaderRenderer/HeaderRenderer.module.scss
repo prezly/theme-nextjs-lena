@@ -4,7 +4,7 @@
         .prezly-slate-heading--heading-1 {
             @include heading-2;
 
-            @include desktop-large-up {
+            @include desktop-up {
                 @include heading-1;
             }
 
