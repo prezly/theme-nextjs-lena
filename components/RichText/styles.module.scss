@@ -23,7 +23,7 @@
 .htmlContent h1 {
     @include heading-2;
 
-    @include desktop-large-up {
+    @include desktop-up {
         @include heading-1;
     }
 
@@ -39,7 +39,7 @@
 .htmlContent h2 {
     @include heading-3;
 
-    @include desktop-large-up {
+    @include desktop-up {
         @include heading-2;
     }
 
