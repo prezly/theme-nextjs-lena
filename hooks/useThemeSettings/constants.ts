@@ -8,6 +8,7 @@ export const DEFAULT_THEME_SETTINGS: ThemeSettingsApiResponse = {
     font: Font.MULISH,
     header_background_color: '#ffffff',
     header_link_color: '#475569',
+    logo_size: 'medium',
     show_date: true,
     show_subtitle: true,
 };
