@@ -10,7 +10,7 @@ export function useMaskParam(): boolean {
 
     try {
         return Boolean(JSON.parse(mask));
-    } catch (_) {
+    } catch {
         return false;
     }
 }
