@@ -64,13 +64,17 @@
     p {
         font-size: $font-size-xs;
         margin: $spacing-half;
+        white-space: pre;
     }
-}
 
-.icon {
-    height: 14px;
-    width: 14px;
-    margin-right: $spacing-1;
+    .icon {
+        $size: 14px;
+
+        align-self: flex-start;
+        height: $size;
+        width: $size;
+        margin: 0.675rem $spacing-1 0 0;
+    }
 }
 
 .link,

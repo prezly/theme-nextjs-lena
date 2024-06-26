@@ -1,5 +1,5 @@
+import { translations } from '@prezly/theme-kit-intl';
 import { useCompanyInformation, useNewsroom } from '@prezly/theme-kit-nextjs';
-import translations from '@prezly/themes-intl-messages';
 import { FormattedMessage } from 'react-intl';
 
 import { SocialMedia } from '@/components';
@@ -52,7 +52,7 @@ function Boilerplate() {
                             )}
                         </div>
                     )}
-                    {(hasContactInformation || hasAnySocialMedia) && (
+                    {(hasContactInformation || hasSocialMedia) && (
                         <div className={styles.contacts}>
                             <h2 className={styles.heading}>
                                 <FormattedMessage {...translations.boilerplate.contact} />

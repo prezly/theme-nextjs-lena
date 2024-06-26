@@ -1,14 +1,16 @@
+import { DOWNLOAD, useAnalytics } from '@prezly/analytics-nextjs';
 import type { NewsroomGallery } from '@prezly/sdk';
 import { getGalleryThumbnail, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
+import { translations } from '@prezly/theme-kit-intl';
 import { useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
-import translations from '@prezly/themes-intl-messages';
-import UploadcareImage from '@prezly/uploadcare-image';
+import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 
 import { IconArrowDown } from '@/icons';
 import { ButtonLink } from '@/ui';
+import { getUploadcareImage } from '@/utils';
 
 import styles from './GalleryCard.module.scss';
 
@@ -18,20 +20,30 @@ interface Props {
 }
 
 function GalleryCard({ className, gallery }: Props) {
+    const { track } = useAnalytics();
     const { name, uuid, uploadcare_group_uuid } = gallery;
     const galleryThumbnail = getGalleryThumbnail(gallery);
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
+    const thumbnailImage = getUploadcareImage(galleryThumbnail);
+
+    function handleDownloadClick() {
+        track(DOWNLOAD.MEDIA_GALLERY);
+    }
 
     return (
         <div className={classNames(styles.container, className)}>
-            {galleryThumbnail && (
-                <Link href={`/media/album/${uuid}`} locale={getLinkLocaleSlug()}>
+            {thumbnailImage && (
+                <Link
+                    className={styles.thumbnailWrapper}
+                    href={`/media/album/${uuid}`}
+                    locale={getLinkLocaleSlug()}
+                >
                     <UploadcareImage
+                        alt={name}
                         className={styles.thumbnail}
-                        lazy
-                        layout="fill"
-                        objectFit="cover"
-                        imageDetails={galleryThumbnail}
+                        src={thumbnailImage.cdnUrl}
+                        width={540}
+                        height={260}
                     />
                 </Link>
             )}
@@ -50,6 +62,7 @@ function GalleryCard({ className, gallery }: Props) {
                         className={styles.button}
                         icon={IconArrowDown}
                         iconPlacement="right"
+                        onClick={handleDownloadClick}
                     >
                         <FormattedMessage {...translations.actions.download} />
                     </ButtonLink>

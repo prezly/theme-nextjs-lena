@@ -1,15 +1,21 @@
 import { CookieConsentBar as DefaultCookieConsentBar } from '@prezly/analytics-nextjs';
+import { translations } from '@prezly/theme-kit-intl';
 import { useCompanyInformation } from '@prezly/theme-kit-nextjs';
-import translations from '@prezly/themes-intl-messages';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
+import { useMaskParam } from '@/hooks';
 import { Button } from '@/ui';
 
 import styles from './CookieConsentBar.module.scss';
 
 function CookieConsentBar() {
     const { cookie_statement: cookieStatement } = useCompanyInformation();
+    const isHidden = useMaskParam();
+
+    if (isHidden) {
+        return null;
+    }
 
     return (
         <DefaultCookieConsentBar>

@@ -1,7 +1,8 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { ACTIONS, useAnalytics } from '@prezly/analytics-nextjs';
 import { getPrivacyPortalUrl } from '@prezly/theme-kit-core';
+import { translations } from '@prezly/theme-kit-intl';
 import { useCurrentLocale, useNewsroom } from '@prezly/theme-kit-nextjs';
-import translations from '@prezly/themes-intl-messages';
 import type { FormEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -18,6 +19,7 @@ const NEXT_PUBLIC_HCAPTCHA_SITEKEY = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY;
 function SubscribeForm() {
     const newsroom = useNewsroom();
     const currentLocale = useCurrentLocale();
+    const { track } = useAnalytics();
     const { formatMessage } = useIntl();
 
     const captchaRef = useRef<HCaptcha>(null);
@@ -55,6 +57,7 @@ function SubscribeForm() {
                 return;
             }
 
+            track(ACTIONS.SUBSCRIBE_FORM_SUBMIT);
             window.location.href = getPrivacyPortalUrl(newsroom, currentLocale, { email });
         } catch (error) {
             if (error instanceof Error) {

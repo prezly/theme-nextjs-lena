@@ -1,4 +1,4 @@
-import { AnalyticsContextProvider } from '@prezly/analytics-nextjs';
+import { AnalyticsProvider } from '@prezly/analytics-nextjs';
 import { DEFAULT_LOCALE, LocaleObject } from '@prezly/theme-kit-core';
 import type { PageProps } from '@prezly/theme-kit-nextjs';
 import { NewsroomContextProvider } from '@prezly/theme-kit-nextjs';
@@ -17,10 +17,11 @@ function App({ Component, pageProps }: AppProps) {
     const { newsroomContextProps, translations, isTrackingEnabled, ...customPageProps } =
         pageProps as PageProps & BasePageProps;
 
-    const { localeCode, newsroom, currentStory } = newsroomContextProps || {
+    const { localeCode, newsroom, currentGallery, currentStory } = newsroomContextProps || {
         localeCode: DEFAULT_LOCALE,
     };
     const locale = useMemo(() => LocaleObject.fromAnyCode(localeCode), [localeCode]);
+    const plausibleDomains = [newsroom.plausible_site_id, 'rollup.customers.prezly.com'].join(',');
 
     // `newsroomContextProps` can be undefined, if there was error when fetching the newsroom props.
     // This can happen due to connection issues, or incorrect credentials in your .env file.
@@ -38,13 +39,15 @@ function App({ Component, pageProps }: AppProps) {
                 defaultLocale={DEFAULT_LOCALE}
                 messages={translations}
             >
-                <AnalyticsContextProvider
+                <AnalyticsProvider
+                    gallery={currentGallery}
                     isEnabled={isTrackingEnabled}
                     newsroom={newsroom}
+                    plausibleDomain={plausibleDomains}
                     story={currentStory}
                 >
                     <Component {...customPageProps} />
-                </AnalyticsContextProvider>
+                </AnalyticsProvider>
             </IntlProvider>
         </NewsroomContextProvider>
     );

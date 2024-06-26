@@ -1,4 +1,4 @@
-import { Analytics } from '@prezly/analytics-nextjs';
+import { Tracking, useAnalytics } from '@prezly/analytics-nextjs';
 import { Notification, Story } from '@prezly/sdk';
 import {
     PageSeo,
@@ -13,6 +13,8 @@ import type { PropsWithChildren } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
 import { CategoriesBar, NotificationsBar } from '@/components';
+import { PreviewPageMask } from '@/components/PreviewPageMask';
+import { WindowScrollListener } from '@/components/WindowScrollListener';
 import { LoadingBar, ScrollToTopButton } from '@/ui';
 
 import Boilerplate from './Boilerplate';
@@ -41,6 +43,7 @@ const noIndex = process.env.VERCEL === '1';
 
 function Layout({ children, description, imageUrl, title, hasError }: PropsWithChildren<Props>) {
     const [isLoadingPage, setIsLoadingPage] = useState(false);
+    const { page } = useAnalytics();
     const newsroom = useNewsroom();
     const story = useCurrentStory();
     const { contacts, notifications } = useNewsroomContext();
@@ -71,6 +74,10 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
     }, [notifications, isPreview]);
 
     useEffect(() => {
+        page();
+    }, [page, pathname]);
+
+    useEffect(() => {
         function onRouteChangeStart() {
             setIsLoadingPage(true);
         }
@@ -89,7 +96,7 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
 
     return (
         <>
-            <Analytics />
+            <Tracking />
             <Branding newsroom={newsroom} />
             <PageSeo
                 title={title}
@@ -118,6 +125,8 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
             </div>
             {/* hide scroll to top on story page */}
             {!STORY_PAGE_PATHS.includes(pathname) && <ScrollToTopButton />}
+            <PreviewPageMask />
+            <WindowScrollListener />
         </>
     );
 }

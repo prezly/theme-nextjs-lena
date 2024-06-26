@@ -1,4 +1,5 @@
-import translations from '@prezly/themes-intl-messages';
+import { Culture } from '@prezly/sdk';
+import { translations } from '@prezly/theme-kit-intl';
 import { FormattedDate, FormattedMessage, FormattedTime } from 'react-intl';
 
 import type { EmbargoStory } from '../types';
@@ -11,6 +12,13 @@ type Props = {
 
 function Embargo({ story }: Props) {
     const { timezone } = story.newsroom;
+    const date = new Date(story.published_at);
+    const utcOffset = date
+        .toLocaleString(Culture.isoCode(story.culture.code), {
+            timeZoneName: 'longOffset',
+            timeZone: timezone,
+        })
+        .replace(/^.*? GMT/, '');
 
     return (
         <div className={styles.embargo}>
@@ -20,19 +28,19 @@ function Embargo({ story }: Props) {
                     date: (
                         <>
                             <FormattedDate
-                                value={new Date(story.published_at)}
+                                value={date}
                                 year="numeric"
                                 month="long"
                                 day="numeric"
                                 timeZone={timezone}
                             />{' '}
                             <FormattedTime
-                                value={new Date(story.published_at)}
+                                value={date}
                                 hour="2-digit"
                                 minute="2-digit"
-                                timeZoneName="short"
                                 timeZone={timezone}
-                            />
+                            />{' '}
+                            (UTC{utcOffset})
                         </>
                     ),
                 }}

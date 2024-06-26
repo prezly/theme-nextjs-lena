@@ -1,4 +1,4 @@
-import translations from '@prezly/themes-intl-messages';
+import { translations } from '@prezly/theme-kit-intl';
 import classNames from 'classnames';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
@@ -40,7 +40,13 @@ function SearchBar() {
             </div>
             <div className={classNames(styles.facets, { [styles.facetsOpen]: isShown })}>
                 {AVAILABLE_FACET_ATTRIBUTES.map((attribute) => (
-                    <Facet key={attribute} attribute={attribute} />
+                    <Facet
+                        key={attribute}
+                        attribute={attribute}
+                        // This is a hack to make Algolia return more than 10 facets by default. We need to upgrade to v7 to allow finer control over this.
+                        showMore
+                        showMoreLimit={50}
+                    />
                 ))}
             </div>
         </div>

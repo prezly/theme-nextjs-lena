@@ -1,3 +1,4 @@
+import { translations } from '@prezly/theme-kit-intl';
 import {
     useAlgoliaSettings,
     useCategories,
@@ -5,8 +6,6 @@ import {
     useGetLinkLocaleSlug,
     useNewsroom,
 } from '@prezly/theme-kit-nextjs';
-import translations from '@prezly/themes-intl-messages';
-import Image from '@prezly/uploadcare-image';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -14,12 +13,13 @@ import type { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { useDevice } from '@/hooks';
+import { useDevice, useThemeSettings } from '@/hooks';
 import { IconClose, IconImage, IconMenu, IconSearch } from '@/icons';
 import { Button, ButtonLink } from '@/ui';
 
 import CategoriesDropdown from './CategoriesDropdown';
 import LanguagesDropdown from './LanguagesDropdown';
+import { Logo } from './Logo';
 
 import styles from './Header.module.scss';
 
@@ -31,6 +31,7 @@ interface Props {
 
 function Header({ hasError }: Props) {
     const { newsroom_logo, display_name, public_galleries_number } = useNewsroom();
+    const { logoSize } = useThemeSettings();
     const categories = useCategories();
     const { name } = useCompanyInformation();
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
@@ -114,15 +115,7 @@ function Header({ hasError }: Props) {
                         >
                             {newsroomName}
                         </h1>
-                        {newsroom_logo && (
-                            <Image
-                                layout="fill"
-                                objectFit="contain"
-                                imageDetails={newsroom_logo}
-                                alt={newsroomName}
-                                className={styles.logo}
-                            />
-                        )}
+                        <Logo image={newsroom_logo} size={logoSize} />
                     </Link>
 
                     <div className={styles.navigationWrapper}>
