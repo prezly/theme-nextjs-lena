@@ -13,5 +13,9 @@
             color: $color-base-800;
         }
         /* stylelint-enable selector-class-pattern, max-nesting-depth */
+
+        mark {
+            @include highlighted-text;
+        }
     }
 }
