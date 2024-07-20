@@ -1,10 +1,10 @@
 import { translations } from '@prezly/theme-kit-intl';
 import {
-    useAlgoliaSettings,
     useCategories,
     useCompanyInformation,
     useGetLinkLocaleSlug,
     useNewsroom,
+    useSearchSettings,
 } from '@prezly/theme-kit-nextjs';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
@@ -36,14 +36,12 @@ function Header({ hasError }: Props) {
     const { name } = useCompanyInformation();
     const getLinkLocaleSlug = useGetLinkLocaleSlug();
     const { formatMessage } = useIntl();
-    const { ALGOLIA_API_KEY } = useAlgoliaSettings();
+    const searchSettings = useSearchSettings();
     const { isMobile } = useDevice();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchWidgetShown, setIsSearchWidgetShown] = useState(false);
     const headerRef = useRef<HTMLElement>(null);
-
-    const IS_SEARCH_ENABLED = Boolean(ALGOLIA_API_KEY);
 
     function alignMobileHeader() {
         if (!isMobile) {
@@ -132,7 +130,7 @@ function Header({ hasError }: Props) {
                             aria-label={formatMessage(translations.misc.toggleMobileNavigation)}
                         />
 
-                        {IS_SEARCH_ENABLED && (
+                        {searchSettings && (
                             <ButtonLink
                                 href="/search"
                                 localeCode={getLinkLocaleSlug()}
@@ -187,10 +185,11 @@ function Header({ hasError }: Props) {
                             </ul>
                         </div>
 
-                        {IS_SEARCH_ENABLED && (
+                        {searchSettings && (
                             <SearchWidget
                                 dialogClassName={styles.mobileSearchWrapper}
                                 isOpen={isSearchWidgetShown}
+                                settings={searchSettings}
                                 onClose={closeSearchWidget}
                             />
                         )}
