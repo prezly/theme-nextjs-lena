@@ -1,4 +1,4 @@
-import type { AlgoliaStory } from '@prezly/theme-kit-core';
+import type { IndexedStory } from '@prezly/theme-kit-core';
 import { translations } from '@prezly/theme-kit-intl';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
@@ -12,7 +12,7 @@ import Hit from './Hit';
 
 import styles from './MainPanel.module.scss';
 
-type Props = Pick<StateResultsProvided<AlgoliaStory>, 'searchResults'> & {
+type Props = Pick<StateResultsProvided<IndexedStory>, 'searchResults'> & {
     query?: string;
 };
 

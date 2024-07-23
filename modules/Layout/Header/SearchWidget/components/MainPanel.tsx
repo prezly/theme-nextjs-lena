@@ -1,4 +1,4 @@
-import type { AlgoliaStory } from '@prezly/theme-kit-core';
+import type { IndexedStory } from '@prezly/theme-kit-core';
 import { getCategoryHasTranslation } from '@prezly/theme-kit-core';
 import { useCategories, useCurrentLocale } from '@prezly/theme-kit-nextjs';
 import type { StateResultsProvided } from 'react-instantsearch-core';
@@ -17,7 +17,7 @@ function MainPanel({
     searchState,
     searchResults,
     onClose,
-}: StateResultsProvided<AlgoliaStory> & Props) {
+}: StateResultsProvided<IndexedStory> & Props) {
     const isQuerySet = Boolean(searchState.query?.length);
     const categories = useCategories();
     const currentLocale = useCurrentLocale();
