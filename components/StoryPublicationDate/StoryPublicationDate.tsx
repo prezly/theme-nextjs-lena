@@ -1,10 +1,10 @@
 import type { Story } from '@prezly/sdk';
-import type { AlgoliaStory } from '@prezly/theme-kit-core';
+import type { IndexedStory } from '@prezly/theme-kit-core';
 import { getStoryPublicationDate } from '@prezly/theme-kit-core';
 import { FormattedDate } from 'react-intl';
 
 interface Props {
-    story: Story | AlgoliaStory;
+    story: Story | IndexedStory;
 }
 
 export function StoryPublicationDate({ story }: Props) {

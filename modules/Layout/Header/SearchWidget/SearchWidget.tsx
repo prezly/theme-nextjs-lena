@@ -1,7 +1,6 @@
-import { useAlgoliaSettings, useCurrentLocale } from '@prezly/theme-kit-nextjs';
-import algoliasearch from 'algoliasearch/lite';
+import type { SearchSettings } from '@prezly/theme-kit-core/server';
+import { useCurrentLocale, useSearchClient } from '@prezly/theme-kit-nextjs';
 import classNames from 'classnames';
-import { useMemo } from 'react';
 import { Configure, InstantSearch } from 'react-instantsearch-dom';
 
 import { Modal } from '@/ui';
@@ -14,17 +13,18 @@ interface Props {
     isOpen: boolean;
     className?: string;
     dialogClassName?: string;
+    settings: SearchSettings;
     onClose: () => void;
 }
 
-function SearchWidget({ isOpen, className, dialogClassName, onClose }: Props) {
+function SearchWidget({ isOpen, className, dialogClassName, settings, onClose }: Props) {
     const currentLocale = useCurrentLocale();
-    const { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX } = useAlgoliaSettings();
+    const searchClient = useSearchClient(settings);
 
-    const searchClient = useMemo(
-        () => algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY),
-        [ALGOLIA_API_KEY, ALGOLIA_APP_ID],
-    );
+    const filters =
+        settings.searchBackend === 'algolia'
+            ? `attributes.culture.code:${currentLocale.toUnderscoreCode()}`
+            : `attributes.culture.code=${currentLocale.toUnderscoreCode()}`;
 
     return (
         <Modal
@@ -35,11 +35,8 @@ function SearchWidget({ isOpen, className, dialogClassName, onClose }: Props) {
             dialogClassName={dialogClassName}
             wrapperClassName={styles.wrapper}
         >
-            <InstantSearch searchClient={searchClient} indexName={ALGOLIA_INDEX}>
-                <Configure
-                    hitsPerPage={3}
-                    filters={`attributes.culture.code:${currentLocale.toUnderscoreCode()}`}
-                />
+            <InstantSearch searchClient={searchClient} indexName={settings.index}>
+                <Configure hitsPerPage={3} filters={filters} />
                 <SearchBar />
                 <MainPanel onClose={onClose} />
             </InstantSearch>

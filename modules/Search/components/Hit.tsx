@@ -1,4 +1,4 @@
-import type { AlgoliaStory } from '@prezly/theme-kit-core';
+import type { IndexedStory } from '@prezly/theme-kit-core';
 import classNames from 'classnames';
 import Link from 'next/link';
 import type { Hit } from 'react-instantsearch-core';
@@ -11,7 +11,7 @@ import styles from './Hit.module.scss';
 import cardStyles from '@/components/StoryCards/StoryCard.module.scss';
 
 interface Props {
-    hit: Hit<{ attributes: AlgoliaStory }>;
+    hit: Hit<{ attributes: IndexedStory }>;
 }
 
 // This is mostly a copy of `StoryCard` component, but since the data structure is a bit different,

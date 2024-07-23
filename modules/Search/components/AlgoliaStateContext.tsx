@@ -1,10 +1,10 @@
-import type { AlgoliaStory } from '@prezly/theme-kit-core';
+import type { IndexedStory } from '@prezly/theme-kit-core';
 import type { PropsWithChildren } from 'react';
 import { createContext, useContext } from 'react';
 import type { StateResultsProvided } from 'react-instantsearch-core';
 import { connectStateResults } from 'react-instantsearch-dom';
 
-const AlgoliaStateContext = createContext<StateResultsProvided<AlgoliaStory> | undefined>(
+const AlgoliaStateContext = createContext<StateResultsProvided<IndexedStory> | undefined>(
     undefined,
 );
 
@@ -12,7 +12,7 @@ const AlgoliaStateContext = createContext<StateResultsProvided<AlgoliaStory> | u
 function AlgoliaStateContextProvider({
     children,
     ...contextValue
-}: PropsWithChildren<StateResultsProvided<AlgoliaStory>>) {
+}: PropsWithChildren<StateResultsProvided<IndexedStory>>) {
     return (
         <AlgoliaStateContext.Provider value={contextValue}>{children}</AlgoliaStateContext.Provider>
     );

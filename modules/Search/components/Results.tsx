@@ -1,4 +1,4 @@
-import type { AlgoliaStory } from '@prezly/theme-kit-core';
+import type { IndexedStory } from '@prezly/theme-kit-core';
 import { translations } from '@prezly/theme-kit-intl';
 import classNames from 'classnames';
 import type { Hit as HitType, InfiniteHitsProvided } from 'react-instantsearch-core';
@@ -14,7 +14,7 @@ import styles from './Results.module.scss';
 import containerStyles from '@/modules/InfiniteStories/InfiniteStories.module.scss';
 import listStyles from '@/modules/InfiniteStories/StoriesList.module.scss';
 
-type SearchHit = HitType<{ attributes: AlgoliaStory }>;
+type SearchHit = HitType<{ attributes: IndexedStory }>;
 
 function Results({ hits, hasMore, refineNext }: InfiniteHitsProvided<SearchHit>) {
     const { formatMessage } = useIntl();

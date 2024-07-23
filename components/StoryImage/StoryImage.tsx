@@ -1,4 +1,4 @@
-import type { AlgoliaStory } from '@prezly/theme-kit-core';
+import type { IndexedStory } from '@prezly/theme-kit-core';
 import { useNewsroom } from '@prezly/theme-kit-nextjs';
 import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
@@ -11,7 +11,7 @@ import { getStoryThumbnail } from './lib';
 import styles from './StoryImage.module.scss';
 
 type Props = {
-    story: StoryWithImage | AlgoliaStory;
+    story: StoryWithImage | IndexedStory;
     size: CardSize;
     className?: string;
     placeholderClassName?: string;

@@ -1,7 +1,7 @@
-import { useAlgoliaSettings, useCurrentLocale } from '@prezly/theme-kit-nextjs';
-import algoliasearch from 'algoliasearch';
+import type { SearchSettings } from '@prezly/theme-kit-core/server';
+import { useCurrentLocale, useSearchClient } from '@prezly/theme-kit-nextjs';
 import { useRouter } from 'next/router';
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Configure, InstantSearch } from 'react-instantsearch-dom';
 
 import Layout from '../Layout';
@@ -14,21 +14,24 @@ import { createUrl, queryToSearchState, searchStateToQuery } from './utils';
 
 import styles from './SearchPage.module.scss';
 
+interface Props {
+    settings: SearchSettings;
+}
+
 const DEBOUNCE_TIME_MS = 300;
 
-function SearchPage() {
+function SearchPage({ settings }: Props) {
     const currentLocale = useCurrentLocale();
+    const searchClient = useSearchClient(settings);
 
     const { query, push } = useRouter();
     const [searchState, setSearchState] = useState<SearchState>(queryToSearchState(query));
     const debouncedSetStateRef = useRef<number>();
 
-    const { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX } = useAlgoliaSettings();
-
-    const searchClient = useMemo(
-        () => algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY),
-        [ALGOLIA_API_KEY, ALGOLIA_APP_ID],
-    );
+    const filters =
+        settings.searchBackend === 'algolia'
+            ? `attributes.culture.code:${currentLocale.toUnderscoreCode()}`
+            : `attributes.culture.code=${currentLocale.toUnderscoreCode()}`;
 
     function onSearchStateChange(updatedSearchState: SearchState) {
         if (typeof window === 'undefined') {
@@ -50,15 +53,12 @@ function SearchPage() {
         <Layout>
             <InstantSearch
                 searchClient={searchClient}
-                indexName={ALGOLIA_INDEX}
+                indexName={settings.index}
                 searchState={searchState}
                 onSearchStateChange={onSearchStateChange}
                 createURL={createUrl}
             >
-                <Configure
-                    hitsPerPage={6}
-                    filters={`attributes.culture.code:${currentLocale.toUnderscoreCode()}`}
-                />
+                <Configure hitsPerPage={6} filters={filters} />
                 <AlgoliaStateContextProvider>
                     <Title />
                     <div className={styles.container}>

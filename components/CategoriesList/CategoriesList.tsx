@@ -1,5 +1,5 @@
 import type { Category } from '@prezly/sdk';
-import type { AlgoliaCategoryRef } from '@prezly/theme-kit-core';
+import type { IndexedCategoryRef } from '@prezly/theme-kit-core';
 import { getLocalizedCategoryData } from '@prezly/theme-kit-core';
 import { useCurrentLocale } from '@prezly/theme-kit-nextjs';
 import { useEffect, useMemo, useState } from 'react';
@@ -9,7 +9,7 @@ import CategoryLink from '../CategoryLink';
 import styles from './CategoriesList.module.scss';
 
 type Props = {
-    categories: Category[] | AlgoliaCategoryRef[];
+    categories: Category[] | IndexedCategoryRef[];
     showAllCategories?: boolean;
     isStatic?: boolean;
     linkClassName?: string;
