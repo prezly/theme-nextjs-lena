@@ -1,5 +1,5 @@
 import type { Category } from '@prezly/sdk';
-import type { AlgoliaCategoryRef } from '@prezly/theme-kit-core';
+import type { IndexedCategoryRef } from '@prezly/theme-kit-core';
 import { getCategoryUrl, getLocalizedCategoryData } from '@prezly/theme-kit-core';
 import { useCurrentLocale, useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
 import classNames from 'classnames';
@@ -8,7 +8,7 @@ import Link from 'next/link';
 import styles from './CategoryLink.module.scss';
 
 type Props = {
-    category: Category | AlgoliaCategoryRef;
+    category: Category | IndexedCategoryRef;
     className?: string;
     onClick?: () => void;
 };
