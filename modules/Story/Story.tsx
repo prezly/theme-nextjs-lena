@@ -75,7 +75,7 @@ function Story({ story }: Props) {
                         </p>
                     )}
                     {isTablet && url && visibility === 'public' && <StoryLinks url={url} />}
-                    <ContentRenderer nodes={nodes} />
+                    <ContentRenderer nodes={nodes} story={story} />
                 </div>
             </article>
             {!isTablet && url && visibility === 'public' && <StoryLinks url={url} />}

@@ -1,4 +1,5 @@
 import { Component, Elements, Renderer } from '@prezly/content-renderer-react-js';
+import type { ExtendedStory } from '@prezly/sdk';
 import type { Node } from '@prezly/story-content-format';
 import {
     AttachmentNode,
@@ -20,6 +21,7 @@ import {
     VideoNode,
 } from '@prezly/story-content-format';
 import { useEffect } from 'react';
+import { FormattedDate } from 'react-intl';
 
 import {
     Heading,
@@ -47,9 +49,14 @@ import styles from './ContentRenderer.module.scss';
 
 interface Props {
     nodes: Node | Node[];
+    story?: ExtendedStory;
 }
 
-function ContentRenderer({ nodes }: Props) {
+function ContentRenderer({ nodes, story }: Props) {
+    function renderDate(date: string) {
+        return <FormattedDate value={date} year="numeric" month="long" day="numeric" />;
+    }
+
     useEffect(() => {
         document.body.classList.add(styles.body);
 
@@ -60,7 +67,12 @@ function ContentRenderer({ nodes }: Props) {
 
     return (
         <div className={styles.renderer}>
-            <Renderer nodes={nodes} defaultComponents>
+            <Renderer
+                nodes={nodes}
+                defaultComponents
+                coverageEntries={story?.referenced_entities.coverages}
+                renderDate={renderDate}
+            >
                 <Component match={AttachmentNode.isAttachmentNode} component={Attachment} />
                 <Component
                     match={ButtonBlockNode.isButtonBlockNode}
