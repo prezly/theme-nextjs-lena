@@ -16,7 +16,7 @@ export function useThemeSettings(): ThemeSettings {
     const settings: ThemeSettingsApiResponse = {
         ...DEFAULT_THEME_SETTINGS,
         ...themePreset?.settings,
-        ...previewSettings,
+        ...(process.env.PREZLY_MODE === 'preview' ? previewSettings : undefined),
     };
 
     useEffect(() => {
