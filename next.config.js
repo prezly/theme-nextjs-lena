@@ -13,6 +13,9 @@ const globalSassImports = `\
 
 const moduleExports = withBundleAnalyzer(
     withPrezlyConfig({
+        env: {
+            PREZLY_MODE: process.env.PREZLY_MODE,
+        },
         images: {
             loader: 'custom',
         },
