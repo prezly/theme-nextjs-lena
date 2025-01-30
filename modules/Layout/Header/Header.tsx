@@ -176,8 +176,7 @@ function Header({ hasError }: Props) {
                                     ) && (
                                         <li className={styles.navigationItem}>
                                             <ButtonLink
-                                                href="/#contacts"
-                                                localeCode={getLinkLocaleSlug()}
+                                                href="#contacts"
                                                 variation="navigation"
                                                 className={styles.navigationButton}
                                                 icon={IconEmail}
