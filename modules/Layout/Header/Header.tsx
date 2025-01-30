@@ -4,7 +4,9 @@ import {
     useCompanyInformation,
     useGetLinkLocaleSlug,
     useNewsroom,
+    useNewsroomContext,
     useSearchSettings,
+    useCurrentLocale,
 } from '@prezly/theme-kit-nextjs';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
@@ -14,7 +16,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useDevice, useThemeSettings } from '@/hooks';
-import { IconClose, IconImage, IconMenu, IconSearch } from '@/icons';
+import { IconClose, IconImage, IconMenu, IconSearch, IconEmail } from '@/icons';
 import { Button, ButtonLink } from '@/ui';
 
 import CategoriesDropdown from './CategoriesDropdown';
@@ -31,6 +33,8 @@ interface Props {
 
 function Header({ hasError }: Props) {
     const { newsroom_logo, display_name, public_galleries_number } = useNewsroom();
+    const { contacts } = useNewsroomContext();
+    const currentLocale = useCurrentLocale() as unknown as { localeCode: string };
     const { logoSize } = useThemeSettings();
     const categories = useCategories();
     const { name } = useCompanyInformation();
@@ -154,6 +158,28 @@ function Header({ hasError }: Props) {
                         >
                             <div role="none" className={styles.backdrop} onClick={closeMenu} />
                             <ul id="menu" className={styles.navigationInner}>
+                                {contacts && contacts.length > 0 && contacts.some(contact => 
+                                    contact.display_locales.some(locale => {
+                                        const normalizedLocaleCode = locale.code.replace('_', '-');
+                                        const normalizedCurrentLocale = currentLocale.localeCode.replace('_', '-');
+                                        return normalizedLocaleCode === normalizedCurrentLocale || 
+                                               locale.language_code === currentLocale.localeCode;
+                                    })
+                                ) && (
+                                    <li className={styles.navigationItem}>
+                                        <ButtonLink
+                                            href="/#contacts"
+                                            localeCode={getLinkLocaleSlug()}
+                                            variation="navigation"
+                                            className={styles.navigationButton}
+                                            icon={IconEmail}
+                                        >
+                                            <FormattedMessage
+                                                {...translations.contacts.title}
+                                            />
+                                        </ButtonLink>
+                                    </li>
+                                )}
                                 {public_galleries_number > 0 && (
                                     <li className={styles.navigationItem}>
                                         <ButtonLink
