@@ -35,7 +35,7 @@ function Contacts({ contacts }: Props) {
     }
 
     return (
-        <div id='contacts' className={styles.contacts}>
+        <div id="contacts" className={styles.contacts}>
             <div className={styles.container}>
                 <h2 className={styles.title}>
                     <FormattedMessage {...translations.contacts.title} />

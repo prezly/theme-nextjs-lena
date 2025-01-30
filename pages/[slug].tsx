@@ -21,18 +21,18 @@ export const getServerSideProps = getStoryPageServerSideProps<BasePageProps>(
         const { newsroomContextProps: contextWithContacts } = await api.getNewsroomServerSideProps(
             newsroomContextProps.localeCode,
             undefined,
-            true
+            true,
         );
         return {
             isTrackingEnabled: isTrackingEnabled(context),
             translations: await importMessages(newsroomContextProps.localeCode),
             newsroomContextProps: {
                 ...newsroomContextProps,
-                contacts: contextWithContacts.contacts
-            }
+                contacts: contextWithContacts.contacts,
+            },
         };
     },
-    [PrezlyStory.FormatVersion.SLATEJS_V6]
+    [PrezlyStory.FormatVersion.SLATEJS_V6],
 );
 
 export default StoryPage;

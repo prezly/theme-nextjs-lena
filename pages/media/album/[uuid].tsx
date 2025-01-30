@@ -2,9 +2,9 @@ import {
     type GalleryAlbumPageProps,
     getGalleryAlbumPageServerSideProps,
 } from '@prezly/theme-kit-nextjs/server';
+import { NextContentDelivery } from '@prezly/theme-kit-nextjs/server';
 import dynamic from 'next/dynamic';
 import type { FunctionComponent } from 'react';
-import { NextContentDelivery } from '@prezly/theme-kit-nextjs/server';
 
 import { importMessages, isTrackingEnabled } from '@/utils';
 import type { BasePageProps } from 'types';
@@ -21,7 +21,7 @@ export const getServerSideProps = getGalleryAlbumPageServerSideProps<BasePagePro
         const { newsroomContextProps: contextWithContacts } = await api.getNewsroomServerSideProps(
             newsroomContextProps.localeCode,
             undefined,
-            true
+            true,
         );
 
         return {
@@ -29,10 +29,10 @@ export const getServerSideProps = getGalleryAlbumPageServerSideProps<BasePagePro
             translations: await importMessages(newsroomContextProps.localeCode),
             newsroomContextProps: {
                 ...newsroomContextProps,
-                contacts: contextWithContacts.contacts ?? null
-            }
+                contacts: contextWithContacts.contacts ?? null,
+            },
         };
-    }
+    },
 );
 
 export default GalleryPage;

@@ -1,5 +1,8 @@
 import { type PaginationProps, useCurrentCategory } from '@prezly/theme-kit-nextjs';
-import { getCategoryPageServerSideProps, NextContentDelivery } from '@prezly/theme-kit-nextjs/server';
+import {
+    getCategoryPageServerSideProps,
+    NextContentDelivery,
+} from '@prezly/theme-kit-nextjs/server';
 import dynamic from 'next/dynamic';
 import type { FunctionComponent } from 'react';
 
@@ -25,7 +28,7 @@ export const getServerSideProps = getCategoryPageServerSideProps<BasePageProps, 
         const { newsroomContextProps: contextWithContacts } = await api.getNewsroomServerSideProps(
             newsroomContextProps.localeCode,
             undefined,
-            true
+            true,
         );
 
         return {
@@ -33,11 +36,11 @@ export const getServerSideProps = getCategoryPageServerSideProps<BasePageProps, 
             translations: await importMessages(newsroomContextProps.localeCode),
             newsroomContextProps: {
                 ...newsroomContextProps,
-                contacts: contextWithContacts.contacts ?? null
-            }
+                contacts: contextWithContacts.contacts ?? null,
+            },
         };
     },
-    { extraStoryFields: ['thumbnail_image'] }
+    { extraStoryFields: ['thumbnail_image'] },
 );
 
 export default CategoryPage;
