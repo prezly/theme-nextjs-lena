@@ -1,6 +1,6 @@
 import { Story as PrezlyStory } from '@prezly/sdk';
 import { useCurrentStory } from '@prezly/theme-kit-nextjs';
-import { getStoryPageServerSideProps } from '@prezly/theme-kit-nextjs/server';
+import { getStoryPageServerSideProps, NextContentDelivery } from '@prezly/theme-kit-nextjs/server';
 import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
@@ -16,10 +16,22 @@ const StoryPage: NextPage<BasePageProps> = () => {
 };
 
 export const getServerSideProps = getStoryPageServerSideProps<BasePageProps>(
-    async (context, { newsroomContextProps }) => ({
-        isTrackingEnabled: isTrackingEnabled(context),
-        translations: await importMessages(newsroomContextProps.localeCode),
-    }),
+    async (context, { newsroomContextProps }) => {
+        const api = NextContentDelivery.initClient(context.req);
+        const { newsroomContextProps: contextWithContacts } = await api.getNewsroomServerSideProps(
+            newsroomContextProps.localeCode,
+            undefined,
+            true,
+        );
+        return {
+            isTrackingEnabled: isTrackingEnabled(context),
+            translations: await importMessages(newsroomContextProps.localeCode),
+            newsroomContextProps: {
+                ...newsroomContextProps,
+                contacts: contextWithContacts.contacts,
+            },
+        };
+    },
     [PrezlyStory.FormatVersion.SLATEJS_V6],
 );
 
