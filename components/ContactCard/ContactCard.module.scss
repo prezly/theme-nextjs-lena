@@ -73,6 +73,8 @@
 }
 
 .icon {
+    @include link-primary;
+
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
