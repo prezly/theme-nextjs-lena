@@ -64,6 +64,9 @@
 }
 
 .linkText {
+    @include text-label;
+    @include link-primary;
+
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

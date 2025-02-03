@@ -94,6 +94,9 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
                     {website && isCard && (
                         <a href={website.toString()} className={styles.link} title="Website">
                             <IconGlobe width={16} height={16} className={styles.icon} />
+                            <span className={styles.linkText}>
+                                {website.toString().replace(/(^\w+:|^)\/\//, '')}
+                            </span>
                         </a>
                     )}
                     {facebook && (
@@ -103,6 +106,7 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
                             title="Facebook"
                         >
                             <IconFacebook width={16} height={16} className={styles.icon} />
+                            <span className={styles.linkText}>{facebook}</span>
                         </a>
                     )}
                     {twitter && (
@@ -112,6 +116,7 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
                             title="Twitter"
                         >
                             <IconTwitter width={16} height={16} className={styles.icon} />
+                            <span className={styles.linkText}>{`@${twitter}`}</span>
                         </a>
                     )}
                 </div>
