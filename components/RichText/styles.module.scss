@@ -10,6 +10,10 @@
     text-align: right;
 }
 
+.alignJustify {
+    text-align: justify;
+}
+
 .headingOne,
 .headingTwo,
 .paragraph,
@@ -111,7 +115,8 @@
      */
     &.alignLeft,
     &.alignCenter,
-    &.alignRight {
+    &.alignRight,
+    &.alignJustify {
         padding-left: 0;
         padding-right: 0;
         list-style-position: inside;
@@ -140,6 +145,11 @@
     &.alignRight {
         text-align: right;
         justify-content: flex-end;
+    }
+
+    &.alignJustify {
+        text-align: justify;
+        justify-content: flex-start;
     }
 }
 

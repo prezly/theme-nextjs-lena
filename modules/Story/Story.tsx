@@ -1,5 +1,5 @@
 import type { ExtendedStory } from '@prezly/sdk';
-import { Alignment } from '@prezly/story-content-format';
+import { TextAlignment } from '@prezly/story-content-format';
 import { isEmbargoStory } from '@prezly/theme-kit-core';
 import { StorySeo } from '@prezly/theme-kit-nextjs';
 import classNames from 'classnames';
@@ -66,9 +66,9 @@ function Story({ story }: Props) {
                     {showDate && (
                         <p
                             className={classNames(styles.date, {
-                                [styles.left]: headerAlignment === Alignment.LEFT,
-                                [styles.right]: headerAlignment === Alignment.RIGHT,
-                                [styles.center]: headerAlignment === Alignment.CENTER,
+                                [styles.left]: headerAlignment === TextAlignment.LEFT,
+                                [styles.right]: headerAlignment === TextAlignment.RIGHT,
+                                [styles.center]: headerAlignment === TextAlignment.CENTER,
                             })}
                         >
                             <StoryPublicationDate story={story} />
