@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { useDevice } from '@/hooks/useDevice';
 import { IconFacebook, IconLinkedin, IconTwitter } from '@/icons';
 import { ScrollToTopButton } from '@/ui';
+import { SocialNetwork } from 'types';
 
 import { SocialShareButton } from '../SocialMedia';
 
@@ -12,22 +13,34 @@ import styles from './StoryLinks.module.scss';
 
 interface Props {
     url: string;
+    title: string;
+    summary: string | null;
     className?: string;
     buttonClassName?: string;
     iconClassName?: string;
     hideScrollToTop?: boolean;
 }
 
-function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClassName }: Props) {
+function StoryLinks({
+    url,
+    title,
+    summary,
+    buttonClassName,
+    hideScrollToTop,
+    className,
+    iconClassName,
+}: Props) {
     const { isTablet } = useDevice();
 
     return (
         <div className={classNames(styles.container, className)}>
             {!isTablet && !hideScrollToTop && <ScrollToTopButton className={styles.scrollToTop} />}
             <SocialShareButton
-                network="facebook"
-                url={url}
                 className={classNames(styles.button, buttonClassName)}
+                network={SocialNetwork.FACEBOOK}
+                summary={summary}
+                title={title}
+                url={url}
             >
                 <IconFacebook
                     width={16}
@@ -36,9 +49,11 @@ function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClas
                 />
             </SocialShareButton>
             <SocialShareButton
-                network="twitter"
-                url={url}
                 className={classNames(styles.button, buttonClassName)}
+                network={SocialNetwork.TWITTER}
+                summary={summary}
+                title={title}
+                url={url}
             >
                 <IconTwitter
                     width={16}
@@ -47,9 +62,11 @@ function StoryLinks({ url, buttonClassName, hideScrollToTop, className, iconClas
                 />
             </SocialShareButton>
             <SocialShareButton
-                network="linkedin"
-                url={url}
                 className={classNames(styles.button, buttonClassName)}
+                network={SocialNetwork.LINKEDIN}
+                summary={summary}
+                title={title}
+                url={url}
             >
                 <IconLinkedin
                     width={16}

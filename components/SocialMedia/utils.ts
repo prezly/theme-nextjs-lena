@@ -1,6 +1,7 @@
 import type { NewsroomCompanyInformation } from '@prezly/sdk';
 
-import type { ShareableSocialNetwork, SocialNetwork } from './types';
+import { createUrlWithQuery } from '@/utils';
+import { SocialNetwork } from 'types';
 
 function prependAtToUsername(username: string): string {
     if (username.startsWith('@')) {
@@ -40,32 +41,37 @@ export function getSocialLinks(companyInformation: NewsroomCompanyInformation) {
         companyInformation;
 
     return {
-        facebook: getSocialLink('facebook', facebook),
-        instagram: getSocialLink('instagram', instagram),
-        linkedin: getSocialLink('linkedin', linkedin),
-        pinterest: getSocialLink('pinterest', pinterest),
-        tiktok: getSocialLink('tiktok', tiktok),
-        twitter: getSocialLink('twitter', twitter),
-        youtube: getSocialLink('youtube', youtube),
+        facebook: getSocialLink(SocialNetwork.FACEBOOK, facebook),
+        instagram: getSocialLink(SocialNetwork.INSTAGRAM, instagram),
+        linkedin: getSocialLink(SocialNetwork.LINKEDIN, linkedin),
+        pinterest: getSocialLink(SocialNetwork.PINTEREST, pinterest),
+        tiktok: getSocialLink(SocialNetwork.TIKTOK, tiktok),
+        twitter: getSocialLink(SocialNetwork.TWITTER, twitter),
+        youtube: getSocialLink(SocialNetwork.YOUTUBE, youtube),
     };
 }
 
-export function getSocialShareUrl(network: ShareableSocialNetwork, url: string) {
-    const encodedUrl = encodeURI(url);
-
-    if (!encodedUrl) {
-        return undefined;
-    }
+export function getSocialShareUrl(
+    network: SocialNetwork,
+    parameters: { url: string; title: string; summary: string | null },
+): string | undefined {
+    const { url, title, summary } = parameters;
 
     switch (network) {
         case 'facebook':
-            return `https://www.facebook.com/sharer.php?u=${encodedUrl}`;
+            return createUrlWithQuery('https://www.facebook.com/sharer/sharer.php', {
+                u: url,
+            });
         case 'linkedin':
-            return `https://www.linkedin.com/shareArticle?url=${encodedUrl}`;
-        case 'pinterest':
-            return `http://pinterest.com/pin/create/button/?url=${encodedUrl}`;
+            return createUrlWithQuery('https://www.linkedin.com/sharing/share-offsite', {
+                url,
+                text: [title, summary, url].filter(Boolean).join('\n\n'),
+            });
         case 'twitter':
-            return `https://twitter.com/intent/tweet?url=${encodedUrl}`;
+            return createUrlWithQuery('https://twitter.com/intent/tweet', {
+                url,
+                text: title,
+            });
         default:
             return undefined;
     }

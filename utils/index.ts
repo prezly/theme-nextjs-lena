@@ -1,4 +1,5 @@
 export * from './capitaliseFirstLetter';
+export * from './createUrlWithQuery';
 export * from './getHeaderAlignment';
 export * from './getImageSizes';
 export * from './getTypedKeys';

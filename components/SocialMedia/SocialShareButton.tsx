@@ -1,40 +1,53 @@
+import { translations } from '@prezly/theme-kit-intl';
 import type { PropsWithChildren } from 'react';
+import { useIntl } from 'react-intl';
 
-import { Button } from '@/ui';
+import { ButtonLink } from '@/ui';
+import type { SocialNetwork } from 'types';
 
-import type { ShareableSocialNetwork } from './types';
 import { getSocialShareUrl } from './utils';
 
 interface ShareButtonProps {
-    network: ShareableSocialNetwork;
-    url: string;
     className?: string;
+    network: SocialNetwork;
+    summary: string | null;
+    title: string;
+    url: string;
 }
 
 export function SocialShareButton({
-    network,
-    url,
-    className,
     children,
+    className,
+    network,
+    summary,
+    title,
+    url,
 }: PropsWithChildren<ShareButtonProps>) {
-    const shareUrl = getSocialShareUrl(network, url);
+    const { formatMessage } = useIntl();
+    const shareUrl = getSocialShareUrl(network, { url, title, summary });
+
+    function capitalize(text: string) {
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    function generateAriaLabel(socialNetwork: SocialNetwork) {
+        return [formatMessage(translations.actions.share), capitalize(socialNetwork)].join(' ');
+    }
 
     if (!shareUrl) {
         return null;
     }
 
-    function handleClick() {
-        window.open(shareUrl, '_blank');
-    }
-
     return (
-        <Button
-            onClick={handleClick}
-            aria-label={network}
+        <ButtonLink
+            aria-label={generateAriaLabel(network)}
             className={className}
+            href={shareUrl}
+            rel="noopener noreferrer"
+            target="_blank"
             variation="secondary"
         >
             {children}
-        </Button>
+        </ButtonLink>
     );
 }
