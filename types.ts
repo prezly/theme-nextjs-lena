@@ -41,3 +41,20 @@ export interface ThemeSettings {
     showDate: boolean;
     showSubtitle: boolean;
 }
+
+export enum SocialNetwork {
+    BLUESKY = 'bluesky',
+    FACEBOOK = 'facebook',
+    INSTAGRAM = 'instagram',
+    LINKEDIN = 'linkedin',
+    MASTODON = 'mastodon',
+    MESSENGER = 'messenger',
+    PINTEREST = 'pinterest',
+    REDDIT = 'reddit',
+    TELEGRAM = 'telegram',
+    THREADS = 'threads',
+    TIKTOK = 'tiktok',
+    TWITTER = 'twitter',
+    WHATSAPP = 'whatsapp',
+    YOUTUBE = 'youtube',
+}

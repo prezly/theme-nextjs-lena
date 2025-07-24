@@ -74,11 +74,15 @@ function Story({ story }: Props) {
                             <StoryPublicationDate story={story} />
                         </p>
                     )}
-                    {isTablet && url && visibility === 'public' && <StoryLinks url={url} />}
+                    {isTablet && url && visibility === 'public' && (
+                        <StoryLinks url={url} title={story.title} summary={story.summary} />
+                    )}
                     <ContentRenderer nodes={nodes} story={story} />
                 </div>
             </article>
-            {!isTablet && url && visibility === 'public' && <StoryLinks url={url} />}
+            {!isTablet && url && visibility === 'public' && (
+                <StoryLinks url={url} title={story.title} summary={story.summary} />
+            )}
         </Layout>
     );
 }

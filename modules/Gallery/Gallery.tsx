@@ -43,6 +43,7 @@ export default function Gallery({ gallery }: Props) {
                     )}
                     <StoryLinks
                         url={url}
+                        title={gallery.name}
                         className={styles.shareLinks}
                         buttonClassName={styles.shareButton}
                         iconClassName={styles.shareIcon}
