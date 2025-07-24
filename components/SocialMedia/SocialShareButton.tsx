@@ -10,7 +10,7 @@ import { getSocialShareUrl } from './utils';
 interface ShareButtonProps {
     className?: string;
     network: SocialNetwork;
-    summary?: string;
+    summary: string | null;
     title: string;
     url: string;
 }

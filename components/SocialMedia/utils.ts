@@ -53,7 +53,7 @@ export function getSocialLinks(companyInformation: NewsroomCompanyInformation) {
 
 export function getSocialShareUrl(
     network: SocialNetwork,
-    parameters: { url: string; title: string; summary?: string },
+    parameters: { url: string; title: string; summary: string | null },
 ): string | undefined {
     const { url, title, summary } = parameters;
 

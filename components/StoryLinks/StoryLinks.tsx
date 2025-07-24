@@ -14,7 +14,7 @@ import styles from './StoryLinks.module.scss';
 interface Props {
     url: string;
     title: string;
-    summary?: string;
+    summary: string | null;
     className?: string;
     buttonClassName?: string;
     iconClassName?: string;
