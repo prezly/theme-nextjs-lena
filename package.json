@@ -2,11 +2,11 @@
   "name": "theme-nextjs-lena",
   "version": "1.1.0",
   "engines": {
-    "node": "^18.x",
+    "node": "^20.x",
     "npm": "^9.x"
   },
   "devEngines": {
-    "node": "^18.x",
+    "node": "^20.x",
     "npm": "^9.x"
   },
   "scripts": {
