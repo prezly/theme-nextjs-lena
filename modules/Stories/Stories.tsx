@@ -1,4 +1,4 @@
-import { type PaginationProps } from '@prezly/theme-kit-nextjs';
+import type { PaginationProps } from '@prezly/theme-kit-nextjs';
 
 import type { StoryWithImage } from 'types';
 

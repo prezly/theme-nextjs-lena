@@ -102,7 +102,7 @@ function Header({ hasError }: Props) {
             })}
         >
             <div className="container">
-                <nav role="navigation" className={styles.header}>
+                <nav className={styles.header}>
                     <Link
                         href="/"
                         locale={getLinkLocaleSlug()}

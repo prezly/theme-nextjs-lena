@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import type { HTMLAttributes } from 'react';
 import { useRef, useState } from 'react';
 
-import { useOnResize } from './lib';
 import { LinkedText } from './LinkedText';
+import { useOnResize } from './lib';
 
 import styles from './NotificationsBar.module.scss';
 
