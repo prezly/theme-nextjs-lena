@@ -5,7 +5,7 @@ Lena Prezly Theme is based on [Next.js] 12+ framework.
 - Data-fetching is handled by [Prezly Theme Kit] and [Prezly SDK].
 - Multi-language is powered by [React Intl] and [Prezly Themes Translations].
 - Analytics powered by [Prezly Analytics].
-- Code-style is ensured by [ESLint], [StyleLint] and [Prettier].
+- Code-style is ensured by [Biome].
 - Search is powered by [Algolia]
 - Error-logging with [Sentry].
 
@@ -59,7 +59,7 @@ This repo is configured with GitHub workflows to run linter checks on every push
 npm run check
 ```
 
-Prettier is configured to be managed by ESLint, but you can always run it separately with `npm run prettier` to check code-style, or with `npm run prettier:fix` to auto-fix code-style issues in the project.
+To auto-fix code style issues in the project, run `npm run lint:fix`.
 
 ## Documentation
 
@@ -97,10 +97,8 @@ Made with ♥ by [Prezly](https://www.prezly.com/developers)
 [Prezly SDK]: https://github.com/prezly/javascript-sdk
 [Prezly Theme Kit]: https://github.com/prezly/theme-kit-nextjs
 [Typescript]: https://www.typescriptlang.org
-[ESLint]: https://eslint.org
+[Biome]: https://biomejs.dev
 [Algolia]: https://algolia.com
-[StyleLint]: https://stylelint.io
-[Prettier]: https://prettier.io
 [React Intl]: https://www.npmjs.com/package/react-intl
 [Algolia Search]: https://www.npmjs.com/package/algoliasearch
 [Prezly Content React Renderer]: https://www.npmjs.com/package/@prezly/content-renderer-react-js
