@@ -27,7 +27,7 @@ function CategoriesBar() {
 
         const { paddingLeft, paddingRight } = getComputedStyle(containerRef.current);
         const containerWidthWithoutPadding =
-            containerWidth - parseInt(paddingLeft) - parseInt(paddingRight);
+            containerWidth - Number.parseInt(paddingLeft) - Number.parseInt(paddingRight);
 
         if (containerRef.current.scrollWidth <= containerWidthWithoutPadding) {
             return [categories, []];

@@ -7,8 +7,8 @@ import { Highlight } from 'react-instantsearch-dom';
 import { CategoriesList, StoryImage, StoryPublicationDate } from '@/components';
 import { useThemeSettings } from '@/hooks';
 
-import styles from './Hit.module.scss';
 import cardStyles from '@/components/StoryCards/StoryCard.module.scss';
+import styles from './Hit.module.scss';
 
 interface Props {
     hit: Hit<{ attributes: IndexedStory }>;

@@ -1,4 +1,4 @@
-import { DOWNLOAD, useAnalytics, VIEW } from '@prezly/analytics-nextjs';
+import { DOWNLOAD, VIEW, useAnalytics } from '@prezly/analytics-nextjs';
 import { Elements } from '@prezly/content-renderer-react-js';
 import type { GalleryNode } from '@prezly/story-content-format';
 

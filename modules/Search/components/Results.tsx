@@ -10,9 +10,9 @@ import { Button } from '@/ui';
 import { useAlgoliaState } from './AlgoliaStateContext';
 import Hit from './Hit';
 
-import styles from './Results.module.scss';
 import containerStyles from '@/modules/InfiniteStories/InfiniteStories.module.scss';
 import listStyles from '@/modules/InfiniteStories/StoriesList.module.scss';
+import styles from './Results.module.scss';
 
 type SearchHit = HitType<{ attributes: IndexedStory }>;
 

@@ -1,5 +1,5 @@
 import type { SearchSettings } from '@prezly/theme-kit-core/server';
-import { getSearchPageServerSideProps, NextContentDelivery } from '@prezly/theme-kit-nextjs/server';
+import { NextContentDelivery, getSearchPageServerSideProps } from '@prezly/theme-kit-nextjs/server';
 import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import type { FunctionComponent } from 'react';

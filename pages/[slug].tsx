@@ -1,6 +1,6 @@
 import { Story as PrezlyStory } from '@prezly/sdk';
 import { useCurrentStory } from '@prezly/theme-kit-nextjs';
-import { getStoryPageServerSideProps, NextContentDelivery } from '@prezly/theme-kit-nextjs/server';
+import { NextContentDelivery, getStoryPageServerSideProps } from '@prezly/theme-kit-nextjs/server';
 import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 

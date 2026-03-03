@@ -1,5 +1,5 @@
 import { ACTIONS, useAnalytics } from '@prezly/analytics-nextjs';
-import { getLanguageDisplayName, getUsedLanguages, LocaleObject } from '@prezly/theme-kit-core';
+import { LocaleObject, getLanguageDisplayName, getUsedLanguages } from '@prezly/theme-kit-core';
 import {
     useCurrentLocale,
     useCurrentStory,

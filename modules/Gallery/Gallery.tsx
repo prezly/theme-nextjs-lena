@@ -24,7 +24,7 @@ export default function Gallery({ gallery }: Props) {
     const metaDescription = useGalleryPageMetaDescription(gallery);
 
     useEffect(() => {
-        if (typeof window !== undefined) {
+        if (typeof window !== 'undefined') {
             setUrl(window.location.href);
         }
     }, []);

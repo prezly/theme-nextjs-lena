@@ -39,21 +39,18 @@ function CategoriesDropdown({
 
     return (
         <>
-            {showAllCategoriesOnMobile && (
-                <>
-                    {filteredCategories.map((category) => (
-                        <li
-                            key={category.id}
-                            className={classNames(navigationItemClassName, styles.mobileCategory)}
-                        >
-                            <CategoryButton
-                                category={category}
-                                navigationButtonClassName={navigationButtonClassName}
-                            />
-                        </li>
-                    ))}
-                </>
-            )}
+            {showAllCategoriesOnMobile &&
+                filteredCategories.map((category) => (
+                    <li
+                        key={category.id}
+                        className={classNames(navigationItemClassName, styles.mobileCategory)}
+                    >
+                        <CategoryButton
+                            category={category}
+                            navigationButtonClassName={navigationButtonClassName}
+                        />
+                    </li>
+                ))}
             <li
                 className={classNames(navigationItemClassName, {
                     [styles.desktopCategories]: showAllCategoriesOnMobile,
