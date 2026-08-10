@@ -5,10 +5,6 @@
     "node": "^20.x",
     "npm": "^9.x"
   },
-  "devEngines": {
-    "node": "^20.x",
-    "npm": "^9.x"
-  },
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -30,6 +26,7 @@
     "@headlessui/react": "1.7.18",
     "@playwright/test": "^1.33.0",
     "@prezly/analytics-nextjs": "3.0.0",
+    "@prezly/content-format": "0.70.1",
     "@prezly/content-renderer-react-js": "0.43.4",
     "@prezly/sdk": "24.0.0",
     "@prezly/story-content-format": "0.70.0",
