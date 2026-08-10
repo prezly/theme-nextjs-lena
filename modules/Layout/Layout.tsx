@@ -39,6 +39,8 @@ const CookieConsentBar = dynamic(() => import('./CookieConsentBar'), {
 
 const PATHS_WITH_CUSTOM_BG = ['/', '/[slug]', '/s/[slug]', '/media', '/media/album/[uuid]'];
 const STORY_PAGE_PATHS = ['/[slug]', '/s/[slug]'];
+const noIndex = process.env.VERCEL === '1' && process.env.VERCEL_ENV !== 'production';
+
 function Layout({ children, description, imageUrl, title, hasError }: PropsWithChildren<Props>) {
     const [isLoadingPage, setIsLoadingPage] = useState(false);
     const { page } = useAnalytics();
@@ -96,7 +98,13 @@ function Layout({ children, description, imageUrl, title, hasError }: PropsWithC
         <>
             <Tracking />
             <Branding newsroom={newsroom} />
-            <PageSeo title={title} description={description} imageUrl={imageUrl} />
+            <PageSeo
+                title={title}
+                description={description}
+                imageUrl={imageUrl}
+                noindex={noIndex || !newsroom.is_indexable}
+                nofollow={noIndex || !newsroom.is_indexable}
+            />
             <NotificationsBar notifications={displayedNotifications} />
             <CookieConsentBar />
             <div
