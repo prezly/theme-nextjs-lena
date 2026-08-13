@@ -28,7 +28,7 @@
     "@prezly/analytics-nextjs": "3.0.0",
     "@prezly/content-format": "0.70.1",
     "@prezly/content-renderer-react-js": "0.43.4",
-    "@prezly/sdk": "24.0.0",
+    "@prezly/sdk": "24.1.1",
     "@prezly/story-content-format": "0.70.0",
     "@prezly/theme-kit-core": "7.7.3",
     "@prezly/theme-kit-intl": "7.7.3",
