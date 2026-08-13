@@ -23,7 +23,7 @@ type Props = {
     story: ExtendedStory;
 };
 
-const noIndex = process.env.VERCEL === '1';
+const noIndex = process.env.VERCEL === '1' && process.env.VERCEL_ENV !== 'production';
 
 function Story({ story }: Props) {
     const { showDate } = useThemeSettings();
