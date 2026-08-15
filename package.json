@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "1.9.3",
-    "@headlessui/react": "1.7.18",
+    "@headlessui/react": "1.7.19",
     "@playwright/test": "^1.33.0",
     "@prezly/analytics-nextjs": "3.0.0",
     "@prezly/content-format": "0.70.1",
