@@ -2,7 +2,16 @@ import type { ContactNode } from '@prezly/story-content-format';
 import classNames from 'classnames';
 import type { ReactNode } from 'react';
 
-import { IconEmail, IconFacebook, IconGlobe, IconMobile, IconPhone, IconTwitter } from '@/icons';
+import {
+    IconEmail,
+    IconFacebook,
+    IconGlobe,
+    IconInstagram,
+    IconLinkedin,
+    IconMobile,
+    IconPhone,
+    IconTwitter,
+} from '@/icons';
 
 import type { ContactInfo } from './types';
 import { getSocialHandles, getUrl } from './utils';
@@ -21,7 +30,7 @@ interface Props {
 function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar, uuid }: Props) {
     const { name, description, company, email, phone, mobile } = contactInfo;
     const website = getUrl(contactInfo.website);
-    const { facebook, twitter } = getSocialHandles(contactInfo);
+    const { facebook, twitter, linkedin, linkedinUrl, instagram } = getSocialHandles(contactInfo);
     const subtitle = description && company ? `${description}, ${company}` : description || company;
 
     const isCard = layout === 'card';
@@ -115,6 +124,22 @@ function ContactCard({ className, contactInfo, layout, renderAvatar, showAvatar,
                         >
                             <IconTwitter width={16} height={16} className={styles.icon} />
                             <span className={styles.linkText}>{`@${twitter}`}</span>
+                        </a>
+                    )}
+                    {linkedin && linkedinUrl && (
+                        <a href={linkedinUrl} className={styles.link} title="LinkedIn">
+                            <IconLinkedin width={16} height={16} className={styles.icon} />
+                            <span className={styles.linkText}>{linkedin}</span>
+                        </a>
+                    )}
+                    {instagram && (
+                        <a
+                            href={`https://instagram.com/${instagram}`}
+                            className={styles.link}
+                            title="Instagram"
+                        >
+                            <IconInstagram width={16} height={16} className={styles.icon} />
+                            <span className={styles.linkText}>{instagram}</span>
                         </a>
                     )}
                 </div>
