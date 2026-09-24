@@ -59,6 +59,8 @@ function Contacts({ contacts }: Props) {
                                 phone: contact.phone ?? '',
                                 facebook: contact.facebook ?? '',
                                 twitter: contact.twitter ?? '',
+                                linkedin: contact.linkedin ?? '',
+                                instagram: contact.instagram ?? '',
                             }}
                             layout="card"
                             renderAvatar={({ className }) => {
