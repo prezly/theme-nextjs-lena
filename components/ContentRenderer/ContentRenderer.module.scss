@@ -39,29 +39,19 @@
             background: rgba($color-base-900, 0.3);
         }
 
-        .prezly-slate-image-rollover__caption {
-            &:not(.prezly-slate-image-rollover__caption--empty) {
-                .prezly-slate-image-rollover__caption-icon-container {
-                    margin-top: 0;
-                }
-            }
-        }
-
         .prezly-slate-gallery-image {
             .prezly-slate-image-rollover__caption-icon-container {
                 background: #fff;
                 color: #111;
                 opacity: 1;
             }
+        }
 
-            .prezly-slate-image-rollover__caption-text > * {
-                display: inline-block;
-                max-width: 100%;
-                padding: $spacing-1;
-                background: #fff;
-                color: #111;
-                text-shadow: none;
-                border-radius: 4px;
+        .prezly-slate-image-rollover__caption {
+            &:not(.prezly-slate-image-rollover__caption--empty) {
+                .prezly-slate-image-rollover__caption-icon-container {
+                    margin-top: 0;
+                }
             }
         }
 
