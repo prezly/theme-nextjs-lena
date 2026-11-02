@@ -39,6 +39,14 @@
             background: rgba($color-base-900, 0.3);
         }
 
+        .prezly-slate-gallery-image {
+            .prezly-slate-image-rollover__caption-icon-container {
+                background: #fff;
+                color: #111;
+                opacity: 1;
+            }
+        }
+
         .prezly-slate-image-rollover__caption {
             &:not(.prezly-slate-image-rollover__caption--empty) {
                 .prezly-slate-image-rollover__caption-icon-container {
