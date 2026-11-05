@@ -3,11 +3,11 @@ import type { NewsroomGallery } from '@prezly/sdk';
 import { getGalleryThumbnail, getUploadcareGroupUrl } from '@prezly/theme-kit-core';
 import { translations } from '@prezly/theme-kit-intl';
 import { useGetLinkLocaleSlug } from '@prezly/theme-kit-nextjs';
-import UploadcareImage from '@uploadcare/nextjs-loader';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 
+import { GalleryCardThumbnail } from '@/components/GalleryCard/GalleryCardThumbnail';
 import { IconArrowDown } from '@/icons';
 import { ButtonLink } from '@/ui';
 import { getUploadcareImage } from '@/utils';
@@ -38,10 +38,10 @@ function GalleryCard({ className, gallery }: Props) {
                     href={`/media/album/${uuid}`}
                     locale={getLinkLocaleSlug()}
                 >
-                    <UploadcareImage
+                    <GalleryCardThumbnail
                         alt={name}
                         className={styles.thumbnail}
-                        src={thumbnailImage.cdnUrl}
+                        cover={galleryThumbnail}
                         width={540}
                         height={260}
                     />
