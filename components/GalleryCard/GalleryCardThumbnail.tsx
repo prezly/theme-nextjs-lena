@@ -13,7 +13,7 @@ interface Props extends Omit<ImageProps, 'src' | 'loader' | 'ref'> {
     cover: UploadedImage | null;
 }
 
-export function GalleryCardThumbnail({ cover, className, ...props }: Props) {
+export function GalleryCardThumbnail({ cover, className, alt, width, height }: Props) {
     const imageRef = useRef<HTMLImageElement>(null);
     const image = useMemo(() => getUploadcareImage(cover), [cover]);
     const hasTransparencyBackdrop = useTransparencyBackdrop(image, imageRef);
@@ -24,7 +24,9 @@ export function GalleryCardThumbnail({ cover, className, ...props }: Props) {
 
     return (
         <Image
-            {...props}
+            alt={alt}
+            width={width}
+            height={height}
             ref={imageRef}
             loader={uploadcareLoader}
             src={image.cdnUrl}
